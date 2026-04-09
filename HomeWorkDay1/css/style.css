@@ -1,0 +1,39 @@
+* {
+    font-family: Roboto;
+}
+
+body {
+    width: 50%;
+    margin: 0 auto;
+}
+
+code {
+    background-color: rgb(201, 255, 252);
+}
+
+a {
+    color: #f05123;
+}
+
+.Pic {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 12px;
+}
+
+figcaption {
+    margin-top: 8px;
+    font-size: 16px;
+    width: 537px;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+table {
+    max-width: 537px;
+    border-collapse: collapse;
+}
+
+table tr td {
+    white-space: nowrap;
+}
