@@ -9,6 +9,7 @@ body {
 
 code {
     background-color: rgb(201, 255, 252);
+    font-family: "SF Mono", "JetBrains Mono", "Fira Code", monospace;
 }
 
 a {
