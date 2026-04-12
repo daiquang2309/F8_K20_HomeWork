@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/style.css" />
-        <title>Bài tập về nhà (Day 1)</title>
+        <title>HomeWork (Day 1)</title>
     </head>
     <body>
         <h1>ES2025 JavaScript: Patterns và Libraries Hot Nhất Cho Developer Việt 2026</h1>
@@ -16,29 +16,28 @@
         </p>
         <p>Cái <strong>thật sự</strong> vào ES2026 gồm 6 tính năng:</p>
         <ul>
-            <li class="li">
+            <li>
                 <strong>Iterator Helpers</strong> - <code>Iterator</code> object với <code>map</code>,
                 <code>filter</code>, <code>take</code>, <code>drop</code>
             </li>
-            <li class="li">
+            <li>
                 <strong>Set Methods</strong> - <code>union()</code>, <code>intersection()</code>,
                 <code>difference()</code>, <code>symmetricDifference()</code>
             </li>
-            <li class="li"><strong>Promise.try()</strong> - bắt cả sync lẫn async errors trong một chain</li>
-            <li class="li">
+            <li><strong>Promise.try()</strong> - bắt cả sync lẫn async errors trong một chain</li>
+            <li>
                 <strong>RegExp improvements</strong> - flag <code>/v</code>, <code>RegExp.escape()</code>, duplicate
                 named groups
             </li>
-            <li class="li">
+            <li>
                 <strong>Import Attributes</strong> - <code>import data from "./data.json" with { type: "json" }</code>
             </li>
-            <li class="li"><strong>Float16Array</strong> - typed array 16-bit cho memory-sensitive workloads</li>
+            <li><strong>Float16Array</strong> - typed array 16-bit cho memory-sensitive workloads</li>
         </ul>
         <figure>
             <img
                 src="https://files.f8.edu.vn/f8-prod/blog_posts/13485/section_0_260323080636_69c0921c0cf292.71514803.png"
-                alt="Pic"
-                class="Pic"
+                class="blog-pic"
             />
             <figcaption>
                 <em>
@@ -72,8 +71,7 @@
         <figure>
             <img
                 src="https://files.f8.edu.vn/f8-prod/blog_posts/13485/section_1_260323080703_69c092375aabc3.16191064.png"
-                alt="Pic"
-                class="Pic"
+                class="blog-pic"
             />
             <figcaption>
                 <em> Lazy evaluation: chỉ xử lý đúng số item cần thiết, tiết kiệm CPU và memory đáng kể </em>
@@ -95,8 +93,7 @@
         <figure>
             <img
                 src="https://files.f8.edu.vn/f8-prod/blog_posts/13485/section_2_260323080728_69c09250954f10.74211997.png"
-                alt="Pic"
-                class="Pic"
+                class="blog-pic"
             />
             <figcaption>
                 <em> Promise.try + async generator = xử lý stream data không bị miss error ở bất kỳ điểm nào </em>
@@ -108,8 +105,8 @@
         </p>
         <p>
             Nếu bạn muốn nền tảng JavaScript vững để apply những patterns này ngay, khóa
-            <a href="">JavaScript Pro</a> cover sâu về async/await, closures, và cách JS engine thực sự hoạt động - đủ
-            để đọc ES2025 spec mà hiểu rõ tại sao.
+            <a href="javascript:void(0)">JavaScript Pro</a> cover sâu về async/await, closures, và cách JS engine thực
+            sự hoạt động - đủ để đọc ES2025 spec mà hiểu rõ tại sao.
         </p>
         <!-- End Section 3 -->
         <hr />
@@ -117,55 +114,58 @@
         <h2>RxJS vs Zustand - chọn gì cho realtime web app?</h2>
         <p>Mình sẽ không nói "cái nào tốt hơn" vì câu trả lời phụ thuộc vào loại app bạn đang build.</p>
         <p>
-            <strong>RxJS</strong> (<a href="">RxJS docs</a>) là reactive programming library với Observable - phù hợp
-            khi data flow của bạn phức tạp, nhiều nguồn, cần backpressure hay timing control:
+            <strong>RxJS</strong> (<a href="javascript:void(0)">RxJS docs</a>) là reactive programming library với
+            Observable - phù hợp khi data flow của bạn phức tạp, nhiều nguồn, cần backpressure hay timing control:
         </p>
         <p>
-            <strong>Zustand</strong> (<a href="">Zustand GitHub</a>) đi theo hướng ngược lại - minimal, hooks-based,
-            không boilerplate:
+            <strong>Zustand</strong> (<a href="javascript:void(0)">Zustand GitHub</a>) đi theo hướng ngược lại -
+            minimal, hooks-based, không boilerplate:
         </p>
         <figure>
             <img
                 src="https://files.f8.edu.vn/f8-prod/blog_posts/13485/section_3_260323080755_69c0926b837010.27943991.png"
-                alt="Pic"
-                class="Pic"
+                class="blog-pic"
             />
             <figcaption>
                 <em> RxJS cho stream phức tạp, Zustand cho React app state - chọn đúng tool cho đúng bài toán </em>
             </figcaption>
         </figure>
         <p>Bảng so sánh thực tế:</p>
-        <table border="1" cellpadding="5">
-            <tr>
-                <td>Tiêu chí</td>
-                <td>RxJS v8.x</td>
-                <td>Zustand v5.x</td>
-            </tr>
-            <tr>
-                <td>Bundle size</td>
-                <td>~50KB</td>
-                <td><2KB</td>
-            </tr>
-            <tr>
-                <td>Learning curve</td>
-                <td>Cao (marble diagrams)</td>
-                <td>Thấp</td>
-            </tr>
-            <tr>
-                <td>Phù hợp cho</td>
-                <td>Multiplayer, live feed, complex streams</td>
-                <td>React SPA, UI state</td>
-            </tr>
-            <tr>
-                <td>ES2025 synergy</td>
-                <td><code>Iterator.from(observable)</code></td>
-                <td><code>Promise.try</code> trong actions</td>
-            </tr>
-            <tr>
-                <td>TypeScript</td>
-                <td>Tốt</td>
-                <td>Rất tốt (generics cải thiện v5+)</td>
-            </tr>
+        <table>
+            <thead>
+                <tr>
+                    <td>Tiêu chí</td>
+                    <td>RxJS v8.x</td>
+                    <td>Zustand v5.x</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bundle size</td>
+                    <td>~50KB</td>
+                    <td><2KB</td>
+                </tr>
+                <tr>
+                    <td>Learning curve</td>
+                    <td>Cao (marble diagrams)</td>
+                    <td>Thấp</td>
+                </tr>
+                <tr>
+                    <td>Phù hợp cho</td>
+                    <td>Multiplayer, live feed, complex streams</td>
+                    <td>React SPA, UI state</td>
+                </tr>
+                <tr>
+                    <td>ES2025 synergy</td>
+                    <td><code>Iterator.from(observable)</code></td>
+                    <td><code>Promise.try</code> trong actions</td>
+                </tr>
+                <tr>
+                    <td>TypeScript</td>
+                    <td>Tốt</td>
+                    <td>Rất tốt (generics cải thiện v5+)</td>
+                </tr>
+            </tbody>
         </table>
         <p>
             Cho hầu hết React app Việt Nam (dashboard, e-commerce, admin panel) - Zustand là đủ và ít đau đầu hơn. RxJS
@@ -174,25 +174,24 @@
         </p>
         <p>
             Nếu bạn đang build với ReactJS và chưa rõ cách quản lý state từ cơ bản, khóa
-            <a href="">Xây Dựng Website với ReactJS</a> sẽ giúp bạn hiểu đúng từ component state đến context trước khi
-            nhảy vào Zustand.
+            <a href="javascript:void(0)">Xây Dựng Website với ReactJS</a> sẽ giúp bạn hiểu đúng từ component state đến
+            context trước khi nhảy vào Zustand.
         </p>
         <!-- End Section 4 -->
         <hr />
         <!-- Start Section 4 -->
-        <h2>Xây realtime dashboard với ES2025 + Zustand: ví dụ thực tếs</h2>
+        <h2>Xây realtime dashboard với ES2025 + Zustand: ví dụ thực tế</h2>
         <p>
             Mình sẽ ghép tất cả những gì đã nói vào một mini case study: realtime stock price dashboard nhận data qua
             WebSocket.
         </p>
-        Download file demo đầy đủ tại đây: <a href="">Tải file demo Realtime Dashboard</a>
+        Download file demo đầy đủ tại đây: <a href="javascript:void(0)">Tải file demo Realtime Dashboard</a>
         <p><strong>Kiến trúc:</strong></p>
         <p><strong>Store với ES2025 patterns: </strong></p>
         <figure>
             <img
                 src="https://files.f8.edu.vn/f8-prod/blog_posts/13485/section_4_260323080825_69c0928991e952.37228671.png"
-                alt="Pic"
-                class="Pic"
+                class="blog-pic"
             />
             <figcaption>
                 <em> Zustand store kết hợp ES2025 Set union và Iterator Helpers - ít code hơn, dễ đọc hơn </em>
