@@ -1,0 +1,14 @@
+* {
+    font-family: Roboto;
+}
+
+ul {
+    list-style: none;
+}
+
+code {
+    font-family: monospace;
+    color: red;
+    font-size: 1.5em;
+
+}
