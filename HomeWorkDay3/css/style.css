@@ -82,7 +82,9 @@ h2 {
     }
 }
 
+button,
 button.btn {
+
     /* Nút chính có nền #2563eb, chữ white */
     &.btn-primary {
         background: #2563eb;
