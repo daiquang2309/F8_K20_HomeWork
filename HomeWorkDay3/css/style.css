@@ -91,7 +91,7 @@ button.btn {
     }
 
     /* Khi di chuột vào nút: nền #3b82f6 */
-    &:hover {
+    &:hover:not(:disabled) {
         background: #3b82f6;
     }
 
@@ -203,7 +203,7 @@ span.badge::before {
 /* ==================End Bài 5======================== */
 /* ==================Start Bài 6====================== */
 /* Ô nhập bắt buộc (required) có nền #fffbeb */
-input[required] {
+input[required]:not(:focus) {
     background: #fffbeb;
 }
 
