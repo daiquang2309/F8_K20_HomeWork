@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HomeWork (Day 4)</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            label {
+                display: inline-block;
+                margin: 10px 0;
+                padding: 5px;
+            }
+
+            input[type="radio"],
+            input[type="checkbox"] {
+                transform: scale(1.5);
+                margin-right: 6px;
+            }
+
+            /* Những Css mặc định cho trang */
+            .header {
+                background: #f98000;
+                color: #f9fafb;
+                font-weight: bold;
+                font-size: 2em;
+                padding: 10px;
+            }
+
+            .groupTitle {
+                padding: 10px 5px;
+                font-size: 1.2em;
+                font-weight: 500;
+                background: #e5e7eb;
+                color: #111827;
+            }
+
+            .labelDefault {
+                background: #eef2ff;
+                color: #4b5563;
+            }
+
+            .contentArea {
+                background: #f3f4f6;
+
+                > div.contentDefault {
+                    padding: 8px;
+                    margin: 8px 0;
+                    background-color: #ffffff;
+                    color: #9ca3af;
+                }
+            }
+
+            /* Kết quả sau khi chọn giao diện */
+            input#light:checked {
+                & + label {
+                    background: #fff8cc;
+                    color: #8b5e00;
+                }
+
+                & ~ .contentArea > #content-light {
+                    background: #fff8cc;
+                    color: #111827;
+                    padding: 10px;
+                }
+            }
+
+            input#dark:checked {
+                & + label {
+                    background: #111827;
+                    color: #f9fafb;
+                }
+
+                & ~ .contentArea > #content-dark {
+                    background: #111827;
+                    color: #f9fafb;
+                    padding: 10px;
+                }
+            }
+
+            /* Kết quả sau khi chọn màu chủ đạo */
+            input#red:checked {
+                & + label {
+                    background: #fee2e2;
+                    color: #991b1b;
+                }
+
+                & ~ .contentArea > #content-red {
+                    background: #fee2e2;
+                    color: #7f1d1d;
+                    padding: 10px;
+                }
+            }
+
+            input#blue:checked {
+                & + label {
+                    background: #dbeafe;
+                    color: #1d4ed8;
+                }
+
+                & ~ .contentArea > #content-blue {
+                    background: #dbeafe;
+                    color: #1d4ed8;
+                    padding: 10px;
+                }
+            }
+
+            input#green:checked {
+                & + label {
+                    background: #dcfce7;
+                    color: #166534;
+                }
+
+                & ~ .contentArea > #content-green {
+                    background: #dcfce7;
+                    color: #166534;
+                    padding: 10px;
+                }
+            }
+
+            /* Kết quả sau khi chọn ngôn ngữ */
+            input#vi:checked {
+                & + label {
+                    background: #bbf7d0;
+                    color: #166534;
+                }
+
+                & ~ .contentArea > #content-vi {
+                    color: #166534;
+                    padding: 10px;
+                }
+            }
+
+            input#en:checked {
+                & + label {
+                    background: #bfdbfe;
+                    color: #1d4ed8;
+                }
+
+                & ~ .contentArea > #content-en {
+                    color: #1d4ed8;
+                    padding: 10px;
+                }
+            }
+
+            /* Kết quả sau khi chọn tùy chọn bổ sung */
+            input#advanced:checked {
+                & + label {
+                    background: #fef3c7;
+                    color: #92400e;
+                }
+
+                & ~ .contentArea > #content-advanced {
+                    background: #fef3c7;
+                    color: #92400e;
+                    padding: 10px;
+                }
+            }
+
+            input#eco:checked {
+                & + label {
+                    background: #bbf7d0;
+                    color: #15803d;
+                }
+
+                & ~ .contentArea > #content-eco {
+                    background: #bbf7d0;
+                    color: #166534;
+                    padding: 10px;
+                }
+            }
+
+            input#warning:checked {
+                & + label {
+                    background: #fee2e2;
+                    color: #b91c1c;
+                }
+
+                & ~ .contentArea > #content-warning {
+                    background: #fee2e2;
+                    color: #b91c1c;
+                    padding: 10px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">Trung tâm cấu hình giao diện (Demo)</div>
+        <!-- Start Section 1: Chọn giao diện -->
+        <div class="groupTitle">Chọn giao diện:</div>
+        <input id="light" type="radio" name="theme" />
+        <label class="labelDefault" for="light">Light </label>
+        <input id="dark" type="radio" name="theme" />
+        <label class="labelDefault" for="dark">Dark</label>
+        <!-- End Section 1 -->
+
+        <!-- Start Section 2: Chọn màu -->
+        <div class="groupTitle">Chọn màu chủ đạo (Color):</div>
+        <input id="red" type="radio" name="color" />
+        <label class="labelDefault" for="red"> Red </label>
+        <input id="blue" type="radio" name="color" />
+        <label class="labelDefault" for="blue"> Blue </label>
+        <input id="green" type="radio" name="color" />
+        <label class="labelDefault" for="green"> Green </label>
+        <!-- End Section 2 -->
+
+        <!-- Start Section 3: Chọn ngôn ngữ -->
+        <div class="groupTitle">Chọn ngôn ngữ (Language):</div>
+        <input id="vi" type="radio" name="language" />
+        <label class="labelDefault" for="vi"> VI </label>
+        <input id="en" type="radio" name="language" />
+        <label class="labelDefault" for="en"> EN </label>
+        <!-- End Section 3 -->
+
+        <!-- Start Section 4: Chọn tùy chọn -->
+        <div class="groupTitle">Tùy chọn bổ sung (Options - Checkbox)</div>
+        <input id="advanced" type="checkbox" />
+        <label class="labelDefault" for="advanced"> Hiển thị mô tả nâng cao </label>
+        <input id="eco" type="checkbox" />
+        <label class="labelDefault" for="eco"> Bật chế độ Eco </label>
+        <input id="warning" type="checkbox" />
+        <label class="labelDefault" for="warning"> Hiển thị cảnh báo quan trọng </label>
+        <!-- End Section 4 -->
+
+        <!-- Start Section 5: Hiện thị kết quả -->
+        <div class="contentArea">
+            <!-- Kết quả giao diện -->
+            <div class="contentDefault" id="content-light">Theme Light: Giao diện sáng, chữ đen.</div>
+            <div class="contentDefault" id="content-dark">Theme Dark: Giao diện tối, chữ sáng.</div>
+
+            <!-- Kết quả màu chủ đạo -->
+            <div class="contentDefault" id="content-red">Màu Red: được nhấn mạnh khi chọn Red.</div>
+            <div class="contentDefault" id="content-blue">Màu Blue: được nhấn mạnh khi chọn Blue.</div>
+            <div class="contentDefault" id="content-green">Màu Green: được nhấn mạnh khi chọn Green.</div>
+
+            <!-- Kết quả ngôn ngữ -->
+            <div class="contentDefault" id="content-vi">[VI] Xin chào bạn! Khi chọn VI, dòng này rõ hơn.</div>
+            <div class="contentDefault" id="content-en">[EN] Hello, world! Khi chọn ENm dòng này rõ hơn.</div>
+
+            <!-- Kết quả tùy chọn bổ sung-->
+            <div class="contentDefault" id="content-advanced">
+                Mô tả nâng cao: Giải thích kỹ hơn về cách các lựa chọn đang ảnh hưởng giao diện.
+            </div>
+            <div class="contentDefault" id="content-eco">
+                Chế độ Eco: mô phỏng trạng thái tiết kiệm tài nguyên cho giao diện.
+            </div>
+            <div class="contentDefault" id="content-warning">
+                Cảnh báo quan trọng: khu vực dùng để nhấn mạnh thông tin hệ thống.
+            </div>
+        </div>
+        <!-- End Section 6 -->
+    </body>
+</html>
