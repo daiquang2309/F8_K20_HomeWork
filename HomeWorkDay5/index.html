@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HomeWork (Day5)</title>
+        <style>
+            div {
+                margin: 20px;
+                align-content: center;
+                text-align: center;
+            }
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 30px;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+            }
+            /* 1. Hình vuông */
+            .square {
+                width: 100px;
+                height: 100px;
+                border: 5px solid #ef4444;
+            }
+            /* 2. Hình chữ nhật */
+            .rectangle {
+                width: 200px;
+                height: 100px;
+                border: 5px solid #3b82f6; /* xanh dương */
+            }
+            /* 3. Hình tam giác lên */
+            .triangle-up {
+                border-width: 100px;
+                border-color: transparent transparent #22c55e transparent;
+                border-style: solid;
+                width: 0;
+            }
+            /* 4. Hình tam giác xuống */
+            .triangle-down {
+                border-width: 100px;
+                border-color: #f59e0b transparent transparent transparent;
+                border-style: solid;
+                width: 0;
+            }
+            /* 5. Hình tam giác trái */
+            .triangle-left {
+                border-width: 100px;
+                border-color: transparent #a855f7 transparent transparent;
+                border-style: solid;
+                width: 0;
+            }
+            /* 6. Hình tam giác phải */
+            .triangle-right {
+                border-width: 100px;
+                border-color: transparent transparent transparent #06b6d4;
+                border-style: solid;
+                width: 0;
+            }
+            /* 7. Hình thang */
+            .trapezium {
+                border-width: 100px;
+                border-color: transparent transparent #6366f1 transparent;
+                border-style: solid;
+                width: 100px;
+            }
+            /* 8. Hình tam giác rộng */
+            .triangle-wide {
+                border-width: 100px;
+                border-bottom: 60px;
+                border-color: transparent transparent #84cc16 transparent;
+                border-style: solid;
+                width: 0;
+            }
+            /* 9. Hình tam giác nhọn */
+            .triangle-sharp {
+                border-width: 50px;
+                border-bottom: 350px;
+                border-color: transparent transparent #ec4899 transparent;
+                border-style: solid;
+                width: 0;
+            }
+            /* 10. Hình tam giác cân */
+            .triangle-isosceles {
+                border-bottom: 300px;
+                border-left: 100px;
+                border-right: 100px;
+                border-color: transparent transparent #14b8a6 transparent;
+                border-style: solid;
+                width: 0;
+            }
+            /* 11. Hình mũi tên phải */
+            .right-arrow {
+                border-width: 100px;
+                border-color: transparent transparent transparent #f97316;
+                border-style: solid;
+                width: 0;
+            }
+            /* 12. Hình mũi tên trái */
+            .left-arrow {
+                border-width: 100px;
+                border-color: transparent #8b5cf6 transparent transparent;
+                border-style: solid;
+                width: 0;
+            }
+            /* 13. Hình lá cờ */
+            .ribbon {
+                border-width: 150px 200px;
+                border-color: #eab308 transparent #eab308 #eab308;
+                border-style: solid;
+                width: 0;
+            }
+            /* 14. Logo F8 */
+            .F8 > div {
+                display: inline-block;
+                vertical-align: top;
+            }
+            /* Chữ F */
+            .col {
+                width: 0;
+                height: 190px;
+                border-left: 20px solid orangered;
+            }
+            .row {
+                width: 100px;
+                height: 0;
+                border-top: 20px solid orangered;
+            }
+            .top {
+                margin-top: -210px;
+            }
+            .mid {
+                margin-top: 65px;
+            }
+            /* Số 8 */
+            .box {
+                width: 100px;
+                height: 65px;
+                border-width: 20px;
+                border-color: orangered;
+                border-style: solid;
+            }
+            .box-bot {
+                margin-top: -40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- 1. Hình Vuông -->
+            <div class="square"></div>
+            <!-- 2. Hình chữ nhật -->
+            <div class="rectangle"></div>
+            <!-- 3. Hình tam giác lên -->
+            <div class="triangle-up"></div>
+            <!-- 4. Hình tam giác xuống -->
+            <div class="triangle-down"></div>
+            <!-- 5. Hình tam giác trái -->
+            <div class="triangle-left"></div>
+            <!-- 6. Hình tam giác phải -->
+            <div class="triangle-right"></div>
+            <!-- 7. Hình thang -->
+            <div class="trapezium"></div>
+            <!-- 8. Hình tam giác rộng -->
+            <div class="triangle-wide"></div>
+            <!-- 9. Hình tam giác nhọn -->
+            <div class="triangle-sharp"></div>
+            <!-- 10. Hình tam giác cân -->
+            <div class="triangle-isosceles"></div>
+            <!-- 11. Hình mũi tên phải -->
+            <div class="right-arrow"></div>
+            <!-- 12. Hình mũi tên trái-->
+            <div class="left-arrow"></div>
+            <!-- 13. Hình lá cờ -->
+            <div class="ribbon"></div>
+        </div>
+        <!-- 14. Logo F8 -->
+        <div class="F8">
+            <div class="F">
+                <div class="col"></div>
+                <div class="row top"></div>
+                <div class="row mid"></div>
+            </div>
+            <div class="eight">
+                <div class="box box-top"></div>
+                <div class="box box-bot"></div>
+            </div>
+        </div>
+    </body>
+</html>
