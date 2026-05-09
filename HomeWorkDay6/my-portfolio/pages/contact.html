@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+    </head>
+    <body>
+        <!-- Start Header Section -->
+        <header id="top">
+            <!-- Logo / Name -->
+            <div class="logo">
+                <a href="../index.html">Quảng Đại</a>
+            </div>
+            <!-- Start Navigation -->
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../index.html">
+                            <i class="mdi mdi-home"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            <i class="mdi mdi-account"></i>
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="skills.html">
+                            <i class="mdi mdi-lightbulb"></i>
+                            Skills
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="projects.html">
+                            <i class="mdi mdi-folder"></i>
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="blog.html">
+                            <i class="mdi mdi-note-text"></i>
+                            Blog
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            <i class="mdi mdi-email"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Navigation -->
+        </header>
+        <!-- End Header Section -->
+        <main>
+            <!-- ================= CONTACT SECTION ================= -->
+            <section class="contact-section">
+                <h1>Liên Hệ</h1>
+
+                <p>Nếu bạn muốn hợp tác hoặc trao đổi công việc, hãy gửi tin nhắn cho mình</p>
+
+                <!-- ================= CONTACT FORM ================= -->
+                <section class="contact-form">
+                    <h2>Form liên hệ</h2>
+
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <!-- ===== BASIC INFO ===== -->
+                        <fieldset>
+                            <legend>Thông tin cơ bản</legend>
+
+                            <!-- Full Name -->
+                            <div>
+                                <label for="fullname"> Họ tên </label>
+
+                                <input type="text" id="fullname" name="fullname" required minlength="2" />
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email"> Email </label>
+
+                                <input type="email" id="email" name="email" required />
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone"> Số điện thoại </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    pattern="[0-9]{10,11}"
+                                    placeholder="0123456789"
+                                />
+                            </div>
+                        </fieldset>
+
+                        <!-- ===== SUBJECT ===== -->
+                        <fieldset>
+                            <legend>Chủ đề</legend>
+
+                            <label for="subject"> Chọn chủ đề </label>
+
+                            <select id="subject" name="subject">
+                                <option value="">-- Chọn chủ đề --</option>
+
+                                <option value="project">Hỏi về dự án</option>
+
+                                <option value="collab">Hợp tác</option>
+
+                                <option value="recruitment">Tuyển dụng</option>
+
+                                <option value="other">Khác</option>
+                            </select>
+                        </fieldset>
+
+                        <!-- ===== PRIORITY ===== -->
+                        <fieldset>
+                            <legend>Mức độ ưu tiên</legend>
+
+                            <label>
+                                <input type="radio" name="priority" value="low" />
+                                Thấp
+                            </label>
+
+                            <label>
+                                <input type="radio" name="priority" value="medium" />
+                                Trung bình
+                            </label>
+
+                            <label>
+                                <input type="radio" name="priority" value="high" />
+                                Cao
+                            </label>
+                        </fieldset>
+
+                        <!-- ===== SERVICES ===== -->
+                        <fieldset>
+                            <legend>Dịch vụ quan tâm</legend>
+
+                            <label>
+                                <input type="checkbox" name="services" value="web" />
+                                Web Development
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="services" value="mobile" />
+                                Mobile App
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="services" value="uiux" />
+                                UI/UX Design
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="services" value="consulting" />
+                                Consulting
+                            </label>
+                        </fieldset>
+
+                        <!-- ===== MESSAGE ===== -->
+                        <fieldset>
+                            <legend>Tin nhắn</legend>
+
+                            <label for="message"> Nội dung tin nhắn </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="6"
+                                minlength="10"
+                                required
+                                placeholder="Nhập tin nhắn của bạn..."
+                            ></textarea>
+                        </fieldset>
+
+                        <!-- ===== WEBSITE RATING ===== -->
+                        <fieldset>
+                            <legend>Đánh giá website</legend>
+
+                            <label for="rating"> Đánh giá website này: 1-5 sao </label>
+
+                            <input type="range" id="rating" name="rating" min="1" max="5" value="5" />
+                        </fieldset>
+
+                        <!-- ===== FILE UPLOAD ===== -->
+                        <fieldset>
+                            <legend>File đính kèm</legend>
+
+                            <label for="file"> Đính kèm CV hoặc tài liệu (nếu có) </label>
+
+                            <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" />
+                        </fieldset>
+
+                        <!-- ===== TERMS ===== -->
+                        <fieldset>
+                            <legend>Điều khoản</legend>
+
+                            <label>
+                                <input type="checkbox" required />
+
+                                Tôi đồng ý với <a href="#">Chính sách bảo mật</a>
+                            </label>
+                        </fieldset>
+
+                        <!-- ===== BUTTONS ===== -->
+                        <div class="form-buttons">
+                            <button type="submit">Gửi tin nhắn</button>
+
+                            <button type="reset">Xóa form</button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- ================= CONTACT INFO ================= -->
+                <section class="contact-info">
+                    <h2>Thông tin liên hệ</h2>
+
+                    <address>
+                        <!-- Email -->
+                        <p>
+                            Email:
+
+                            <a href="mailto:dai.quang2309@gmail.com"> dai.quang2309@gmail.com </a>
+                        </p>
+
+                        <!-- Phone -->
+                        <p>
+                            Điện thoại:
+
+                            <a href="tel:+84876775257"> +84 876 775 257 </a>
+                        </p>
+
+                        <!-- Address -->
+                        <p>Địa chỉ: GS25 Nguyễn Văn Công, TP.HCM, Việt Nam</p>
+                    </address>
+
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <a href="https://facebook.com/" target="_blank">
+                            <i class="mdi mdi-facebook"></i>
+                        </a>
+
+                        <a href="https://instagram.com/" target="_blank">
+                            <i class="mdi mdi-instagram"></i>
+                        </a>
+
+                        <a href="https://github.com/" target="_blank">
+                            <i class="mdi mdi-github"></i>
+                        </a>
+
+                        <a href="https://linkedin.com/" target="_blank">
+                            <i class="mdi mdi-linkedin"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- ================= MAP ================= -->
+                <section class="map-section">
+                    <h2>Bản đồ</h2>
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.915171908834!2d106.67261571012774!3d10.81780355838564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529003972a419%3A0x937caa1c3b8e6a4!2zR1MyNSBOZ3V54buFbiBWxINuIEPDtG5nIC0gR8OyIFbhuqVw!5e0!3m2!1svi!2s!4v1778291148352!5m2!1svi!2s"
+                        height="450"
+                        style="border: 0; width: 100%"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </section>
+
+                <!-- ================= WORKING HOURS ================= -->
+                <section class="working-hours">
+                    <h2>Giờ làm việc</h2>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Thứ 2 - Thứ 6</td>
+
+                                <td>
+                                    <time>08:00</time>
+                                    -
+                                    <time>17:00</time>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Thứ 7</td>
+
+                                <td>
+                                    <time>08:00</time>
+                                    -
+                                    <time>12:00</time>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Chủ nhật</td>
+
+                                <td>Nghỉ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </main>
+        <!-- Start Footer -->
+        <footer id="footer">
+            <!-- Copyright -->
+            <div class="footer-copy">
+                <p>&copy; 2026 Quảng Đại. All rights reserved.</p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links">
+                <!-- Facebook -->
+                <a href="https://facebook.com/" target="_blank" title="Facebook">
+                    <i class="mdi mdi-facebook"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/" target="_blank" title="Instagram">
+                    <i class="mdi mdi-instagram"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a href="https://twitter.com/" target="_blank" title="Twitter">
+                    <i class="mdi mdi-twitter"></i>
+                </a>
+
+                <!-- Github -->
+                <a href="https://github.com/" target="_blank" title="Github">
+                    <i class="mdi mdi-github"></i>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/" target="_blank" title="LinkedIn">
+                    <i class="mdi mdi-linkedin"></i>
+                </a>
+            </div>
+
+            <!-- Back To Top -->
+            <div class="back-to-top">
+                <a href="#top"> ↑ Lên đầu trang </a>
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </body>
+</html>
