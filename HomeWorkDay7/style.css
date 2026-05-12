@@ -1,0 +1,284 @@
+/* ===================================================== */
+/* RESET CSS */
+/* ===================================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+/* ===================================================== */
+/* BODY */
+/* ===================================================== */
+
+body {
+
+    font-family: Arial;
+    padding: 20px;
+    background: #f2f2f2;
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+
+/* ===================================================== */
+/* CONTAINER CHUNG */
+/* ===================================================== */
+
+.container {
+
+    width: 600px;
+
+    height: 200px;
+
+    border: 3px solid red;
+
+    margin: 30px auto;
+
+    background: white;
+
+}
+
+h2 {
+
+    width: 600px;
+
+    margin: 30px auto 10px;
+
+    font-family: Arial;
+
+}
+
+/* ===================================================== */
+/* BOX CHUNG */
+/* ===================================================== */
+
+.box {
+
+    width: 60px;
+
+    height: 60px;
+
+    background: royalblue;
+
+    color: white;
+
+    font-size: 24px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 1 */
+/* ===================================================== */
+
+.c1 {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 2 */
+/* ===================================================== */
+
+.c2 {
+
+    display: flex;
+
+    flex-direction: row-reverse;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 3 */
+/* ===================================================== */
+
+.c3 {
+
+    display: flex;
+
+    flex-direction: column;
+
+    /* sao chiều dọc vẫn căn giữa đc */
+    align-items: center;
+}
+
+.c3 .box-2 {
+
+    margin-top: 20px;
+
+    margin-bottom: 50px;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 4 */
+/* ===================================================== */
+
+.c4 {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.c4 .box-2 {
+
+    margin-left: 10px;
+
+    margin-right: 40px;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 5 */
+/* ===================================================== */
+
+.c5 {
+
+    display: flex;
+
+    flex-direction: column-reverse;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 6 */
+/* ===================================================== */
+
+.c6 {
+
+    display: flex;
+
+    justify-content: space-between;
+}
+
+/* ===================================================== */
+/* CONTAINER 7 */
+/* ===================================================== */
+
+.c7 {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+.c7 .box-2 {
+
+    margin-top: 60px;
+
+    margin-bottom: 20px;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 8 */
+/* ===================================================== */
+
+.c8 {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.c8 .center-box {
+
+    margin: 0 auto;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 9 */
+/* ===================================================== */
+
+.c9 {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+.c9 .top-box {
+
+    margin-top: -50px;
+
+}
+
+.c9 .bottom-box {
+
+    margin-top: 50px;
+
+}
+
+/* ===================================================== */
+/* CONTAINER 10 */
+/* ===================================================== */
+
+.c10 {
+
+    display: flex;
+
+}
+
+.c10 .center {
+
+    margin: auto;
+
+}
+
+.c10 .box:last-child {
+
+    margin-left: auto;
+
+    margin-top: auto;
+
+}

@@ -1,0 +1,44 @@
+/* ==============CSS Header============== */
+header {
+    position: relative;
+    background-color: rgb(211, 221, 231);
+    padding: 10px 10px;
+}
+
+header>nav {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+
+header>div,
+nav {
+    display: inline-block;
+}
+
+header>.logo {
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    font-size: 2em;
+    font-weight: bold;
+}
+
+header>nav>ul>li {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 1.2em;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+/* ==============CSS Header============== */
+.hero-background>img {
+    width: 100%;
+}
