@@ -1,0 +1,729 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Be Vietnam Pro", sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+body {
+    background-color: black;
+    padding: 10px;
+}
+
+.wrap {
+    width: 1440px;
+    height: 1039px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px 220px 220px 260px;
+    gap: 20px;
+}
+
+.card {
+    border-radius: 30px;
+}
+
+/* ==================== ITEM 1 ==================== */
+.item1 {
+    position: relative;
+    background: #FF6400;
+    overflow: hidden;
+    padding: 20px;
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+.item1 .circle {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: rgba(255, 255, 255, .12);
+    border-radius: 50%;
+    top: -40px;
+    left: 125px;
+}
+
+.item1 .name_item1,
+.item1 .price_item1 {
+    font-size: 1.5em;
+}
+
+.item1>img {
+    width: 135%;
+    position: relative;
+    z-index: 2;
+    left: 7px;
+    bottom: 40px;
+}
+
+/* ==================== ITEM 2 ==================== */
+.item2 {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #8BB8F6;
+    text-align: center;
+}
+
+.item2>img {
+    position: relative;
+    top: -200px;
+    width: 60%;
+    border-radius: 35px;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, .25);
+}
+
+/* ==================== ITEM 3 - Notification ==================== */
+.notification-card {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    grid-column: 3;
+    grid-row: 1;
+    background-color: #8BB8F6;
+}
+
+.notification-card .circle {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    z-index: -1;
+    background: rgba(255, 255, 255, .12);
+    border-radius: 50%;
+    top: -135px;
+    right: 0;
+}
+
+.notification-card>img {
+    position: relative;
+    bottom: 63px;
+    left: 20px;
+    width: 90%;
+}
+
+.notification-card__content {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    background-color: rgb(164, 161, 161);
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.notification-card__content .notification-card__icon {
+    display: grid;
+    place-items: center;
+    background-color: #FF6400;
+    border-radius: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.notification-card__icon img {
+    width: 50px;
+}
+
+.title_notification .title {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.title_notification .text {
+    font-size: 9px;
+}
+
+.notification-card__time {
+    text-align: right;
+}
+
+.notification-card__time div {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.notification-card__time img {
+    width: 45px;
+    border-radius: 50%;
+}
+
+/* Notification Small */
+.notification-small {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 85%;
+    padding: 8px;
+    border-radius: 15px;
+    grid-template-columns: 45px 1fr auto;
+}
+
+.notification-small .notification-card__icon {
+    width: 40px;
+    height: 40px;
+}
+
+.notification-small .notification-card__icon img {
+    width: 100%;
+}
+
+.notification-small .title {
+    font-size: 10px;
+}
+
+.notification-small .text {
+    font-size: 8px;
+}
+
+.notification-small .notification-card__time img {
+    width: 30px;
+}
+
+/* ==================== ITEM 4 - Special Menu ==================== */
+.item4 {
+    background: #FF6400;
+    border-radius: 45px;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    gap: 25px;
+    height: 197%;
+}
+
+.item4 h2 {
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.special_container {
+    position: relative;
+    top: -55px;
+    display: flex;
+    flex-direction: column;
+}
+
+.special_card_content {
+    background: #f5f5f5;
+    border-radius: 28px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    height: 145px;
+}
+
+.special_card_content:nth-child(2) {
+    transform: scale(.95);
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.special_card_content:nth-child(3) {
+    transform: scale(.90);
+    margin-left: 30px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 55%;
+}
+
+.tag {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.tag .icon {
+    width: 22px;
+    height: 22px;
+    border: 1px solid green;
+    border-radius: 6px;
+    color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+.tag .text {
+    background: #d8a02f;
+    color: white;
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.title {
+    color: black;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.price {
+    color: black;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.content {
+    color: #777;
+    font-size: 10px;
+    line-height: 1;
+}
+
+.content strong {
+    color: rgb(29, 27, 27);
+}
+
+.right {
+    position: relative;
+    width: 125px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.right img {
+    padding-bottom: 10px;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.add {
+    position: absolute;
+    bottom: -25px;
+    right: 2px;
+    width: 120px;
+    height: 42px;
+    background: #f8f3f3;
+    border: 1.5px solid #ff9f63;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    color: #FF6400;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.add div {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 22px;
+    color: #FF6400;
+    font-weight: 400;
+}
+
+.item4::before,
+.item4::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+}
+
+.item4::before {
+    width: 500px;
+    height: 500px;
+    bottom: -250px;
+    left: -100px;
+}
+
+.item4::after {
+    width: 400px;
+    height: 400px;
+    bottom: -180px;
+    right: -120px;
+}
+
+/* ==================== ITEM 5 - Sales Analytics ==================== */
+.item5 {
+    grid-column: 2 / 4;
+    grid-row: 2 / 4;
+    background-color: #FF6400;
+    border-radius: 45px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    overflow: hidden;
+}
+
+.item5 .top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item5 .title {
+    color: white;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.number {
+    color: white;
+    font-size: 3em;
+    font-weight: 800;
+}
+
+.sub {
+    color: white;
+    font-size: 1.3em;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 14px;
+    position: relative;
+    top: -155px;
+}
+
+.bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.column {
+    width: 80px;
+    background: #ececec;
+    border-radius: 25px;
+}
+
+.h1 {
+    height: 180px;
+}
+
+.h2 {
+    height: 220px;
+}
+
+.h3 {
+    height: 260px;
+}
+
+.h4 {
+    height: 330px;
+}
+
+.active {
+    background: #87A9DD;
+}
+
+.bar span {
+    color: white;
+    font-size: 1.5em;
+}
+
+/* ==================== ITEM 6 ==================== */
+.item6 {
+    grid-column: 1;
+    grid-row: 3 / 5;
+    background-color: #8BB8F6;
+    position: relative;
+    overflow: hidden;
+}
+
+.item6 .circle {
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.item6 .tag {
+    background: white;
+    padding: 8px 20px;
+    border-radius: 40px;
+    position: absolute;
+    color: #ff6400;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+}
+
+.tag1 {
+    top: 250px;
+    left: -15px;
+}
+
+.tag2 {
+    top: 320px;
+    right: 5px;
+}
+
+.tag3 {
+    bottom: 25px;
+    left: 180px;
+    transform: translateX(-50%);
+}
+
+.item6>img {
+    position: relative;
+    top: -2px;
+    right: 10px;
+    width: 105%;
+}
+
+/* ==================== ITEM 7 ==================== */
+.item7 {
+    grid-column: 4;
+    grid-row: 3;
+    background-color: #8BB8F6;
+    position: relative;
+    overflow: hidden;
+}
+
+.item7 .circle_bg {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 60px solid rgba(255, 255, 255, .08);
+    position: absolute;
+    top: -60px;
+    right: -100px;
+}
+
+.status {
+    width: 40px;
+    height: 40px;
+    background: #00d500;
+    border-radius: 50%;
+    position: absolute;
+    left: 35px;
+    bottom: 70px;
+    box-shadow: 0 0 0 15px rgba(0, 255, 0, .25),
+        0 0 30px rgba(0, 255, 0, .5);
+}
+
+.box {
+    background: white;
+    color: #ff6400;
+    padding: 3px 13px;
+    border-radius: 20px;
+    border: 2px solid #ff9a5a;
+    position: absolute;
+    font-size: 1.2em;
+    font-weight: 700;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
+}
+
+.box span {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #ff8b2d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .6em;
+    top: -15px;
+    right: -10px;
+}
+
+.box1 {
+    top: 30px;
+    left: 40px;
+}
+
+.box2 {
+    top: 80px;
+    left: 90px;
+}
+
+.box3 {
+    top: 130px;
+    left: 135px;
+}
+
+/* ==================== ITEM 8 ==================== */
+.item8 {
+    grid-column: 2;
+    grid-row: 4;
+    background-color: #FF6400;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.item8::before {
+    content: "";
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    position: absolute;
+    top: -200px;
+    right: -80px;
+}
+
+.item8 .title {
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.review_card {
+    background: #f3f3f3;
+    border-radius: 25px;
+    padding: 20px;
+    min-height: 170px;
+    height: 170px;
+    z-index: 2;
+    position: relative;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile h3 {
+    color: black;
+    margin: 0;
+    font-size: 1em;
+}
+
+.profile p {
+    margin: 0;
+    color: gray;
+}
+
+.score {
+    padding: 5px;
+    background: #0f5a2d;
+    color: white;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.content {
+    color: #555;
+    line-height: 1;
+}
+
+.time {
+    color: gray;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.progress {
+    width: 120px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 20px;
+}
+
+.fill {
+    width: 80%;
+    height: 100%;
+    background: green;
+    border-radius: 20px;
+}
+
+.rating {
+    color: black;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.star {
+    margin-left: auto;
+    font-size: 2.8em;
+}
+
+/* ==================== ITEM 9 ==================== */
+.item9 {
+    grid-column: 3 / 5;
+    grid-row: 4;
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.item9>img.map {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.location {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    color: #ff6400;
+}
+
+.eta {
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(40, 40, 40, .85);
+    color: white;
+    padding: 4px 18px;
+    border-radius: 18px;
+    font-size: 1.6em;
+}
+
+.item9 .progress {
+    position: absolute;
+    bottom: 35px;
+    left: 22%;
+    width: 450px;
+    height: 12px;
+    background: #e5e5e5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.item9 .fill {
+    width: 65%;
+    height: 100%;
+    background: #11a34f;
+    border-radius: 20px;
+}
