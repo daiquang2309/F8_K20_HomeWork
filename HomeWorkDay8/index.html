@@ -2,252 +2,401 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <!-- Đảm bảo responsive trên các thiết bị di động -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HomeWorkDay8</title>
+        <title>Restro Beast - Restaurant Dashboard</title>
+
+        <!-- File CSS tùy chỉnh cho toàn bộ giao diện dashboard -->
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="https://fonts.google.com/specimen/Be+Vietnam+Pro" />
+-
+        <!-- Font Be Vietnam Pro từ Google Fonts, dùng các weight: 400, 500, 600, 700 -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+        />
     </head>
     <body>
-        <div class="wrap">
-            <div class="card item1">
-                <div class="circle"></div>
-                <img src="burger.png" alt="Burger" />
-                <div class="name_item1">Cheese Burger</div>
-                <div class="price_item1">$4.99</div>
-            </div>
+        <!--
+        ╔══════════════════════════════════════════════════════════╗
+        ║              DASHBOARD - CONTAINER CHÍNH                ║
+        ║  Chứa toàn bộ 9 card xếp theo dạng CSS Grid            ║
+        ╚══════════════════════════════════════════════════════════╝
+        -->
+        <main class="dashboard">
+            <!-- =====================================================
+                 CARD 1: FEATURED PRODUCT — Món ăn nổi bật
+                 -----------------------------------------------
+                 Hiển thị sản phẩm được đề xuất gồm:
+                   - Ảnh sản phẩm (burger.png)
+                   - Tên sản phẩm
+                   - Giá sản phẩm
+                   - Trang trí hình tròn phía sau ảnh (.circle-decoration)
+            ===================================================== -->
+            <article class="card featured-product">
+                <!-- Hình tròn trang trí nền, định vị tuyệt đối bằng CSS -->
+                <div class="circle-decoration"></div>
 
-            <div class="card item2">
-                <img src="iphone.png" alt="Iphone" />
-            </div>
+                <!-- Ảnh chính của sản phẩm nổi bật -->
+                <img src="burger.png" alt="Cheese Burger" class="product-image" />
 
-            <div class="card notification-card">
-                <div class="circle"></div>
-                <div class="notification-card__content">
-                    <div class="notification-card__icon">
-                        <img src="icon_map.png" alt="IconMap" />
+                <!-- Tên sản phẩm -->
+                <h3 class="product-name">Cheese Burger</h3>
+
+                <!-- Giá sản phẩm -->
+                <div class="product-price">$4.99</div>
+            </article>
+
+            <!-- =====================================================
+                 CARD 2: PROMOTION — Banner quảng cáo
+                 -----------------------------------------------
+                 Hiển thị một ảnh banner quảng cáo (ví dụ: ưu đãi iPhone).
+                 Card này chỉ gồm ảnh, không có text bổ sung.
+            ===================================================== -->
+            <section class="card promotion">
+                <!-- Ảnh banner quảng cáo khuyến mãi -->
+                <img src="iphone.png" alt="iPhone Promotion" class="promo-image" />
+            </section>
+
+            <!-- =====================================================
+                 CARD 3: NOTIFICATIONS — Thông báo đơn hàng
+                 -----------------------------------------------
+                 Hiển thị danh sách thông báo mới nhất từ nhà hàng,
+                 mỗi thông báo gồm: icon vị trí, tiêu đề, nội dung,
+                 thời gian và ảnh thumbnail.
+                 Có thêm hình trang trí (.circle-decoration) và ảnh burger.
+            ===================================================== -->
+            <section class="card notifications">
+                <!-- Hình tròn trang trí góc card -->
+                <div class="circle-decoration"></div>
+
+                <!-- ── Thông báo 1: Chào mừng khách hàng ── -->
+                <div class="notification">
+                    <!-- Icon bản đồ / vị trí nhà hàng -->
+                    <div class="notification__icon">
+                        <img src="icon_map.png" alt="Location icon" />
                     </div>
-                    <div class="title_notification">
-                        <h2 class="title">Restro Beast Restaurant</h2>
-                        <div class="text">
-                            Welcome to RESTRO! Explore our <br />
-                            delicious dishes now!
-                        </div>
+
+                    <!-- Nội dung chính của thông báo -->
+                    <div class="notification__content">
+                        <h3 class="notification__title">Restro Beast Restaurant</h3>
+                        <p class="notification__text">Welcome to RESTRO! Explore our delicious dishes now!</p>
                     </div>
-                    <div class="notification-card__time">
-                        <div>JUST NOW</div>
+
+                    <!-- Thời gian và ảnh thumbnail đi kèm thông báo -->
+                    <div class="notification__time">
+                        <span>JUST NOW</span>
                         <img src="bunbo.jpg" alt="Bún bò" />
                     </div>
                 </div>
 
-                <div class="notification-card__content notification-small">
-                    <div class="notification-card__icon">
-                        <img src="icon_map.png" alt="IconMap" />
+                <!-- ── Thông báo 2: Xác nhận đơn hàng (kích thước nhỏ hơn) ── -->
+                <div class="notification notification--small">
+                    <!-- Icon bản đồ / vị trí nhà hàng -->
+                    <div class="notification__icon">
+                        <img src="icon_map.png" alt="Location icon" />
                     </div>
-                    <div class="title_notification">
-                        <h2 class="title">Restro Beast Restaurant</h2>
-                        <div class="text">Order Placed no bi che roi</div>
+
+                    <!-- Nội dung chính của thông báo -->
+                    <div class="notification__content">
+                        <h3 class="notification__title">Restro Beast Restaurant</h3>
+                        <p class="notification__text">Order Placed - no bi che roi</p>
                     </div>
-                    <div class="notification-card__time">
-                        <div>JUST NOW</div>
+
+                    <!-- Thời gian và ảnh thumbnail đi kèm thông báo -->
+                    <div class="notification__time">
+                        <span>JUST NOW</span>
                         <img src="bunbo.jpg" alt="Bún bò" />
                     </div>
                 </div>
 
-                <img src="burger.png" alt="Burger" />
-            </div>
+                <!-- Ảnh burger trang trí phía dưới card notifications -->
+                <img src="burger.png" alt="Burger" class="notification__burger" />
+            </section>
 
-            <div class="card item4">
-                <h2>Special Menu</h2>
-                <div class="special_container">
-                    <div class="special_card_content">
-                        <div class="left">
-                            <div class="tag">
-                                <div class="icon">●</div>
-                                <div class="text">Hot Spicy</div>
-                            </div>
-                            <div class="title">Philly Cheese Steak Pizza</div>
-                            <div class="price">$8.99</div>
-                            <div class="content">
-                                Tender slices of steak, freah onions, fresh green peppers and fresh mushroom with
-                                provolone...<strong>read more</strong>
-                            </div>
-                        </div>
-                        <div class="right">
-                            <img src="bunbo.jpg" alt="Bún bò" />
-                            <div class="add">
-                                ADD
-                                <div>+</div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- =====================================================
+                 CARD 4: SPECIAL MENU — Danh sách món ăn đặc biệt
+                 -----------------------------------------------
+                 Hiển thị 3 món ăn nổi bật theo dạng danh sách dọc.
+                 Mỗi món gồm:
+                   - Tag phân loại (Hot Spicy)
+                   - Tên món + giá + mô tả ngắn
+                   - Ảnh món ăn + nút ADD
+                 Các món phía dưới được thu nhỏ dần để tạo hiệu ứng chiều sâu.
+            ===================================================== -->
+            <section class="card special-menu">
+                <!-- Tiêu đề section -->
+                <h2 class="section-title">Special Menu</h2>
 
-                    <div class="special_card_content">
-                        <div class="left">
-                            <div class="tag">
-                                <div class="icon">●</div>
-                                <div class="text">Hot Spicy</div>
+                <!-- Danh sách các món ăn đặc biệt -->
+                <div class="special-menu__list">
+                    <!-- ── Món 1: Philly Cheese Steak Pizza (hiển thị đầy đủ) ── -->
+                    <article class="special-item">
+                        <!-- Phần bên trái: thông tin món ăn -->
+                        <div class="special-item__left">
+                            <!-- Tag phân loại: cay / hot spicy -->
+                            <div class="tag tag--spicy">
+                                <span class="tag__icon">●</span>
+                                <span class="tag__text">Hot Spicy</span>
                             </div>
-                            <div class="title">Cheese Burger</div>
-                            <div class="price">$7.50</div>
-                            <div class="content">
-                                Tender slices of steak, freah onions, fresh green peppers and fresh mushroom
-                            </div>
-                        </div>
-                        <div class="right">
-                            <img src="bunbo.jpg" alt="Bún bò" />
-                            <div class="add">
-                                ADD
-                                <div>+</div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="special_card_content">
-                        <div class="left">
-                            <div class="tag">
-                                <div class="icon">●</div>
-                                <div class="text">Hot Spicy</div>
-                            </div>
-                            <div class="title">Potato Fries</div>
-                            <div class="price">$4.50</div>
-                            <div class="content">
-                                Tender slices of steak, freah onions, fresh green peppers and fresh mushroom with
+                            <!-- Tên và giá món -->
+                            <h3 class="special-item__name">Philly Cheese Steak Pizza</h3>
+                            <div class="special-item__price">$8.99</div>
+
+                            <!-- Mô tả ngắn, có nút "read more" để xem thêm -->
+                            <p class="special-item__desc">
+                                Tender slices of steak, fresh onions, fresh green peppers and fresh mushroom with
                                 provolone...
-                            </div>
+                                <strong>read more</strong>
+                            </p>
                         </div>
-                        <div class="right">
-                            <img src="bunbo.jpg" alt="Bún bò" />
-                            <div class="add">
-                                ADD
-                                <div>+</div>
-                            </div>
+
+                        <!-- Phần bên phải: ảnh và nút thêm vào giỏ -->
+                        <div class="special-item__right">
+                            <img src="bunbo.jpg" alt="Philly Cheese Steak Pizza" />
+                            <!-- Nút thêm món vào giỏ hàng -->
+                            <button class="add-btn">ADD <span>+</span></button>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </article>
 
-            <div class="card item5">
-                <div class="top">
-                    <div class="title">Sales Analytics</div>
-                    <div class="number">44,500</div>
-                    <div class="sub">for all time</div>
+                    <!-- ── Món 2: Cheese Burger (thu nhỏ một chút — scale nhẹ) ── -->
+                    <article class="special-item special-item--scaled">
+                        <div class="special-item__left">
+                            <div class="tag tag--spicy">
+                                <span class="tag__icon">●</span>
+                                <span class="tag__text">Hot Spicy</span>
+                            </div>
+                            <h3 class="special-item__name">Cheese Burger</h3>
+                            <div class="special-item__price">$7.50</div>
+                            <p class="special-item__desc">
+                                Tender slices of steak, fresh onions, fresh green peppers and fresh mushroom
+                            </p>
+                        </div>
+
+                        <div class="special-item__right">
+                            <img src="bunbo.jpg" alt="Cheese Burger" />
+                            <button class="add-btn">ADD <span>+</span></button>
+                        </div>
+                    </article>
+
+                    <!-- ── Món 3: Potato Fries (thu nhỏ nhiều hơn — scale nhỏ nhất) ── -->
+                    <article class="special-item special-item--more-scaled">
+                        <div class="special-item__left">
+                            <div class="tag tag--spicy">
+                                <span class="tag__icon">●</span>
+                                <span class="tag__text">Hot Spicy</span>
+                            </div>
+                            <h3 class="special-item__name">Potato Fries</h3>
+                            <div class="special-item__price">$4.50</div>
+                            <p class="special-item__desc">
+                                Tender slices of steak, fresh onions, fresh green peppers and fresh mushroom with
+                                provolone...
+                            </p>
+                        </div>
+
+                        <div class="special-item__right">
+                            <img src="bunbo.jpg" alt="Potato Fries" />
+                            <button class="add-btn">ADD <span>+</span></button>
+                        </div>
+                    </article>
+                </div>
+                <!-- /.special-menu__list -->
+            </section>
+
+            <!-- =====================================================
+                 CARD 5: SALES ANALYTICS — Biểu đồ doanh thu theo tuần
+                 -----------------------------------------------
+                 Hiển thị tổng doanh thu và biểu đồ cột dạng thủ công
+                 (dùng div + height CSS thay vì canvas/chart library).
+                 Cột "active" được highlight khác màu.
+            ===================================================== -->
+            <section class="card sales-analytics">
+                <!-- Phần tiêu đề + tổng doanh thu -->
+                <div class="analytics__header">
+                    <h2 class="section-title">Sales Analytics</h2>
+                    <!-- Tổng doanh thu tích lũy (all time) -->
+                    <div class="analytics__total">44,500</div>
+                    <div class="analytics__subtitle">for all time</div>
                 </div>
 
+                <!-- Biểu đồ cột thủ công (7 cột = 7 ngày trong tuần) -->
                 <div class="chart">
+                    <!-- Thứ 2: chiều cao trung bình -->
                     <div class="bar">
                         <div class="column h1"></div>
                         <span>Mon</span>
                     </div>
 
+                    <!-- Thứ 3: chiều cao thấp -->
                     <div class="bar">
                         <div class="column h2"></div>
                         <span>Tue</span>
                     </div>
 
+                    <!-- Thứ 4: chiều cao cao, được highlight (active) -->
                     <div class="bar">
                         <div class="column h3 active"></div>
                         <span>Wed</span>
                     </div>
 
+                    <!-- Thứ 5: chiều cao thấp -->
                     <div class="bar">
                         <div class="column h2"></div>
                         <span>Thu</span>
                     </div>
 
+                    <!-- Thứ 6: chiều cao thấp nhất, được highlight (active) -->
                     <div class="bar">
                         <div class="column h4 active"></div>
                         <span>Fri</span>
                     </div>
 
+                    <!-- Thứ 7: chiều cao thấp -->
                     <div class="bar">
                         <div class="column h2"></div>
                         <span>Sat</span>
                     </div>
 
+                    <!-- Chủ nhật: chiều cao cao -->
                     <div class="bar">
                         <div class="column h3"></div>
                         <span>Sun</span>
                     </div>
                 </div>
-            </div>
+                <!-- /.chart -->
+            </section>
 
-            <div class="card item6">
-                <div class="circle"></div>
-                <img src="person.png" alt="Person" />
-                <div class="tag tag1">🍔 Choose dish</div>
+            <!-- =====================================================
+                 CARD 6: HOW IT WORKS — Quy trình đặt món
+                 -----------------------------------------------
+                 Giải thích 3 bước đặt món đơn giản bằng emoji + text.
+                 Có ảnh nhân vật và vòng trang trí nền.
+            ===================================================== -->
+            <section class="card how-it-works">
+                <!-- Vòng trang trí nền (định vị tuyệt đối bằng CSS) -->
+                <div class="circle-decoration"></div>
 
-                <div class="tag tag2">🛒 Add to cart</div>
+                <!-- Ảnh nhân vật minh họa quy trình -->
+                <img src="person.png" alt="How it works" class="how-it-works__image" />
 
-                <div class="tag tag3">💵 Pay & Track</div>
-            </div>
+                <!-- Bước 1: Chọn món ăn -->
+                <div class="step step--1">🍔 Choose dish</div>
 
-            <div class="card item7">
-                <div class="circle_bg"></div>
+                <!-- Bước 2: Thêm vào giỏ hàng -->
+                <div class="step step--2">🛒 Add to cart</div>
 
-                <div class="status"></div>
+                <!-- Bước 3: Thanh toán và theo dõi đơn hàng -->
+                <div class="step step--3">💵 Pay & Track</div>
+            </section>
 
-                <div class="box box1">
-                    New Orders Today
-                    <span>34</span>
-                </div>
+            <!-- =====================================================
+                 CARD 7: TODAY SUMMARY — Tổng quan hoạt động hôm nay
+                 -----------------------------------------------
+                 Hiển thị 3 chỉ số quan trọng trong ngày:
+                   - Đơn hàng mới
+                   - Đặt bàn
+                   - Câu hỏi đang chờ xử lý
+                 Có chấm trạng thái (online) và vòng trang trí.
+            ===================================================== -->
+            <section class="card today-summary">
+                <!-- Vòng trang trí nền lớn -->
+                <div class="circle-bg"></div>
 
-                <div class="box box2">
-                    Table Reservations
-                    <span>18</span>
-                </div>
+                <!-- Chấm xanh trạng thái (đang hoạt động / online) -->
+                <div class="status-dot"></div>
 
-                <div class="box box3">
-                    Pending Queries
-                    <span>40+</span>
-                </div>
-            </div>
+                <!-- Hộp thống kê: Đơn hàng mới trong ngày -->
+                <div class="summary-box summary-box--orders">New Orders Today <span>34</span></div>
 
-            <div class="card item8">
-                <div class="title">Ratings</div>
+                <!-- Hộp thống kê: Lượt đặt bàn -->
+                <div class="summary-box summary-box--reservations">Table Reservations <span>18</span></div>
 
-                <div class="review_card">
-                    <div class="top">
-                        <div class="profile">
-                            <img src="person.png" alt="Person" />
+                <!-- Hộp thống kê: Câu hỏi đang chờ xử lý -->
+                <div class="summary-box summary-box--queries">Pending Queries <span>40+</span></div>
+            </section>
 
-                            <div>
+            <!-- =====================================================
+                 CARD 8: CUSTOMER REVIEW — Đánh giá của khách hàng
+                 -----------------------------------------------
+                 Hiển thị một review nổi bật gồm:
+                   - Ảnh đại diện + tên + xác nhận đơn hàng
+                   - Điểm đánh giá (5★)
+                   - Nội dung review
+                   - Thời gian đăng + thanh tiến trình + điểm tổng
+            ===================================================== -->
+            <article class="card customer-review">
+                <!-- Tiêu đề section -->
+                <h2 class="section-title">Ratings</h2>
+
+                <!-- Card review cụ thể -->
+                <div class="review-card">
+                    <!-- Phần trên: thông tin người dùng + điểm số -->
+                    <div class="review__top">
+                        <!-- Ảnh đại diện + tên + nhãn xác nhận -->
+                        <div class="review__profile">
+                            <img src="person.png" alt="Peter Williams" />
+                            <div class="review__info">
                                 <h3>Peter Williams</h3>
-                                <p>✔ Verified order</p>
+                                <!-- Nhãn "Verified order" xác nhận khách đã thực sự đặt hàng -->
+                                <p class="verified">✔ Verified order</p>
                             </div>
                         </div>
 
-                        <div class="score">5 ★</div>
-                    </div>
-
-                    <div class="content">
-                        The food was fresh, delicious, and beautifully presented. The service was quick...
-                    </div>
-
-                    <div class="time">2 months ago</div>
-
-                    <div class="bottom">
-                        <div class="progress">
-                            <div class="fill"></div>
+                        <!-- Điểm đánh giá: 5 sao -->
+                        <div class="review__score">
+                            <span>5</span>
+                            <span class="star">★</span>
                         </div>
+                    </div>
+                    <!-- /.review__top -->
 
-                        <div class="rating">4.5/5⭐</div>
+                    <!-- Nội dung đánh giá (dạng trích đoạn) -->
+                    <p class="review__content">
+                        The food was fresh, delicious, and beautifully presented. The service was quick...
+                    </p>
 
-                        <div class="star">🌟</div>
+                    <!-- Thời gian đăng review -->
+                    <div class="review__time">2 months ago</div>
+
+                    <!-- Phần dưới: thanh tiến trình + điểm tổng + icon sao -->
+                    <div class="review__bottom">
+                        <!-- Thanh tiến trình thể hiện tỉ lệ điểm đánh giá -->
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <!-- Điểm tổng trung bình -->
+                        <div class="review__rating">4.5/5⭐</div>
+                        <!-- Icon sao trang trí -->
+                        <div class="review__star">🌟</div>
                     </div>
                 </div>
-            </div>
+                <!-- /.review-card -->
+            </article>
 
-            <div class="card item9">
-                <img src="map.png" class="map" alt="map" />
+            <!-- =====================================================
+                 CARD 9: DELIVERY TRACKING — Theo dõi giao hàng
+                 -----------------------------------------------
+                 Hiển thị bản đồ giao hàng cùng:
+                   - Icon ghim vị trí
+                   - Thời gian dự kiến đến (ETA)
+                   - Thanh tiến trình giao hàng
+            ===================================================== -->
+            <section class="card delivery-tracking">
+                <!-- Ảnh bản đồ nền -->
+                <img src="map.png" class="map-image" alt="Delivery Map" />
 
-                <div class="location">📍</div>
+                <!-- Icon ghim vị trí trên bản đồ -->
+                <div class="location-pin">📍</div>
 
+                <!-- Thông báo thời gian giao hàng dự kiến (ETA) -->
                 <div class="eta">Arriving in 10 mins</div>
 
-                <div class="progress">
-                    <div class="fill"></div>
+                <!-- Thanh tiến trình thể hiện % hoàn thành của lộ trình giao hàng -->
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
+        <!-- /.dashboard -->
     </body>
 </html>

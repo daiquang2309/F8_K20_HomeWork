@@ -1,3 +1,9 @@
+/* ============================================= */
+/*                  RESET & GLOBAL               */
+/* ============================================= */
+
+/* Reset toàn bộ padding, margin và box-sizing cho tất cả element.
+   Đặt font mặc định, màu chữ trắng và font-weight bold cho toàn trang */
 * {
     padding: 0;
     margin: 0;
@@ -7,12 +13,22 @@
     font-weight: bold;
 }
 
+/* Nền đen toàn trang, padding 10px để tạo khoảng cách với mép trình duyệt */
 body {
     background-color: black;
     padding: 10px;
 }
 
-.wrap {
+/* ============================================= */
+/*                  MAIN DASHBOARD               */
+/* ============================================= */
+
+/* Container chính của dashboard:
+   - Kích thước cố định 1440x1039px
+   - Dùng CSS Grid 4 cột đều nhau
+   - 4 hàng với chiều cao khác nhau theo nội dung từng hàng
+   - Gap 20px giữa các card */
+.dashboard {
     width: 1440px;
     height: 1039px;
     display: grid;
@@ -21,21 +37,36 @@ body {
     gap: 20px;
 }
 
+/* ============================================= */
+/*                  COMMON CARD                  */
+/* ============================================= */
+
+/* Style chung cho tất cả card:
+   - Bo góc 30px
+   - overflow: hidden để cắt các element trang trí chạy ra ngoài */
 .card {
     border-radius: 30px;
+    overflow: hidden;
 }
 
-/* ==================== ITEM 1 ==================== */
-.item1 {
+/* ============================================= */
+/*          1. FEATURED PRODUCT                  */
+/* ============================================= */
+
+/* Card sản phẩm nổi bật — chiếm cột 1, trải dài 2 hàng (hàng 1-2)
+   Nền cam đặc trưng thương hiệu, padding 20px */
+.featured-product {
     position: relative;
+    /* Làm gốc cho .circle-decoration và .product-image định vị tuyệt đối */
     background: #FF6400;
-    overflow: hidden;
     padding: 20px;
     grid-column: 1;
     grid-row: 1 / 3;
 }
 
-.item1 .circle {
+/* Vòng tròn trang trí nền — định vị tuyệt đối, kích thước lớn (420x420px)
+   Màu trắng mờ 12%, bo tròn hoàn toàn, đặt lệch lên trên và sang phải */
+.featured-product .circle-decoration {
     position: absolute;
     width: 420px;
     height: 420px;
@@ -45,12 +76,17 @@ body {
     left: 125px;
 }
 
-.item1 .name_item1,
-.item1 .price_item1 {
+/* Tên và giá sản phẩm dùng chung cỡ chữ 1.5em */
+.product-name,
+.product-price {
     font-size: 1.5em;
 }
 
-.item1>img {
+/* Ảnh sản phẩm:
+   - Rộng 135% để tràn ra ngoài tạo cảm giác nổi bật
+   - z-index: 2 để hiển thị đè lên .circle-decoration
+   - Dịch sang trái và lên trên bằng left/bottom */
+.featured-product .product-image {
     width: 135%;
     position: relative;
     z-index: 2;
@@ -58,15 +94,23 @@ body {
     bottom: 40px;
 }
 
-/* ==================== ITEM 2 ==================== */
-.item2 {
+/* ============================================= */
+/*               2. PROMOTION                    */
+/* ============================================= */
+
+/* Card banner quảng cáo — cột 2, hàng 1
+   Nền xanh dương nhạt, căn giữa nội dung theo chiều ngang */
+.promotion {
     grid-column: 2;
     grid-row: 1;
     background-color: #8BB8F6;
     text-align: center;
 }
 
-.item2>img {
+/* Ảnh promo:
+   - top: -200px để kéo ảnh lên phía trên, tạo hiệu ứng "nổi" ra ngoài card
+   - Rộng 60% card, bo góc và đổ bóng để tạo chiều sâu */
+.promotion .promo-image {
     position: relative;
     top: -200px;
     width: 60%;
@@ -74,17 +118,23 @@ body {
     box-shadow: 0 25px 40px rgba(0, 0, 0, .25);
 }
 
-/* ==================== ITEM 3 - Notification ==================== */
-.notification-card {
+/* ============================================= */
+/*               3. NOTIFICATIONS                */
+/* ============================================= */
+
+/* Card thông báo — cột 3, hàng 1
+   Nền xanh dương nhạt, padding 20px, position relative cho vòng trang trí */
+.notifications {
     position: relative;
-    overflow: hidden;
     padding: 20px;
     grid-column: 3;
     grid-row: 1;
     background-color: #8BB8F6;
 }
 
-.notification-card .circle {
+/* Vòng trang trí góc phải trên của card notifications
+   z-index: -1 để nằm phía sau nội dung thông báo */
+.notifications .circle-decoration {
     position: absolute;
     width: 350px;
     height: 350px;
@@ -95,14 +145,17 @@ body {
     right: 0;
 }
 
-.notification-card>img {
+/* Ảnh burger trang trí — đặt phía dưới card, dịch lên bằng bottom: 63px */
+.notification__burger {
     position: relative;
     bottom: 63px;
     left: 20px;
     width: 90%;
 }
 
-.notification-card__content {
+/* Layout một thông báo: grid 3 cột (icon | nội dung | thời gian)
+   Nền xám nhạt, padding 10px, bo góc 20px */
+.notification {
     display: grid;
     grid-template-columns: 60px 1fr auto;
     background-color: rgb(164, 161, 161);
@@ -111,7 +164,10 @@ body {
     border-radius: 20px;
 }
 
-.notification-card__content .notification-card__icon {
+/* Vùng icon bản đồ:
+   - Grid để căn giữa icon bên trong
+   - Nền cam, bo góc 15px, kích thước 50x50px */
+.notification__icon {
     display: grid;
     place-items: center;
     background-color: #FF6400;
@@ -120,37 +176,44 @@ body {
     height: 50px;
 }
 
-.notification-card__icon img {
+.notification__icon img {
     width: 50px;
 }
 
-.title_notification .title {
+/* Tiêu đề thông báo — cỡ chữ nhỏ 11px, đậm */
+.notification__title {
     font-size: 11px;
     font-weight: 700;
     margin-bottom: 5px;
 }
 
-.title_notification .text {
+/* Nội dung phụ thông báo — cỡ chữ rất nhỏ 9px */
+.notification__text {
     font-size: 9px;
 }
 
-.notification-card__time {
+/* Vùng thời gian — căn phải */
+.notification__time {
     text-align: right;
 }
 
-.notification-card__time div {
+/* Chữ thời gian: "JUST NOW" — màu xám, hiển thị block để xuống dòng */
+.notification__time span {
     font-size: 12px;
     margin-bottom: 8px;
     color: #666;
+    display: block;
 }
 
-.notification-card__time img {
+/* Ảnh thumbnail tròn đính kèm thông báo */
+.notification__time img {
     width: 45px;
     border-radius: 50%;
 }
 
-/* Notification Small */
-.notification-small {
+/* ── Modifier: Thông báo nhỏ hơn (notification thứ 2) ──
+   Thụt lề trái, thu nhỏ kích thước, grid 3 cột hẹp hơn */
+.notification--small {
     margin-top: 10px;
     margin-left: 20px;
     width: 85%;
@@ -159,87 +222,108 @@ body {
     grid-template-columns: 45px 1fr auto;
 }
 
-.notification-small .notification-card__icon {
+/* Icon nhỏ hơn cho notification--small */
+.notification--small .notification__icon {
     width: 40px;
     height: 40px;
 }
 
-.notification-small .notification-card__icon img {
+.notification--small .notification__icon img {
     width: 100%;
 }
 
-.notification-small .title {
+/* Text nhỏ hơn cho notification--small */
+.notification--small .notification__title {
     font-size: 10px;
 }
 
-.notification-small .text {
+.notification--small .notification__text {
     font-size: 8px;
 }
 
-.notification-small .notification-card__time img {
+/* Thumbnail nhỏ hơn cho notification--small */
+.notification--small .notification__time img {
     width: 30px;
 }
 
-/* ==================== ITEM 4 - Special Menu ==================== */
-.item4 {
+/* ============================================= */
+/*               4. SPECIAL MENU                 */
+/* ============================================= */
+
+/* Card thực đơn đặc biệt — nền cam, bo góc 45px
+   Dùng grid với gap 25px, chiều cao 197% (trải dài qua nhiều hàng) */
+.special-menu {
     background: #FF6400;
     border-radius: 45px;
     padding: 20px;
-    overflow: hidden;
     position: relative;
+    /* Làm gốc cho ::before, ::after (vòng trang trí) */
     display: grid;
     gap: 25px;
     height: 197%;
 }
 
-.item4 h2 {
+/* Tiêu đề "Special Menu" — chữ trắng, cỡ 2em, đậm */
+.special-menu .section-title {
     color: white;
     font-size: 2em;
     font-weight: 700;
     margin-bottom: 35px;
 }
 
-.special_container {
+/* Danh sách các món ăn — flex column, dịch lên trên bằng top: -55px
+   để chèn khít với phần tiêu đề */
+.special-menu__list {
     position: relative;
     top: -55px;
     display: flex;
     flex-direction: column;
 }
 
-.special_card_content {
+/* Mỗi item món ăn:
+   - Nền trắng xám nhạt, bo góc 28px
+   - Flex hàng ngang: thông tin bên trái, ảnh + nút bên phải
+   - Chiều cao cố định 145px */
+.special-item {
     background: #f5f5f5;
     border-radius: 28px;
     padding: 16px;
     display: flex;
     justify-content: space-between;
     height: 145px;
+    color: black;
 }
 
-.special_card_content:nth-child(2) {
+/* Modifier: thu nhỏ 95%, thụt lề trái và xuống để tạo hiệu ứng stack (chồng thẻ) */
+.special-item--scaled {
     transform: scale(.95);
     margin-left: 15px;
     margin-top: 10px;
 }
 
-.special_card_content:nth-child(3) {
+/* Modifier: thu nhỏ 90%, thụt lề nhiều hơn — item ở dưới cùng */
+.special-item--more-scaled {
     transform: scale(.90);
     margin-left: 30px;
 }
 
-.left {
+/* Cột trái: thông tin món ăn — flex column, gap 10px, chiếm 55% chiều rộng */
+.special-item__left {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 55%;
 }
 
+/* Tag phân loại — flex hàng ngang, căn giữa theo trục dọc */
 .tag {
     display: flex;
     gap: 6px;
     align-items: center;
 }
 
-.tag .icon {
+/* Icon dấu chấm trong tag "Hot Spicy" — viền xanh lá, bo góc, căn giữa */
+.tag--spicy .tag__icon {
     width: 22px;
     height: 22px;
     border: 1px solid green;
@@ -251,7 +335,8 @@ body {
     font-size: 10px;
 }
 
-.tag .text {
+/* Chữ tag — nền vàng nâu, chữ trắng, padding và bo góc nhỏ */
+.tag__text {
     background: #d8a02f;
     color: white;
     font-size: 10px;
@@ -259,37 +344,42 @@ body {
     border-radius: 6px;
 }
 
-.title {
+/* Tên và giá món ăn — màu đen, font nhỏ 10px */
+.special-item__name {
     color: black;
     font-size: 10px;
     font-weight: 700;
     line-height: 1.3;
 }
 
-.price {
+.special-item__price {
     color: black;
     font-size: 10px;
     font-weight: 700;
 }
 
-.content {
+/* Mô tả ngắn — màu xám, font nhỏ, line-height 1 (compact) */
+.special-item__desc {
     color: #777;
     font-size: 10px;
     line-height: 1;
 }
 
-.content strong {
+/* "read more" — màu đen đậm hơn phần mô tả */
+.special-item__desc strong {
     color: rgb(29, 27, 27);
 }
 
-.right {
+/* Cột phải: chứa ảnh và nút ADD — position relative để nút ADD định vị tuyệt đối */
+.special-item__right {
     position: relative;
     width: 125px;
     display: flex;
     justify-content: flex-end;
 }
 
-.right img {
+/* Ảnh món ăn — vuông 130x130px, bo góc 25px, object-fit cover */
+.special-item__right img {
     padding-bottom: 10px;
     width: 130px;
     height: 130px;
@@ -297,7 +387,9 @@ body {
     border-radius: 25px;
 }
 
-.add {
+/* Nút ADD — định vị tuyệt đối dưới ảnh, nền trắng viền cam
+   Flex để căn giữa chữ "ADD" và dấu "+" */
+.add-btn {
     position: absolute;
     bottom: -25px;
     right: 2px;
@@ -313,9 +405,11 @@ body {
     color: #FF6400;
     font-size: 15px;
     font-weight: 700;
+    cursor: pointer;
 }
 
-.add div {
+/* Dấu "+" trong nút ADD — định vị tuyệt đối góc trên phải, chữ lớn hơn */
+.add-btn span {
     position: absolute;
     top: 0;
     right: 5px;
@@ -324,30 +418,39 @@ body {
     font-weight: 400;
 }
 
-.item4::before,
-.item4::after {
+/* Hai vòng trang trí nền của .special-menu dùng pseudo-element ::before và ::after
+   Cả hai đều màu trắng mờ 8%, bo tròn hoàn toàn, nằm phía dưới card */
+.special-menu::before,
+.special-menu::after {
     content: "";
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, .08);
 }
 
-.item4::before {
+/* Vòng lớn phía dưới bên trái (500x500px) */
+.special-menu::before {
     width: 500px;
     height: 500px;
     bottom: -250px;
     left: -100px;
 }
 
-.item4::after {
+/* Vòng nhỏ hơn phía dưới bên phải (400x400px) */
+.special-menu::after {
     width: 400px;
     height: 400px;
     bottom: -180px;
     right: -120px;
 }
 
-/* ==================== ITEM 5 - Sales Analytics ==================== */
-.item5 {
+/* ============================================= */
+/*             5. SALES ANALYTICS                */
+/* ============================================= */
+
+/* Card biểu đồ doanh thu — trải rộng cột 2-3, hàng 2-3
+   Nền cam, bo góc 45px, padding 40px, flex column */
+.sales-analytics {
     grid-column: 2 / 4;
     grid-row: 2 / 4;
     background-color: #FF6400;
@@ -359,29 +462,34 @@ body {
     overflow: hidden;
 }
 
-.item5 .top {
+/* Phần header: flex column, căn trái */
+.analytics__header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.item5 .title {
-    color: white;
+/* Tiêu đề "Sales Analytics" — chữ lớn 2.5em */
+.analytics__header .section-title {
     font-size: 2.5em;
     font-weight: 700;
 }
 
-.number {
-    color: white;
+/* Tổng doanh thu — chữ rất lớn 3em, đậm nhất (800) */
+.analytics__total {
     font-size: 3em;
     font-weight: 800;
 }
 
-.sub {
-    color: white;
+/* Chú thích "for all time" — cỡ 1.3em */
+.analytics__subtitle {
     font-size: 1.3em;
 }
 
+/* Container biểu đồ cột:
+   - Flex hàng ngang, căn đáy (cột mọc từ dưới lên)
+   - Gap 14px giữa các cột
+   - top: -155px để kéo biểu đồ lên, tạo layout chồng lấp với header */
 .chart {
     display: flex;
     justify-content: center;
@@ -391,6 +499,7 @@ body {
     top: -155px;
 }
 
+/* Mỗi cột biểu đồ: flex column, căn giữa theo chiều ngang */
 .bar {
     display: flex;
     flex-direction: column;
@@ -398,39 +507,53 @@ body {
     gap: 10px;
 }
 
+/* Khối cột biểu đồ — nền xám trắng nhạt, bo góc 25px, rộng 80px */
 .column {
     width: 80px;
     background: #ececec;
     border-radius: 25px;
 }
 
+/* ── Các class chiều cao cột (h1–h4) ── */
 .h1 {
     height: 180px;
 }
 
+/* Chiều cao thấp nhất */
 .h2 {
     height: 220px;
 }
 
+/* Chiều cao trung bình thấp */
 .h3 {
     height: 260px;
 }
 
+/* Chiều cao trung bình cao */
 .h4 {
     height: 330px;
 }
 
+/* Chiều cao cao nhất */
+
+/* Cột được highlight (ngày được chọn) — màu xanh dương */
 .active {
     background: #87A9DD;
 }
 
+/* Nhãn ngày dưới cột — chữ trắng, cỡ 1.5em */
 .bar span {
     color: white;
     font-size: 1.5em;
 }
 
-/* ==================== ITEM 6 ==================== */
-.item6 {
+/* ============================================= */
+/*               6. HOW IT WORKS                 */
+/* ============================================= */
+
+/* Card quy trình đặt món — cột 1, trải dài hàng 3-4
+   Nền xanh dương nhạt, position relative cho các step và circle */
+.how-it-works {
     grid-column: 1;
     grid-row: 3 / 5;
     background-color: #8BB8F6;
@@ -438,7 +561,8 @@ body {
     overflow: hidden;
 }
 
-.item6 .circle {
+/* Vòng trang trí lớn phía sau ảnh nhân vật — căn giữa theo chiều ngang */
+.how-it-works .circle-decoration {
     width: 520px;
     height: 520px;
     border-radius: 50%;
@@ -449,7 +573,19 @@ body {
     transform: translateX(-50%);
 }
 
-.item6 .tag {
+/* Ảnh nhân vật — rộng 105% để tràn nhẹ sang phải, dịch lên trên */
+.how-it-works__image {
+    position: relative;
+    top: -2px;
+    right: 10px;
+    width: 105%;
+}
+
+/* Style chung các bước (badge trắng chữ cam):
+   - Nền trắng, padding pill-shape
+   - Định vị tuyệt đối quanh ảnh nhân vật
+   - Đổ bóng nhẹ */
+.step {
     background: white;
     padding: 8px 20px;
     border-radius: 40px;
@@ -460,31 +596,32 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
 }
 
-.tag1 {
+/* Bước 1 "Choose dish" — góc trên bên trái */
+.step--1 {
     top: 250px;
     left: -15px;
 }
 
-.tag2 {
+/* Bước 2 "Add to cart" — giữa bên phải */
+.step--2 {
     top: 320px;
     right: 5px;
 }
 
-.tag3 {
+/* Bước 3 "Pay & Track" — phía dưới, căn giữa */
+.step--3 {
     bottom: 25px;
     left: 180px;
     transform: translateX(-50%);
 }
 
-.item6>img {
-    position: relative;
-    top: -2px;
-    right: 10px;
-    width: 105%;
-}
+/* ============================================= */
+/*               7. TODAY SUMMARY                */
+/* ============================================= */
 
-/* ==================== ITEM 7 ==================== */
-.item7 {
+/* Card tổng quan hôm nay — cột 4, hàng 3
+   Nền xanh dương nhạt, position relative cho các element bên trong */
+.today-summary {
     grid-column: 4;
     grid-row: 3;
     background-color: #8BB8F6;
@@ -492,7 +629,8 @@ body {
     overflow: hidden;
 }
 
-.item7 .circle_bg {
+/* Vòng trang trí lớn góc trên phải — dùng border thay nền đặc để tạo vòng rỗng */
+.today-summary .circle-bg {
     width: 350px;
     height: 350px;
     border-radius: 50%;
@@ -502,7 +640,9 @@ body {
     right: -100px;
 }
 
-.status {
+/* Chấm trạng thái online — màu xanh lá sáng, bo tròn
+   Box-shadow tạo hiệu ứng hào quang (glow) xung quanh chấm */
+.status-dot {
     width: 40px;
     height: 40px;
     background: #00d500;
@@ -514,7 +654,9 @@ body {
         0 0 30px rgba(0, 255, 0, .5);
 }
 
-.box {
+/* Hộp thống kê — nền trắng, chữ cam, viền cam nhạt
+   Định vị tuyệt đối bên trong card, bo góc pill */
+.summary-box {
     background: white;
     color: #ff6400;
     padding: 3px 13px;
@@ -526,7 +668,9 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
 }
 
-.box span {
+/* Badge số liệu — hình tròn cam đặt ở góc trên phải của mỗi hộp
+   Dùng flex để căn giữa số bên trong */
+.summary-box span {
     position: absolute;
     width: 25px;
     height: 25px;
@@ -541,23 +685,33 @@ body {
     right: -10px;
 }
 
-.box1 {
+/* Vị trí từng hộp — xếp theo chiều chéo từ trên trái xuống dưới phải */
+.summary-box--orders {
     top: 30px;
     left: 40px;
 }
 
-.box2 {
+/* Đơn hàng mới */
+.summary-box--reservations {
     top: 80px;
     left: 90px;
 }
 
-.box3 {
+/* Đặt bàn */
+.summary-box--queries {
     top: 130px;
     left: 135px;
 }
 
-/* ==================== ITEM 8 ==================== */
-.item8 {
+/* Câu hỏi chờ */
+
+/* ============================================= */
+/*               8. CUSTOMER REVIEW              */
+/* ============================================= */
+
+/* Card đánh giá khách hàng — cột 2, hàng 4
+   Nền cam, padding 30px, position relative cho vòng trang trí ::before */
+.customer-review {
     grid-column: 2;
     grid-row: 4;
     background-color: #FF6400;
@@ -566,7 +720,8 @@ body {
     overflow: hidden;
 }
 
-.item8::before {
+/* Vòng trang trí góc trên phải bằng pseudo-element ::before */
+.customer-review::before {
     content: "";
     width: 500px;
     height: 500px;
@@ -577,15 +732,17 @@ body {
     right: -80px;
 }
 
-.item8 .title {
+/* Tiêu đề "Ratings" — chữ trắng, cỡ 2em */
+.customer-review .section-title {
     color: white;
     font-size: 2em;
     font-weight: 700;
     margin-bottom: 5px;
-    position: relative;
 }
 
-.review_card {
+/* Card review bên trong — nền xám nhạt, bo góc 25px
+   z-index: 2 để nổi lên trên vòng trang trí ::before */
+.review-card {
     background: #f3f3f3;
     border-radius: 25px;
     padding: 20px;
@@ -593,39 +750,44 @@ body {
     height: 170px;
     z-index: 2;
     position: relative;
+    color: black;
 }
 
-.top {
+/* Hàng trên review: flex hàng ngang, căn giữa dọc, space-between */
+.review__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.profile {
+/* Khu vực profile: ảnh đại diện + tên + nhãn xác nhận */
+.review__profile {
     display: flex;
     gap: 12px;
     align-items: center;
 }
 
-.profile img {
+/* Ảnh avatar tròn, viền 50px */
+.review__profile img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.profile h3 {
-    color: black;
+.review__profile h3 {
     margin: 0;
     font-size: 1em;
+    color: black;
 }
 
-.profile p {
+.review__profile p {
     margin: 0;
     color: gray;
 }
 
-.score {
+/* Khối điểm số — nền xanh đậm, chữ trắng, bo góc nhỏ */
+.review__score {
     padding: 5px;
     background: #0f5a2d;
     color: white;
@@ -633,48 +795,63 @@ body {
     font-weight: 700;
 }
 
-.content {
+/* Nội dung review — màu xám trung, line-height compact */
+.review__content {
     color: #555;
     line-height: 1;
 }
 
-.time {
+/* Thời gian đăng review — màu xám */
+.review__time {
     color: gray;
 }
 
-.bottom {
+/* Hàng dưới review: thanh tiến trình + điểm + icon sao
+   top: -24px để kéo lên, tránh khoảng trắng thừa */
+.review__bottom {
     display: flex;
     align-items: center;
     gap: 20px;
+    position: relative;
+    top: -24px;
 }
 
-.progress {
+/* Thanh tiến trình nền (track) — xám nhạt */
+.progress-bar {
     width: 120px;
     height: 10px;
     background: #ddd;
     border-radius: 20px;
 }
 
-.fill {
+/* Phần fill của thanh tiến trình — xanh lá, chiếm 80% chiều rộng */
+.progress-fill {
     width: 80%;
     height: 100%;
     background: green;
     border-radius: 20px;
 }
 
-.rating {
+/* Điểm tổng "4.5/5" — chữ đen nhỏ, đậm */
+.review__rating {
     color: black;
     font-size: 0.8em;
     font-weight: 700;
 }
 
-.star {
+/* Icon sao lớn — đẩy sang phải bằng margin-left: auto, cỡ 2.8em */
+.review__star {
     margin-left: auto;
     font-size: 2.8em;
 }
 
-/* ==================== ITEM 9 ==================== */
-.item9 {
+/* ============================================= */
+/*               9. DELIVERY TRACKING            */
+/* ============================================= */
+
+/* Card theo dõi giao hàng — trải rộng cột 3-4, hàng 4
+   Bo góc 40px, overflow hidden để cắt ảnh bản đồ */
+.delivery-tracking {
     grid-column: 3 / 5;
     grid-row: 4;
     position: relative;
@@ -682,14 +859,16 @@ body {
     border-radius: 40px;
 }
 
-.item9>img.map {
+/* Ảnh bản đồ nền — lấp đầy card, object-fit cover */
+.map-image {
     width: 100%;
     height: 100%;
     border-radius: 30px;
     object-fit: cover;
 }
 
-.location {
+/* Icon ghim vị trí — căn giữa card, định vị tuyệt đối */
+.location-pin {
     position: absolute;
     top: 90px;
     left: 50%;
@@ -698,6 +877,9 @@ body {
     color: #ff6400;
 }
 
+/* Hộp ETA (thời gian giao hàng dự kiến):
+   - Nền đen mờ, backdrop-filter blur
+   - Căn giữa card theo chiều ngang */
 .eta {
     position: absolute;
     top: 125px;
@@ -710,7 +892,10 @@ body {
     font-size: 1.6em;
 }
 
-.item9 .progress {
+/* Thanh tiến trình giao hàng (override .progress-bar chung):
+   - Định vị tuyệt đối phía dưới card
+   - Rộng 450px, cao 12px */
+.delivery-tracking .progress-bar {
     position: absolute;
     bottom: 35px;
     left: 22%;
@@ -721,7 +906,8 @@ body {
     overflow: hidden;
 }
 
-.item9 .fill {
+/* Phần fill thanh tiến trình giao hàng — xanh lá, chiếm 65% lộ trình */
+.delivery-tracking .progress-fill {
     width: 65%;
     height: 100%;
     background: #11a34f;
