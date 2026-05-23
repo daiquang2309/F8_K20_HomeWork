@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Arrow</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #111;
+            }
+            .box {
+                position: relative;
+                width: 500px;
+                aspect-ratio: 1/1;
+                border: 25px solid red;
+                filter: drop-shadow(0 0 15px crimson) drop-shadow(0 0 40px pink);
+            }
+            .arrow {
+                display: flex;
+                gap: 10px;
+                margin-left: 20px;
+                position: absolute;
+                top: -25px;
+                left: -45px;
+                rotate: 180deg;
+                animation: spiner 3s linear infinite;
+            }
+            .arrow span {
+                width: 100px;
+                aspect-ratio: 5/1;
+                background: #ee6767;
+            }
+            .arrow span:nth-child(1) {
+                position: absolute;
+                top: 23px;
+                left: 1px;
+                transform: rotate(20deg);
+            }
+            .arrow span:nth-child(2) {
+                position: absolute;
+                top: -23px;
+                left: 0px;
+                transform: rotate(334deg);
+            }
+            .arrow span:nth-child(3) {
+                width: 130px;
+                height: 25px;
+            }
+            @keyframes spiner {
+                25% {
+                    left: 375px;
+                    top: -25px;
+                    rotate: 180deg;
+                }
+                26% {
+                    top: 28px;
+                    left: 428px;
+                    rotate: 270deg;
+                }
+                50% {
+                    top: 448px;
+                    left: 428px;
+                    rotate: 270deg;
+                }
+                51% {
+                    top: 500px;
+                    left: 375px;
+                    rotate: 0deg;
+                }
+                75% {
+                    top: 500px;
+                    left: -45px;
+                    rotate: 0deg;
+                }
+                76% {
+                    top: 447px;
+                    left: -97px;
+                    rotate: 90deg;
+                }
+                100% {
+                    top: 27px;
+                    left: -97px;
+                    rotate: 90deg;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="arrow"><span></span><span></span><span></span></div>
+        </div>
+    </body>
+</html>

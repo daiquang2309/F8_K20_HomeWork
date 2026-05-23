@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Heart</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background: #111;
+            }
+
+            .heart {
+                width: 100px;
+                height: 100px;
+                background: red;
+                position: relative;
+                transform: rotate(45deg) scale(3);
+                animation: heart 1s ease-in-out infinite;
+            }
+
+            .heart::before {
+                content: "";
+                width: 100px;
+                height: 100px;
+                background: red;
+                border-radius: 50%;
+                position: absolute;
+                top: -50px;
+                left: 0;
+            }
+
+            .heart::after {
+                content: "";
+                width: 100px;
+                height: 100px;
+                background: red;
+                border-radius: 50%;
+                position: absolute;
+                left: -50px;
+                top: 0;
+            }
+
+            .text {
+                position: absolute;
+                translate: 15px 25px;
+                rotate: -45deg;
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+                z-index: 1;
+            }
+
+            @keyframes heart {
+                0%,
+                100% {
+                    transform: rotate(45deg) scale(3);
+                    filter: drop-shadow(0 0 5px crimson);
+                }
+
+                50% {
+                    transform: rotate(45deg) scale(3.5);
+                    filter: drop-shadow(0 0 15px crimson) drop-shadow(0 0 40px pink);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="heart"><div class="text">Nhi</div></div>
+    </body>
+</html>
