@@ -1,0 +1,395 @@
+/* ================================================= */
+/* RESET + GLOBAL */
+/* ================================================= */
+html {
+    font-size: 62.5%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    color: white;
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ================================================= */
+/* CSS VARIABLES (LIGHT MODE DEFAULT) */
+/* ================================================= */
+:root {
+
+    /* Background */
+    --bg-body: #e8e8e8;
+    --bg-nav: #3a3a3a;
+    --bg-header: #3a3a3a;
+    --bg-sidebar: #3a3a3a;
+
+    /* Cards */
+    --bg-card: white;
+    --border-card: #000;
+    --bg-card-header: #3a3a3a;
+
+    /* Text */
+    --text-heading: #333;
+    --text-p: #555;
+}
+
+/* ================================================= */
+/* MAIN WRAPPER */
+/* ================================================= */
+.main {
+
+    background:
+        var(--bg-body);
+
+    min-height: 100vh;
+
+    transition:
+        background-color .3s ease,
+        color .3s ease;
+}
+
+/* ================================================= */
+/* HEADER */
+/* ================================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 2rem;
+
+    background: var(--bg-header);
+
+    position: relative;
+}
+
+/* ---------- Logo ---------- */
+.header__logo {
+    position: relative;
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    z-index: 1001;
+}
+
+/* ---------- Desktop Navigation ---------- */
+.header__nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav__link {
+    transition: .3s;
+}
+
+.nav__link:hover {
+    opacity: .7;
+}
+
+/* ================================================= */
+/* DARK MODE */
+/* ================================================= */
+
+/* Dark mode button */
+.dark-mode-btn {
+    font-size: 2.4rem;
+
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: transform .3s;
+
+    &:hover {
+        scale: 1.2;
+    }
+}
+
+/* Icon mặc định */
+.dark-mode-btn::before {
+    font-family: "Material Design Icons";
+    content: "\F0594";
+}
+
+/* Checkbox checked -> đổi variables */
+#dark-mode-toggle:checked~.main {
+
+    --bg-body: #1a1a1a;
+
+    --bg-card: #2a2a2a;
+    --border-card: #444;
+    --bg-card-header: #1f1f1f;
+
+    --bg-header: #0d0d0d;
+    --bg-sidebar: #1f1f1f;
+    --bg-nav: #0d0d0d;
+
+    --text-heading: #e0e0e0;
+    --text-p: #b0b0b0;
+}
+
+/* Đổi icon moon -> sun */
+#dark-mode-toggle:checked~.main .dark-mode-btn::before {
+    content: "\F0599";
+}
+
+/* Hide checkbox */
+#dark-mode-toggle,
+#menu-toggle,
+.menu-btn,
+.close-btn,
+.overlay {
+    display: none;
+}
+
+/* ================================================= */
+/* CONTENT LAYOUT */
+/* ================================================= */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    padding: 1.5rem;
+    column-gap: 1.5rem;
+}
+
+/* ================================================= */
+/* ARTICLE CONTENT */
+/* ================================================= */
+.container__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.content__heading {
+    color: var(--text-heading);
+    font-size: 2rem;
+}
+
+.content>.content__text {
+    line-height: 2.5rem;
+    word-spacing: .1rem;
+    color: var(--text-p);
+}
+
+/* ================================================= */
+/* CARD SECTION */
+/* ================================================= */
+.container__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 3px solid var(--border-card);
+    max-width: calc((100% - 2rem) / 3);
+    display: flex;
+    flex-direction: column;
+}
+
+.card__title {
+    font-size: 2rem;
+    padding: 1.5rem 1rem;
+    background: var(--bg-card-header);
+}
+
+.card__text {
+    padding: 1rem;
+    word-spacing: .1rem;
+    color: var(--text-p);
+}
+
+/* ================================================= */
+/* SIDEBAR */
+/* ================================================= */
+.container__sidebar {
+    width: 300px;
+    min-height: 400px;
+    background: var(--bg-sidebar);
+    padding: 2rem 3rem;
+}
+
+/* ================================================= */
+/* TABLET (<=768px) */
+/* ================================================= */
+
+@media(max-width:768px) {
+
+
+
+    /* ----- Header ----- */
+
+    /* Sidebar navigation */
+    .header__nav {
+
+        position: fixed;
+        top: 0;
+        right: -100%;
+
+        width: 300px;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        background: var(--bg-nav);
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+        padding: 2rem;
+        z-index: 1000;
+
+        transition: right .3s;
+    }
+
+    .nav__link {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Hamburger */
+    .menu-btn {
+        position: relative;
+        z-index: 1000;
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Overlay */
+    .overlay {
+
+        position: fixed;
+        inset: 0;
+        display: block;
+        background: rgba(0, 0, 0, .6);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition: opacity .3s;
+        z-index: 998;
+        cursor: pointer;
+    }
+
+    /* Open sidebar */
+    #menu-toggle:checked~.header__nav {
+        right: 0;
+    }
+
+    #menu-toggle:checked~.menu-btn {
+        display: none;
+    }
+
+    #menu-toggle:checked~.overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Icon clouse */
+    .close-btn {
+
+        display: block;
+
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        cursor: pointer;
+        transition: rotate .3s;
+
+        &:hover {
+            rotate: 90deg;
+        }
+    }
+
+    /* Icon */
+    .mdi {
+        font-size: 3rem;
+        color: white;
+    }
+
+    /* Dark mode button */
+    .dark-mode-btn {
+        position: absolute;
+        right: 40px;
+
+    }
+
+    /* ==============Container============== */
+    .container {
+        padding: 1rem;
+    }
+
+    /* Header */
+    .header {
+        padding: 1rem;
+    }
+
+    /* Cards */
+    .card {
+        max-width: calc((100% - 1rem) / 2);
+    }
+
+    /* Sidebar */
+    .container__sidebar {
+        width: 250px;
+
+    }
+
+}
+
+/* ================================================= */
+/* MOBILE (<=480px) */
+/* ================================================= */
+@media(max-width:480px) {
+
+    /* Container */
+    .container {
+        max-width: 100%;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Content */
+    .container__content {
+        width: 100%;
+    }
+
+    /* Cards */
+    .card {
+        max-width: 100%;
+    }
+
+    /* Sidebar */
+    .container__sidebar {
+        margin-top: .5rem;
+        width: 100%;
+        min-height: auto;
+    }
+
+    /* Navbar */
+    .header__nav {
+        width: 280px;
+        padding: 2rem 1.5rem;
+
+    }
+}

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+        <title>HomeWorkDay11</title>
+
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Material Design Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
+    </head>
+
+    <body>
+        <!-- ================================================= -->
+        <!-- Dark Mode Toggle (Checkbox Hack) -->
+        <!-- ================================================= -->
+
+        <input type="checkbox" id="dark-mode-toggle" />
+
+        <!-- ================================================= -->
+        <!-- Main Layout Wrapper -->
+        <!-- ================================================= -->
+
+        <main class="main">
+            <!-- ================================================= -->
+            <!-- Header / Navigation -->
+            <!-- ================================================= -->
+
+            <header class="header">
+                <!-- Logo -->
+                <div class="header__logo">My Website</div>
+
+                <!-- Mobile Menu Toggle -->
+                <input type="checkbox" id="menu-toggle" />
+
+                <!-- ================= NAVBAR ================= -->
+                <nav class="header__nav">
+                    <a href="#" class="nav__link"> Link 1 </a>
+
+                    <a href="#" class="nav__link"> Link 2 </a>
+
+                    <a href="#" class="nav__link"> Link 3 </a>
+
+                    <!-- Close Sidebar Button -->
+                    <label for="menu-toggle" class="close-btn">
+                        <i class="mdi mdi-close"></i>
+                    </label>
+                </nav>
+
+                <!-- Dark Mode Button -->
+                <label for="dark-mode-toggle" class="dark-mode-btn"> </label>
+
+                <!-- Hamburger Menu -->
+                <label for="menu-toggle" class="menu-btn">
+                    <i class="mdi mdi-menu"></i>
+                </label>
+
+                <!-- Overlay when Sidebar opens -->
+                <label for="menu-toggle" class="overlay"></label>
+            </header>
+
+            <!-- ================================================= -->
+            <!-- Main Content Area -->
+            <!-- ================================================= -->
+
+            <section class="container">
+                <!-- ================= Content ================= -->
+                <div class="container__content">
+                    <!-- Article -->
+                    <article class="content">
+                        <h1 class="content__heading">This is the main heading</h1>
+
+                        <p class="content__text">
+                            Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth
+                            tatsoi tomatilo melon azuki bean garlic
+                        </p>
+
+                        <p class="content__text">
+                            Gumbo beat green corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts
+                            fava bean collard greens đanelion okra wakame tomato. Đanelion cucumber earthnut pea peanut
+                            soko zucchini.
+                        </p>
+                    </article>
+
+                    <!-- ================= Cards ================= -->
+                    <div class="container__cards">
+                        <article class="card">
+                            <h2 class="card__title">Card One</h2>
+
+                            <p class="card__text">
+                                Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth
+                                water spinach avocado.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <h2 class="card__title">Card Two</h2>
+
+                            <p class="card__text">
+                                Daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin
+                                horseradish spinach carrot soko.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <h2 class="card__title">Card Three</h2>
+
+                            <p class="card__text">
+                                Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale
+                                pumpkin onion chickpea gram corn pea.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <h2 class="card__title">Card Four</h2>
+
+                            <p class="card__text">
+                                Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale
+                                pumpkin onion chickpea gram corn pea.
+                            </p>
+                        </article>
+
+                        <article class="card">
+                            <h2 class="card__title">Card Five</h2>
+
+                            <p class="card__text">
+                                Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery.
+                                Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- ================= Sidebar ================= -->
+                <aside class="container__sidebar">
+                    <p class="sidebar__text">Have you discovered all of the other excellent content on this website?</p>
+                </aside>
+            </section>
+        </main>
+    </body>
+</html>
