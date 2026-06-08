@@ -1,0 +1,1328 @@
+/* ================ Reset css ================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-family: "Urbanist", sans-serif;
+    text-rendering: optimizeSpeed;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* ================ Reset css ================ */
+/* ================ CSS Dùng chung ================ */
+.container {
+    max-width: 1596px;
+    margin: 0 auto;
+}
+
+/* ================ Header ================ */
+.top-banner,
+.navbar,
+.hero,
+.introduction,
+.story,
+.achievements,
+.cta {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* ================Top Banner================ */
+.top-banner {
+    position: relative;
+    padding: 1.4rem 16.2rem;
+    background: rgba(26, 49, 41, 1);
+    border-bottom: 1px solid rgba(35, 67, 56, 1);
+}
+
+.top-banner__container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    border-radius: 6px;
+    border: 1px solid rgba(44, 84, 70, 1);
+    background: rgba(35, 67, 56, 1);
+}
+
+.top-banner__content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.top-banner__icon {
+    width: 2.05rem;
+    height: 2.05rem;
+}
+
+.top-banner__arrow {
+    position: absolute;
+    width: 2.4rem;
+    height: 2.6rem;
+    right: -4rem;
+}
+
+.top-banner__text {
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: 0%;
+    color: rgba(255, 255, 255, 1);
+}
+
+/* ================Top Banner================ */
+
+/* ================ NavBar ================ */
+.navbar {
+    padding: 1.4rem 16.2rem;
+    background: rgba(26, 49, 41, 1);
+    border-bottom: 1px solid rgba(238, 248, 211, 1)
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.navbar__logo {
+    cursor: pointer;
+}
+
+.navbar__menu {
+    display: flex;
+    color: rgba(250, 253, 242, 1);
+    align-items: center;
+    gap: 2.6rem;
+}
+
+.navbar__item {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.navbar__item--contact {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: 1.4rem 2.4rem;
+    background: rgba(203, 234, 123, 1);
+    border-radius: 8px;
+    color: rgba(38, 38, 38, 1);
+}
+
+.navbar__item--contact:hover {
+    color: rgba(38, 38, 38, 1);
+}
+
+.navbar__item:nth-child(2) {
+    color: rgba(203, 234, 123, 1);
+}
+
+/* ================ NavBar ================ */
+
+/* ================ Hero Image ================ */
+.hero__container {
+    max-width: calc(1920px - (16.2rem * 2));
+    text-align: center;
+    margin: 10rem 16.2rem;
+    display: flex;
+    gap: 2rem;
+    border-radius: 8px;
+}
+
+.hero__flex {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-radius: 8px;
+}
+
+.hero__logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.hero__cell {
+    width: calc((100% - 20px) / 2);
+    background: rgb(220, 241, 167);
+    aspect-ratio: 1/1;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+
+/* ================ Hero Image ================ */
+
+/* ================ Introduction ================ */
+.introduction__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+    margin: 0 16.2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(229, 245, 189, 1);
+    padding: 10rem;
+    background: rgba(246, 251, 233, 1);
+}
+
+.introduction__title {
+    font-weight: 600;
+    font-size: 4.8rem;
+    text-align: center;
+    color: rgba(38, 38, 38, 1);
+}
+
+.introduction__desc {
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-align: center;
+    color: rgba(51, 51, 51, 1);
+}
+
+/* ================ Introduction ================ */
+
+/* ================ Story ================ */
+.story__container {
+    margin: 15rem 16.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+.story__header {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30rem;
+    gap: 1rem;
+}
+
+.story__title {
+    font-weight: 700;
+    font-size: 4.8rem;
+    text-align: center;
+}
+
+.story__desc {
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.story__timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(238, 248, 211, 1);
+}
+
+.story__timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1.8rem;
+    transform: translateX(-50%);
+    background: #cbea7b;
+}
+
+.story__item {
+    display: flex;
+}
+
+.story__image {
+    flex-basis: 50%;
+    width: 0;
+    object-fit: cover;
+}
+
+.story__content {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 8rem;
+    background: rgba(246, 251, 233, 1);
+    gap: 4rem;
+}
+
+.story__heading {
+    align-self: flex-start;
+    padding: 1rem 0;
+    border-bottom: 3px solid rgba(203, 234, 123, 1);
+}
+
+.story__item-title {
+    line-height: 120%;
+    font-weight: 600;
+    font-size: 2.8rem;
+    color: rgba(26, 49, 41, 1);
+}
+
+.story__item-desc {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(51, 51, 51, 1);
+}
+
+.story__date {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(51, 51, 51, 1);
+}
+
+/* Đảo ngược */
+.story__item--reverse {
+    flex-direction: row-reverse;
+}
+
+.story__item--reverse .story__content {
+    align-items: flex-end;
+}
+
+.story__item--reverse .story__item-desc {
+    text-align: end;
+}
+
+.story__item--reverse .story__heading {
+    align-self: flex-end;
+}
+
+/* ================ Story ================ */
+
+/* ================ Achievements ================ */
+
+.achievements__container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 16.2rem;
+    gap: 8rem;
+}
+
+.achievements__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 30rem;
+    align-items: center;
+}
+
+.achievements__title {
+    font-weight: 600;
+    font-size: 4.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(38, 38, 38, 1);
+}
+
+.achievements__desc {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(51, 51, 51, 1);
+}
+
+.achievements__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.achievements__card {
+    width: calc(50% - 3rem);
+    border-radius: 12px;
+    padding: 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    background: rgba(246, 251, 233, 1);
+    border: 1px solid rgba(229, 245, 189, 1)
+}
+
+.achievements__card-header {
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+}
+
+.achievements__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6.8rem;
+    height: 6.8rem;
+    background: rgba(203, 234, 123, 1);
+    padding: 1.4rem;
+    border-radius: 8px;
+}
+
+.achievements__card-title {
+    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: rgba(38, 38, 38, 1);
+}
+
+.achievements__card-desc {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(51, 51, 51, 1);
+}
+
+/* ================ Achievements ================ */
+
+/* ================ Call To Action ================ */
+.cta__container {
+    display: flex;
+    gap: 15rem;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 15rem 16.2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 8rem;
+    background: rgba(246, 251, 233, 1);
+    border: 1px solid rgba(229, 245, 189, 1)
+}
+
+.cta__content {
+    flex-basis: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.cta__title {
+    font-weight: 600;
+    font-size: 3.4rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(38, 38, 38, 1);
+}
+
+.cta__desc {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(51, 51, 51, 1);
+}
+
+.cta__btn {
+    white-space: nowrap;
+    flex-basis: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.8rem 2.4rem;
+    border-radius: 8px;
+    color: rgba(38, 38, 38, 1);
+    background: rgba(203, 234, 123, 1);
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+}
+
+.cta__decoration {
+    position: absolute;
+}
+
+.cta__decoration--left {
+    left: 0px;
+    top: 0px;
+}
+
+.cta__decoration--right {
+    right: 0px;
+    bottom: 0px;
+}
+
+/* ================ Call To Action ================ */
+
+/* ================ Footer ================ */
+.footer__container {
+    max-width: 1920px;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding: 5rem 16.2rem;
+    background: rgba(26, 49, 41, 1);
+    border-top: 1px solid rgba(38, 38, 38, 1);
+}
+
+.footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__logo {
+    cursor: pointer;
+}
+
+.footer__menu {
+    display: flex;
+    gap: 2.6rem;
+}
+
+.footer__item {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.footer__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 12px;
+}
+
+.footer__back-text {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.footer__back-icon {
+    background: rgba(35, 67, 56, 1);
+    padding: 1.4rem;
+    border-radius: 73px;
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    padding: 1.6rem 3rem 1.6rem 2rem;
+    background: rgba(35, 67, 56, 1);
+    border: 1px solid rgba(44, 84, 70, 1);
+}
+
+.footer__contacts {
+    display: flex;
+    gap: 2rem;
+    flex: 3;
+}
+
+.footer__contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 6px;
+    padding: 1.4rem;
+    border: 1px solid rgba(44, 84, 70, 1);
+}
+
+.footer__contact-text {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.footer__copyright {
+    flex: 1;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: rgba(242, 242, 242, 1);
+}
+
+/* ================ Footer ================ */
+/* Laptop */
+@media (max-width: 1400px) {
+
+    /* ================Top Banner================ */
+    .top-banner {
+        padding: 1.4rem 8rem;
+    }
+
+    .top-banner__icon {
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+
+    .top-banner__arrow {
+        width: 1.2rem;
+        height: 1.4rem;
+    }
+
+    .top-banner__text {
+        font-size: 1.6rem;
+    }
+
+    /* ================Top Banner================ */
+
+    /* ================ NavBar ================ */
+    .navbar {
+        padding: 1.6rem 8rem;
+    }
+
+    /* ================ NavBar ================ */
+
+    /* ================ Hero Image ================ */
+    .hero {
+        margin: 0 auto;
+    }
+
+    .hero__container {
+        margin: 10rem 8rem;
+    }
+
+    /* ================ Hero Image ================ */
+
+    /* ================ Introduction ================ */
+    .introduction__container {
+        margin: 0 8rem;
+        padding: 8rem;
+        gap: 4rem;
+    }
+
+    .introduction__title {
+        font-size: 3.8rem;
+    }
+
+    .introduction__desc {
+        font-size: 1.6rem;
+    }
+
+    /* ================ Introduction ================ */
+
+    /* ================ Story ================ */
+    .story__container {
+        margin: 10rem 8rem;
+        gap: 6rem;
+    }
+
+    .story__header {
+        padding: 0 20rem;
+    }
+
+    .story__title {
+        font-size: 3.8rem;
+    }
+
+    .story__desc {
+        font-size: 1.6rem;
+    }
+
+    .story__timeline::before {
+        width: 1.6rem;
+    }
+
+    .story__content {
+        padding: 6rem;
+        background: rgba(246, 251, 233, 1);
+        gap: 3rem;
+    }
+
+    .story__item-title {
+        font-size: 2.4rem;
+    }
+
+    .story__item-desc {
+        font-size: 1.6rem;
+    }
+
+    /* ================ Story ================ */
+
+    /* ================ Achievements ================ */
+    .achievements__container {
+        margin: 0 8rem;
+        gap: 6rem;
+    }
+
+    .achievements__header {
+        gap: 0.8rem;
+        padding: 0 20rem;
+    }
+
+    .achievements__title {
+        font-size: 3.8rem;
+    }
+
+    .achievements__desc {
+        font-size: 1.6rem;
+    }
+
+    .achievements__list {
+        gap: 2rem;
+    }
+
+    .achievements__card {
+        width: calc(50% - 2rem);
+        padding: 4rem;
+        gap: 2rem;
+    }
+
+    .achievements__card-header {
+        gap: 1rem;
+    }
+
+    .achievements__icon {
+        width: 5.4rem;
+        height: 5.4rem;
+        padding: 1.2rem;
+        border-radius: 6px;
+    }
+
+    .achievements__card-title {
+        font-size: 2rem;
+    }
+
+    .achievements__card-desc {
+        font-size: 1.6rem;
+    }
+
+    /* ================ Achievements ================ */
+
+    /* ================ Call To Action ================ */
+    .cta__container {
+        display: flex;
+        gap: 15rem;
+        margin: 10rem 8rem;
+        border-radius: 10px;
+        padding: 6rem;
+    }
+
+    .cta__content {
+        gap: 1rem;
+    }
+
+    .cta__title {
+        font-size: 1.6rem;
+    }
+
+    .cta__desc {
+        font-size: 1.6rem;
+    }
+
+    .cta__btn {
+        padding: 1.4rem 2rem;
+        border-radius: 6px;
+        font-size: 1.4rem;
+    }
+
+    .cta__decoration--left {
+        left: -20px;
+        top: -20px;
+    }
+
+    .cta__decoration--right {
+        right: -20px;
+        bottom: -20px;
+    }
+
+    /* ================ Call To Action ================ */
+
+    /* ================Footer================*/
+    .footer__container {
+        max-width: 1440px;
+        gap: 4rem;
+        padding: 4rem 8rem;
+    }
+
+    .footer__menu {
+        gap: 1.6rem;
+    }
+
+    .footer__item {
+        font-size: 1.4rem;
+    }
+
+    .footer__back-to-top {
+        gap: 1.4rem;
+    }
+
+    .footer__back-text {
+        font-size: 1.6rem;
+    }
+
+    .footer__back-icon {
+        padding: 1.2rem;
+    }
+
+    .footer__bottom {
+        border-radius: 8px;
+        padding: 1.4rem 2.6rem 1.4rem 1.6rem;
+    }
+
+    .footer__contacts {
+        gap: 1.6rem;
+    }
+
+    .footer__contact {
+        gap: 0.4rem;
+        border-radius: 4px;
+        padding: 1.2rem;
+    }
+
+    .footer__contact-text {
+        font-size: 1.6rem;
+    }
+
+    .footer__contact-icon {
+        width: 17px;
+        height: 13px;
+    }
+
+    .footer__copyright {
+        font-size: 1.4rem;
+    }
+
+    /* ================Footer================*/
+}
+
+.overlay {
+
+    position: fixed;
+    inset: 0;
+    display: block;
+    background: rgba(0, 0, 0, .6);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity .3s;
+    z-index: 998;
+    cursor: pointer;
+}
+
+#menu-toggle,
+.menu-btn,
+.close-btn {
+    display: none;
+}
+
+@media (max-width: 992px) {
+
+    /* ================Top Banner================ */
+    .top-banner {
+        padding: 4rem 1.6rem 1.4rem 1.6rem;
+        height: auto;
+    }
+
+    .top-banner__container {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .top-banner__icon {
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+
+    .top-banner__arrow {
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        right: -25px;
+    }
+
+    .top-banner__text {
+        font-size: 1.4rem;
+    }
+
+    .top-banner__decoration {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .top-banner__decoration--left {
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .top-banner__decoration--right {
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+    /* ================Top Banner================ */
+    /* ================NavBar================ */
+    .navbar {
+        position: relative;
+        padding: 2rem 1.6rem;
+    }
+
+    .navbar__logo {
+        width: 147px;
+        height: 34px;
+    }
+
+    .navbar__menu {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        background: rgba(26, 49, 41, 1);
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0px;
+        right: -100%;
+        width: 20rem;
+        height: 100vh;
+        z-index: 1000;
+        padding-top: 3rem;
+    }
+
+    .navbar__item {
+        position: relative;
+        font-weight: 600;
+        font-size: 1.6rem;
+        border-bottom: #cbea7b solid 1px;
+        margin: 1rem auto;
+        width: 80%;
+        align-self: flex-start;
+        z-index: 1000;
+        transition-property: opacity, scale;
+        transition: .3s ease;
+    }
+
+    .navbar__item:hover {
+        opacity: 0.5;
+        scale: 1.1;
+    }
+
+    .menu-btn {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        z-index: 1000;
+        transition: scale .3s ease;
+    }
+
+    .menu-btn:hover {
+        scale: 1.2;
+    }
+
+    .navbar__item--contact {
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        color: rgba(250, 253, 242, 1);
+    }
+
+    .navbar__item--contact:hover {
+        color: rgba(250, 253, 242, 1);
+    }
+
+    .navbar__item:nth-child(2) {
+        color: rgba(250, 253, 242, 1);
+
+    }
+
+    /* Open sidebar */
+    #menu-toggle:checked~.navbar__menu {
+        right: 0;
+    }
+
+    #menu-toggle:checked~.menu-btn {
+        display: none;
+    }
+
+    #menu-toggle:checked~.overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Icon clouse */
+    .close-btn {
+        color: rgb(188, 219, 116);
+        display: block;
+        scale: 2;
+        position: absolute;
+        top: 37px;
+        right: 22px;
+        cursor: pointer;
+        z-index: 9999;
+        transition: rotate 0.3s ease;
+    }
+
+    .close-btn:hover {
+        rotate: 90deg;
+    }
+
+    /* ================NavBar================ */
+    /* ================ Hero Image ================*/
+    .hero__container {
+        margin: 2rem 1.6rem;
+        gap: 0.3rem;
+        border-radius: 4px;
+    }
+
+    .hero__flex {
+        gap: 0.3rem;
+        border-radius: 4px;
+    }
+
+    .hero__cell {
+        width: calc((100% - 0.3rem) / 2);
+        border-radius: 4px;
+    }
+
+    /* ================ Hero Image ================*/
+
+    /* ================Introduction================*/
+    .introduction__container {
+        margin: 5rem 1.6rem;
+        border-radius: 10px;
+        padding: 3rem;
+        gap: 2rem;
+    }
+
+    .introduction__title {
+        font-size: 2.8rem;
+    }
+
+    .introduction__desc {
+        font-size: 1.4rem;
+    }
+
+    /* ================Introduction================*/
+    .story__container {
+        margin: 5rem 1.6rem;
+        gap: 5rem;
+    }
+
+    .story__header {
+        padding: 0;
+        gap: 1rem;
+    }
+
+    .story__title {
+        font-size: 2.8rem;
+    }
+
+    .story__desc {
+        font-size: 1.4rem;
+    }
+
+    .story__timeline::before {
+        background: transparent;
+    }
+
+    .story__item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .story__image {
+        width: 100%;
+        object-fit: cover;
+        order: 1;
+        border-bottom: 11px solid #cbea7b;
+    }
+
+    .story__content {
+        order: 2;
+        flex-basis: 50%;
+        padding: 3rem;
+        background: rgba(246, 251, 233, 1);
+        gap: 2rem;
+    }
+
+    .story__heading {
+        padding: 0.8rem 0;
+    }
+
+    .story__item-title {
+        font-size: 2rem;
+    }
+
+    .story__item-desc {
+        font-size: 1.4rem;
+    }
+
+    .story__date {
+        font-size: 1.4rem;
+    }
+
+    /* Đảo ngược */
+    .story__item--reverse {
+        flex-direction: column;
+    }
+
+    .story__item--reverse .story__content {
+        align-items: flex-end;
+    }
+
+    .story__item--reverse .story__item-desc {
+        text-align: start;
+    }
+
+    .story__item--reverse .story__heading {
+        align-self: flex-start;
+    }
+
+    .story__item--reverse .story__date {
+        align-self: flex-start;
+    }
+
+    /* ================ Story ================ */
+
+    /* ================Achievements================*/
+    .achievements__container {
+        margin: 0rem 1.6rem;
+        gap: 5rem;
+    }
+
+    .achievements__header {
+        gap: 0.8rem;
+        padding: 0;
+    }
+
+    .achievements__title {
+        font-size: 2.8rem;
+    }
+
+    .achievements__desc {
+        font-size: 1.4rem;
+    }
+
+    .achievements__list {
+        gap: 2rem;
+    }
+
+    .achievements__card {
+        width: 100%;
+        border-radius: 10px;
+        padding: 3rem;
+        gap: 1.6rem;
+    }
+
+    .achievements__card-header {
+        gap: 1rem;
+    }
+
+    .achievements__icon {
+        width: 4.8rem;
+        height: 4.8rem;
+        padding: 1.2rem;
+        border-radius: 6px;
+    }
+
+    .achievements__card-title {
+        font-size: 1.8rem;
+    }
+
+    .achievements__card-desc {
+        font-size: 1.4rem;
+    }
+
+    /* ================Achievements================*/
+    /* ================ Call To Action ================ */
+    .cta__container {
+        flex-direction: column;
+        gap: 2rem;
+        margin: 5rem 1.6rem;
+        border-radius: 10px;
+        padding: 4rem;
+    }
+
+    .cta__content {
+        flex-basis: 90%;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .cta__title {
+        font-size: 2.2rem;
+    }
+
+    .cta__desc {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    .cta__btn {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 1.8rem 2.4rem;
+        border-radius: 6px;
+        font-size: 1.4rem;
+    }
+
+    .cta__decoration--left {
+        scale: 0.7;
+        left: -60px;
+        top: -30px;
+    }
+
+    .cta__decoration--right {
+        right: 20px;
+        bottom: 10px;
+    }
+
+    /* ================ Call To Action ================ */
+
+    /* ================Footer================*/
+    .footer__container {
+        max-width: 1920px;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 3rem 1.6rem;
+    }
+
+    .footer__top {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .footer__logo {
+        order: 1;
+        width: 129.75px;
+        height: 30px;
+    }
+
+    .footer__menu {
+        order: 3;
+        width: 100%;
+        flex-wrap: wrap;
+        padding-right: 6.6rem;
+        gap: 1.6rem;
+    }
+
+    .footer__item {
+        font-size: 1.4rem;
+    }
+
+    .footer__back-to-top {
+        order: 2;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        border-radius: 12px;
+    }
+
+    .footer__back-to-top {
+        gap: 0.6rem;
+    }
+
+    .footer__back-text {
+        font-size: 1.6rem;
+    }
+
+    .footer__back-icon {
+        padding: 1.2rem;
+    }
+
+    .footer__bottom {
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        gap: 2rem;
+        flex-direction: column;
+    }
+
+    .footer__contacts {
+        flex-direction: column;
+        gap: 1.6rem;
+        flex: 1;
+        width: 100%;
+    }
+
+    .footer__contact {
+        gap: 0.4rem;
+        border-radius: 4px;
+        padding: 1.2rem;
+    }
+
+    .footer__contact-text {
+        font-size: 1.6rem;
+    }
+
+    .footer__contact-icon {
+        height: auto;
+    }
+
+    .footer__copyright {
+        font-size: 1.4rem;
+    }
+
+    /* ================ Footer ================ */
+}
