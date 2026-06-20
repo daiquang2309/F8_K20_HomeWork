@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 3</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 3</h1>
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            function analyzeClass(scores) {
+                let excellent = [];
+                let good = [];
+                let fair = [];
+                let average = [];
+                let weak = [];
+
+                let invalidCount = 0;
+                let validCount = 0;
+
+                let highestScore = null;
+                let lowestScore = null;
+
+                let totalScore = 0;
+
+                for (let i = 0; i < scores.length; i++) {
+                    let score = scores[i];
+
+                    if (score < 0 || score > 10) {
+                        invalidCount++;
+                        continue;
+                    }
+
+                    validCount++;
+                    totalScore += score;
+
+                    if (highestScore === null || score > highestScore) {
+                        highestScore = score;
+                    }
+
+                    if (lowestScore === null || score < lowestScore) {
+                        lowestScore = score;
+                    }
+
+                    if (score >= 9) {
+                        excellent.push(score);
+                    } else if (score >= 8) {
+                        good.push(score);
+                    } else if (score >= 6.5) {
+                        fair.push(score);
+                    } else if (score >= 5) {
+                        average.push(score);
+                    } else {
+                        weak.push(score);
+                    }
+                }
+
+                if (validCount === 0) {
+                    console.log(`Số điểm không hợp lệ: ${invalidCount}`);
+                    console.log(`Số học sinh hợp lệ: 0`);
+                    console.log(`Xuất sắc: 0`);
+                    console.log(`Giỏi: 0`);
+                    console.log(`Khá: 0`);
+                    console.log(`Trung bình: 0`);
+                    console.log(`Yếu: 0`);
+                    console.log(`Điểm cao nhất: null, điểm thấp nhất: null`);
+                    console.log(`Điểm trung bình: 0`);
+                    console.log(`Nhận xét: Không có dữ liệu hợp lệ`);
+                    console.log("===================Hết===================");
+                    return;
+                }
+
+                let averageScore = Math.round((totalScore / validCount) * 100) / 100;
+
+                let comment = "";
+
+                let goodOrAbove = excellent.length + good.length + fair.length;
+
+                if (goodOrAbove > validCount / 2) {
+                    comment = "Lớp học tốt";
+                } else if (weak.length > validCount / 2) {
+                    comment = "Cần cải thiện";
+                } else {
+                    comment = "Lớp học ở mức ổn";
+                }
+
+                console.log(`Số điểm không hợp lệ: ${invalidCount}`);
+                console.log(`Số học sinh hợp lệ: ${validCount}`);
+                console.log(`Xuất sắc: ${excellent.length} (gồm ${excellent.join(", ")})`);
+                console.log(`Giỏi: ${good.length} (gồm ${good.join(", ")})`);
+                console.log(`Khá: ${fair.length} (gồm ${fair.join(", ")})`);
+                console.log(`Trung bình: ${average.length} (gồm ${average.join(", ")})`);
+                console.log(`Yếu: ${weak.length} (gồm ${weak.join(", ")})`);
+                console.log(`Điểm cao nhất: ${highestScore}, điểm thấp nhất: ${lowestScore}`);
+                console.log(`Điểm trung bình: ${averageScore}`);
+                console.log(`Nhận xét: ${comment}`);
+                console.log("===================Hết===================");
+            }
+
+            // Test 1: Trường hợp cơ bản, có lẫn điểm không hợp lệ
+            console.log("===================Test 1================");
+            analyzeClass([9, 7, -2, 5.5, 10, 4, 11, 6.5, 8]);
+
+            // Test 2: Phần lớn học sinh yếu
+            console.log("===================Test 2================");
+            analyzeClass([3, 2, 4.5, 1, 0]);
+
+            // Test 3: Không loại nào chiếm đa số rõ ràng
+            console.log("===================Test 3================");
+            analyzeClass([9, 1, 7, 6, 5.5]);
+
+            // Test 4: Toàn bộ điểm không hợp lệ
+            console.log("===================Test 4================");
+            analyzeClass([-5, 15, 100, -1]);
+
+            // Test 5: Mảng rỗng
+            console.log("===================Test 5================");
+            analyzeClass([]);
+        </script>
+    </body>
+</html>

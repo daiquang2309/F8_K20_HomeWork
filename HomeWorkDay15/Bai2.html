@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 2</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            function isPrime(number) {
+                if (number < 2) {
+                    return false;
+                }
+
+                for (let i = 2; i < number; i++) {
+                    if (number % i === 0) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            function printTriangle(n) {
+                for (let row = 1; row <= n; row++) {
+                    let line = "";
+
+                    for (let number = 1; number <= row; number++) {
+                        if (number % 3 === 0 && number % 5 === 0) {
+                            line += "#";
+                        } else if (isPrime(number)) {
+                            line += "*";
+                        } else {
+                            line += number;
+                        }
+
+                        if (number < row) {
+                            line += " ";
+                        }
+                    }
+
+                    console.log(line);
+
+                    if (row % 2 === 0) {
+                        let separator = "";
+
+                        for (let i = 1; i <= row; i++) {
+                            separator += "-";
+                        }
+
+                        console.log(separator);
+                    }
+                }
+                console.log("===================Hết===================");
+            }
+
+            // Test 1: n = 5
+            console.log("===================Test 1================");
+
+            printTriangle(5);
+
+            // Test 2: n = 7
+            console.log("===================Test 2================");
+            printTriangle(7);
+
+            // Test 3: n = 15 (kiểm tra quy tắc #)
+            console.log("===================Test 3================");
+            printTriangle(15);
+
+            // Test phụ: kiểm tra riêng hàm phụ kiểm tra số nguyên tố và chia hết cho 15
+            console.log("===================Test phụ================");
+            console.log(isPrime(1));
+            console.log(isPrime(2));
+            console.log(isPrime(9));
+            console.log(isPrime(15));
+
+            // Test biên: n = 1 và n = 2
+            console.log("===================Test biên================");
+            printTriangle(1);
+            printTriangle(2);
+        </script>
+    </body>
+</html>
