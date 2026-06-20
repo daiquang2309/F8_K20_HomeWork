@@ -18,7 +18,7 @@
                 let average = [];
                 let weak = [];
 
-                let invalidCount = 0;
+                let invalidCount = [];
                 let validCount = 0;
 
                 let highestScore = null;
@@ -30,7 +30,7 @@
                     let score = scores[i];
 
                     if (score < 0 || score > 10) {
-                        invalidCount++;
+                        invalidCount.push(score);
                         continue;
                     }
 
@@ -59,13 +59,13 @@
                 }
 
                 if (validCount === 0) {
-                    console.log(`Số điểm không hợp lệ: ${invalidCount}`);
+                    if (invalidCount.length > 0) {
+                        console.log(`Số điểm không hợp lệ: ${invalidCount.length} (gồm ${invalidCount.join(", ")})`);
+                    } else {
+                        console.log("Số điểm không hợp lệ: 0");
+                    }
                     console.log(`Số học sinh hợp lệ: 0`);
-                    console.log(`Xuất sắc: 0`);
-                    console.log(`Giỏi: 0`);
-                    console.log(`Khá: 0`);
-                    console.log(`Trung bình: 0`);
-                    console.log(`Yếu: 0`);
+                    console.log(`Tất cả các loại đều bằng 0`);
                     console.log(`Điểm cao nhất: null, điểm thấp nhất: null`);
                     console.log(`Điểm trung bình: 0`);
                     console.log(`Nhận xét: Không có dữ liệu hợp lệ`);
@@ -73,7 +73,9 @@
                     return;
                 }
 
-                let averageScore = Math.round((totalScore / validCount) * 100) / 100;
+                let averageScore = totalScore / validCount;
+
+                averageScore = (averageScore * 100 + 0.5 - ((averageScore * 100 + 0.5) % 1)) / 100;
 
                 let comment = "";
 
@@ -87,13 +89,17 @@
                     comment = "Lớp học ở mức ổn";
                 }
 
-                console.log(`Số điểm không hợp lệ: ${invalidCount}`);
+                if (invalidCount.length > 0) {
+                    console.log(`Số điểm không hợp lệ: ${invalidCount.length} (gồm ${invalidCount.join(", ")})`);
+                } else {
+                    console.log("Số điểm không hợp lệ: 0");
+                }
                 console.log(`Số học sinh hợp lệ: ${validCount}`);
-                console.log(`Xuất sắc: ${excellent.length} (gồm ${excellent.join(", ")})`);
-                console.log(`Giỏi: ${good.length} (gồm ${good.join(", ")})`);
-                console.log(`Khá: ${fair.length} (gồm ${fair.join(", ")})`);
-                console.log(`Trung bình: ${average.length} (gồm ${average.join(", ")})`);
-                console.log(`Yếu: ${weak.length} (gồm ${weak.join(", ")})`);
+                if (excellent.length > 0) console.log(`Xuất sắc: ${excellent.length} (gồm ${excellent.join(", ")})`);
+                if (good.length > 0) console.log(`Giỏi: ${good.length} (gồm ${good.join(", ")})`);
+                if (fair.length > 0) console.log(`Khá: ${fair.length} (gồm ${fair.join(", ")})`);
+                if (average.length > 0) console.log(`Trung bình: ${average.length} (gồm ${average.join(", ")})`);
+                if (weak.length > 0) console.log(`Yếu: ${weak.length} (gồm ${weak.join(", ")})`);
                 console.log(`Điểm cao nhất: ${highestScore}, điểm thấp nhất: ${lowestScore}`);
                 console.log(`Điểm trung bình: ${averageScore}`);
                 console.log(`Nhận xét: ${comment}`);
