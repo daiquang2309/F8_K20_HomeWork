@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 1</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 1</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            // Hàm 1
+            function createSlug(text) {
+                return text
+                    .toLowerCase()
+                    .replaceAll(" ", "-")
+                    .replace(/[^a-z0-9-]/g, "");
+            }
+
+            // Hàm 2
+            function generateOrderId(productName, quantity) {
+                let firstThree = productName.substring(0, 3).toUpperCase();
+
+                return `ORD-${firstThree}-${quantity}-${productName.length}`;
+            }
+
+            // Hàm 3
+            function formatPrice(price, currency = "VND") {
+                if (currency === "VND") {
+                    return `${price.toLocaleString("vi-VN")} ₫`;
+                }
+
+                if (currency === "USD") {
+                    return `$${price.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                    })}`;
+                }
+            }
+
+            // Hàm 4
+            function buildProductUrl(baseUrl, product) {
+                return `${baseUrl}/${product.category}/${createSlug(product.name)}?id=${product.id}`;
+            }
+
+            // ================= TEST =================
+
+            console.log(createSlug("MacBook Pro 2024"));
+            console.log(createSlug("Bàn Phím Cơ RGB"));
+            console.log(createSlug("iPhone 15 Pro Max!!!"));
+
+            console.log(generateOrderId("MacBook Pro", 2));
+            console.log(generateOrderId("iPhone 15", 5));
+            console.log(generateOrderId("Bàn phím cơ", 1));
+
+            console.log(formatPrice(2000000, "VND"));
+            console.log(formatPrice(2000, "USD"));
+            console.log(formatPrice(500000));
+
+            const baseUrl = "https://shop.vn";
+
+            const product1 = {
+                name: "MacBook Pro 2024",
+                id: 101,
+                category: "laptop",
+            };
+
+            const product2 = {
+                name: "iPhone 15",
+                id: 55,
+                category: "phone",
+            };
+
+            console.log(buildProductUrl(baseUrl, product1));
+            console.log(buildProductUrl(baseUrl, product2));
+        </script>
+    </body>
+</html>

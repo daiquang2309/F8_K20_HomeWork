@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 3</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            const players = [
+                { id: 1, name: "DragonSlayer", scores: [120, 85, 200, 95], level: 8, badge: "gold" },
+                { id: 2, name: "NightWolf", scores: [60, 75, 50], level: 5, badge: null },
+                { id: 3, name: "StarQueen", scores: [300, 250, 180, 90, 120], level: 12, badge: "diamond" },
+                { id: 4, name: "IronFist", scores: [40, 30], level: 2, badge: null },
+                { id: 5, name: "ShadowBlade", scores: [150, 200, 175], level: 9, badge: "silver" },
+            ];
+
+            // Hàm 1
+            function getTotalScore(player) {
+                let total = 0;
+
+                for (let score of player.scores) {
+                    total += score;
+                }
+
+                return total;
+            }
+
+            // Hàm 2
+            function getRanking(players) {
+                let ranking = players.map((player) => ({
+                    name: player.name,
+                    totalScore: getTotalScore(player),
+                    badge: player.badge ?? "none",
+                }));
+
+                ranking.sort((a, b) => b.totalScore - a.totalScore);
+
+                for (let i = 0; i < ranking.length; i++) {
+                    ranking[i].rank = i + 1;
+                }
+
+                return ranking;
+            }
+
+            // Hàm 3
+            function getTopPlayers(players, n) {
+                return getRanking(players)
+                    .slice(0, n)
+                    .map((player) => player.name);
+            }
+
+            // Hàm 4
+            function formatPlayerCard(player) {
+                let badge = "";
+
+                if (player.badge === "diamond") {
+                    badge = " | 💎 DIAMOND";
+                } else if (player.badge === "gold") {
+                    badge = " | 🏅 GOLD";
+                } else if (player.badge === "silver") {
+                    badge = " | 🥈 SILVER";
+                }
+
+                return `${player.name} | Lv.${player.level} | ${getTotalScore(player)} điểm${badge}`;
+            }
+
+            // ================= TEST =================
+
+            console.log(getTotalScore(players[0]));
+            console.log(getTotalScore(players[3]));
+
+            console.log(getRanking(players));
+
+            console.log(getRanking(players)[0]);
+            console.log(getRanking(players)[4]);
+
+            console.log(getTopPlayers(players, 3));
+            console.log(getTopPlayers(players, 1));
+
+            console.log(formatPlayerCard(players[0]));
+            console.log(formatPlayerCard(players[1]));
+            console.log(formatPlayerCard(players[2]));
+        </script>
+    </body>
+</html>
