@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 2</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            const text =
+                "javascript là ngôn ngữ lập trình phổ biến javascript chạy trên trình duyệt và javascript cũng chạy trên server";
+
+            // Hàm 1
+            function getWords(text) {
+                return text.split(" ");
+            }
+
+            // Hàm 2
+            function countWord(text, word) {
+                let words = getWords(text);
+                let count = 0;
+
+                for (let item of words) {
+                    if (item === word) {
+                        count++;
+                    }
+                }
+
+                return count;
+            }
+
+            // Hàm 3
+            function getUniqueWords(text) {
+                let words = getWords(text);
+                let uniqueWords = [];
+
+                for (let item of words) {
+                    if (!uniqueWords.includes(item)) {
+                        uniqueWords.push(item);
+                    }
+                }
+
+                return uniqueWords.sort();
+            }
+
+            // Hàm 4
+            function getTopWords(text, n) {
+                let words = getWords(text);
+                let result = [];
+
+                for (let item of words) {
+                    let index = result.findIndex((obj) => obj.word === item);
+
+                    if (index === -1) {
+                        result.push({
+                            word: item,
+                            count: 1,
+                        });
+                    } else {
+                        result[index].count++;
+                    }
+                }
+
+                result.sort((a, b) => b.count - a.count);
+
+                return result.slice(0, n);
+            }
+
+            // Hàm 5
+            function highlight(text, word) {
+                return text.replaceAll(word, `**${word}**`);
+            }
+
+            // ================= TEST =================
+
+            console.log(getWords(text));
+
+            console.log(countWord(text, "javascript"));
+            console.log(countWord(text, "chạy"));
+            console.log(countWord(text, "python"));
+
+            console.log(getUniqueWords(text));
+
+            console.log(getTopWords(text, 3));
+
+            console.log(highlight(text, "javascript"));
+        </script>
+    </body>
+</html>
