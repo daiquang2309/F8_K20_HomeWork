@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 2</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            // Hàm 1
+            const createCalculator = () => {
+                return {
+                    add: (a, b) => a + b,
+
+                    subtract: (a, b) => a - b,
+
+                    multiply: (a, b) => a * b,
+
+                    divide: (a, b) => {
+                        if (b === 0) {
+                            return "Lỗi: chia cho 0";
+                        }
+                        return a / b;
+                    },
+                };
+            };
+
+            // Test
+            const calculator = createCalculator();
+
+            console.log(calculator.add(2, 3)); // 5
+            console.log(calculator.subtract(10, 4)); // 6
+            console.log(calculator.multiply(3, 5)); // 15
+            console.log(calculator.divide(10, 2)); // 5
+            console.log(calculator.divide(10, 0)); // Lỗi: chia cho 0
+
+            // Hàm 2
+            const average = (...numbers) => {
+                if (numbers.length === 0) {
+                    return 0;
+                }
+
+                let sum = 0;
+
+                for (let i = 0; i < numbers.length; i++) {
+                    sum += numbers[i];
+                }
+
+                return sum / numbers.length;
+            };
+
+            // Test
+            console.log(average(10, 20, 30)); // 20
+            console.log(average(5)); // 5
+            console.log(average()); // 0
+            console.log(average(1, 2, 3, 4, 5)); // 3
+
+            // Hàm 3
+            const applyDiscount = (price, discountPercent = 10) => {
+                if (!Number.isFinite(price)) {
+                    return "Giá không hợp lệ";
+                }
+
+                return Math.floor((price * (100 - discountPercent)) / 100);
+            };
+
+            // Test
+            console.log(applyDiscount(100000)); // 90000
+            console.log(applyDiscount(100000, 20)); // 80000
+            console.log(applyDiscount(100000, 0)); // 100000
+            console.log(applyDiscount("abc", 10)); // Giá không hợp lệ
+            console.log(applyDiscount(NaN, 10)); // Giá không hợp lệ
+
+            // Hàm 4
+            const safeCalculate = (operation, ...numbers) => {
+                let result;
+
+                switch (operation) {
+                    case "add":
+                        result = 0;
+                        for (let i = 0; i < numbers.length; i++) {
+                            result += numbers[i];
+                        }
+                        break;
+
+                    case "subtract":
+                        result = numbers[0];
+                        for (let i = 1; i < numbers.length; i++) {
+                            result -= numbers[i];
+                        }
+                        break;
+
+                    case "multiply":
+                        result = 1;
+                        for (let i = 0; i < numbers.length; i++) {
+                            result *= numbers[i];
+                        }
+                        break;
+
+                    case "average":
+                        if (numbers.length === 0) {
+                            result = 0;
+                        } else {
+                            let sum = 0;
+                            for (let i = 0; i < numbers.length; i++) {
+                                sum += numbers[i];
+                            }
+                            result = sum / numbers.length;
+                        }
+                        break;
+
+                    default:
+                        return "Phép tính không được hỗ trợ";
+                }
+
+                if (Number.isNaN(result)) {
+                    return "Kết quả không hợp lệ";
+                }
+
+                return result;
+            };
+
+            // Test
+            console.log(safeCalculate("add", 1, 2, 3)); // 6
+            console.log(safeCalculate("multiply", 2, 3, 4)); // 24
+            console.log(safeCalculate("average", 10, 20)); // 15
+            console.log(safeCalculate("divide", 10, 2)); // Phép tính không được hỗ trợ
+            console.log(safeCalculate("add", 1, "abc", 3)); // Kết quả không hợp lệ
+        </script>
+    </body>
+</html>

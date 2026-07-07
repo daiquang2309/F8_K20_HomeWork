@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 2</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            const customers = [
+                { id: 1, name: "John Doe", email: "john@example.com" },
+                { id: 2, name: "Jane Smith", email: "jane@example.com" },
+                { id: 3, name: "Alice Johnson", email: "alice@example.com" },
+                { id: 4, name: "Bob Brown", email: "bob@example.com" },
+                { id: 5, name: "Charlie Green", email: "charlie@example.com" },
+            ];
+
+            const products = [
+                { id: 101, name: "Laptop", price: 1200 },
+                { id: 102, name: "Phone", price: 800 },
+                { id: 103, name: "Tablet", price: 500 },
+                { id: 104, name: "Smartwatch", price: 300 },
+                { id: 105, name: "Headphones", price: 150 },
+            ];
+
+            const orders = [
+                {
+                    id: 1001,
+                    customerId: 1,
+                    items: [
+                        { productId: 101, quantity: 2 },
+                        { productId: 102, quantity: 1 },
+                    ],
+                },
+                {
+                    id: 1002,
+                    customerId: 2,
+                    items: [
+                        { productId: 102, quantity: 1 },
+                        { productId: 103, quantity: 3 },
+                    ],
+                },
+                {
+                    id: 1003,
+                    customerId: 3,
+                    items: [
+                        { productId: 104, quantity: 5 },
+                        { productId: 105, quantity: 2 },
+                    ],
+                },
+                {
+                    id: 1004,
+                    customerId: 4,
+                    items: [
+                        { productId: 101, quantity: 1 },
+                        { productId: 103, quantity: 2 },
+                    ],
+                },
+                {
+                    id: 1005,
+                    customerId: 5,
+                    items: [{ productId: 105, quantity: 10 }],
+                },
+                {
+                    id: 1006,
+                    customerId: 1,
+                    items: [
+                        { productId: 101, quantity: 1 },
+                        { productId: 105, quantity: 3 },
+                    ],
+                },
+                {
+                    id: 1007,
+                    customerId: 2,
+                    items: [
+                        { productId: 104, quantity: 2 },
+                        { productId: 103, quantity: 1 },
+                    ],
+                },
+                {
+                    id: 1008,
+                    customerId: 3,
+                    items: [{ productId: 102, quantity: 2 }],
+                },
+                {
+                    id: 1009,
+                    customerId: 4,
+                    items: [
+                        { productId: 101, quantity: 1 },
+                        { productId: 102, quantity: 1 },
+                    ],
+                },
+                {
+                    id: 1010,
+                    customerId: 5,
+                    items: [
+                        { productId: 103, quantity: 4 },
+                        { productId: 104, quantity: 3 },
+                    ],
+                },
+            ];
+
+            function getCustomerStatitistics(customers, products, orders) {
+                let result = [];
+
+                for (let i = 0; i < customers.length; i++) {
+                    let customer = customers[i];
+
+                    let customerInfo = {
+                        id: customer.id,
+                        name: customer.name,
+                        totalSpent: 0,
+                        products: [],
+                    };
+
+                    // Duyệt các đơn hàng
+                    for (let j = 0; j < orders.length; j++) {
+                        let order = orders[j];
+
+                        if (order.customerId !== customer.id) {
+                            continue;
+                        }
+
+                        // Duyệt sản phẩm trong đơn
+                        for (let k = 0; k < order.items.length; k++) {
+                            let item = order.items[k];
+
+                            // Tìm sản phẩm
+                            let product = null;
+
+                            for (let m = 0; m < products.length; m++) {
+                                if (products[m].id === item.productId) {
+                                    product = products[m];
+                                    break;
+                                }
+                            }
+
+                            if (!product) {
+                                continue;
+                            }
+
+                            let spent = product.price * item.quantity;
+
+                            customerInfo.totalSpent += spent;
+
+                            // Kiểm tra đã có sản phẩm này chưa
+                            let exist = false;
+
+                            for (let n = 0; n < customerInfo.products.length; n++) {
+                                if (customerInfo.products[n].name === product.name) {
+                                    customerInfo.products[n].quantity += item.quantity;
+                                    customerInfo.products[n].totalSpent += spent;
+                                    exist = true;
+                                    break;
+                                }
+                            }
+
+                            // Nếu chưa có thì thêm mới
+                            if (!exist) {
+                                customerInfo.products.push({
+                                    name: product.name,
+                                    quantity: item.quantity,
+                                    totalSpent: spent,
+                                });
+                            }
+                        }
+                    }
+
+                    // Sắp xếp sản phẩm theo totalSpent giảm dần
+                    customerInfo.products.sort(function (a, b) {
+                        return b.totalSpent - a.totalSpent;
+                    });
+
+                    result.push(customerInfo);
+                }
+
+                // Sắp xếp customer theo totalSpent giảm dần
+                result.sort(function (a, b) {
+                    return b.totalSpent - a.totalSpent;
+                });
+
+                return result;
+            }
+
+            console.log(getCustomerStatitistics(customers, products, orders));
+
+            // Test Case 1
+            const items_TC1 = [
+                { productId: 101, quantity: 2 },
+                { productId: 101, quantity: 3 },
+            ];
+            const customer = {
+                products: [],
+                totalSpent: 0,
+            };
+
+            for (let i = 0; i < items_TC1.length; i++) {
+                let item = items_TC1[i];
+
+                let product = products.find((p) => p.id === item.productId);
+
+                let spent = product.price * item.quantity;
+
+                customer.totalSpent += spent;
+
+                let exist = customer.products.find((p) => p.name === product.name);
+
+                if (exist) {
+                    exist.quantity += item.quantity;
+                    exist.totalSpent += spent;
+                } else {
+                    customer.products.push({
+                        name: product.name,
+                        quantity: item.quantity,
+                        totalSpent: spent,
+                    });
+                }
+            }
+
+            console.log(customer.products);
+
+            // Test Case 2
+            const customers2 = [
+                {
+                    id: 10,
+                    name: "David",
+                },
+            ];
+
+            console.log(getCustomerStatitistics(customers2, products, orders));
+            // Test Case 3
+            const items_TC3 = [
+                {
+                    productId: 101,
+                    quantity: 1,
+                },
+                {
+                    productId: 102,
+                    quantity: 2,
+                },
+            ];
+
+            let customerTotal = 0;
+
+            for (let i = 0; i < items_TC3.length; i++) {
+                let item = items_TC3[i];
+
+                for (let j = 0; j < products.length; j++) {
+                    if (products[j].id === item.productId) {
+                        let total = products[j].price * item.quantity;
+
+                        console.log(products[j].name + ": " + total);
+
+                        customerTotal += total;
+                        break;
+                    }
+                }
+            }
+
+            console.log("Customer Total:", customerTotal);
+            // Test Case 4
+            const orders2 = [
+                {
+                    items: [{ productId: 101, quantity: 1 }],
+                },
+                {
+                    items: [{ productId: 101, quantity: 2 }],
+                },
+                {
+                    items: [{ productId: 101, quantity: 5 }],
+                },
+            ];
+
+            let result = [];
+
+            for (let i = 0; i < orders2.length; i++) {
+                for (let j = 0; j < orders2[i].items.length; j++) {
+                    let item = orders2[i].items[j];
+
+                    let product = null;
+
+                    for (let k = 0; k < products.length; k++) {
+                        if (products[k].id === item.productId) {
+                            product = products[k];
+                            break;
+                        }
+                    }
+
+                    let exist = false;
+
+                    for (let k = 0; k < result.length; k++) {
+                        if (result[k].name === product.name) {
+                            result[k].quantity += item.quantity;
+                            result[k].totalSpent += product.price * item.quantity;
+                            exist = true;
+                            break;
+                        }
+                    }
+
+                    if (!exist) {
+                        result.push({
+                            name: product.name,
+                            quantity: item.quantity,
+                            totalSpent: product.price * item.quantity,
+                        });
+                    }
+                }
+            }
+
+            console.log(result);
+            // Test Case 5
+            const customersTest = [
+                { id: 1, name: "An", totalSpent: 3500 },
+                { id: 2, name: "Bình", totalSpent: 5200 },
+                { id: 3, name: "Chi", totalSpent: 4100 },
+            ];
+
+            customersTest.sort(function (a, b) {
+                return b.totalSpent - a.totalSpent;
+            });
+
+            for (let i = 0; i < customersTest.length; i++) {
+                console.log(customersTest[i].name);
+            }
+            // Test Case 6
+            const productsTest = [
+                {
+                    name: "Laptop",
+                    totalSpent: 3600,
+                },
+                {
+                    name: "Phone",
+                    totalSpent: 800,
+                },
+                {
+                    name: "Tablet",
+                    totalSpent: 2000,
+                },
+                {
+                    name: "Headphones",
+                    totalSpent: 450,
+                },
+            ];
+
+            productsTest.sort(function (a, b) {
+                return b.totalSpent - a.totalSpent;
+            });
+
+            for (let i = 0; i < productsTest.length; i++) {
+                console.log(productsTest[i].name);
+            }
+            // Test Case 7
+            const customers_TC7 = [
+                {
+                    id: 5,
+                    name: "Charlie",
+                },
+            ];
+
+            const products_TC7 = [
+                {
+                    id: 105,
+                    name: "Headphones",
+                    price: 150,
+                },
+            ];
+
+            const orders_TC7 = [
+                {
+                    id: 1,
+                    customerId: 5,
+                    items: [
+                        {
+                            productId: 105,
+                            quantity: 10,
+                        },
+                    ],
+                },
+            ];
+
+            console.log(getCustomerStatitistics(customers_TC7, products_TC7, orders_TC7));
+            // Test Case 8
+            const customers_TC8 = [];
+            const products_TC8 = [];
+            const orders_TC8 = [];
+
+            console.log(getCustomerStatitistics(customers_TC8, products_TC8, orders_TC8));
+        </script>
+    </body>
+</html>

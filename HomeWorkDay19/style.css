@@ -1,0 +1,29 @@
+body {
+    background: #000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.5;
+}
+
+h1 {
+    color: white;
+    font-size: 100px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 80px;
+    color: white;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    scale: 1.2;
+}
