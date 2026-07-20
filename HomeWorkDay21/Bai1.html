@@ -12,191 +12,257 @@
         <a href="index.html">Quay lại</a>
 
         <script>
-            // ======================
-            // Yêu cầu 1
-            // ======================
+            const members = [
+                { id: 1, name: "Minh Tran", email: "minh@example.com" },
+                { id: 2, name: "Lan Pham", email: "lan@example.com" },
+                { id: 3, name: "Huy Nguyen", email: "huy@example.com" },
+                { id: 4, name: "Trang Le", email: "trang@example.com" },
+                { id: 5, name: "Duc Vo", email: "duc@example.com" },
+            ];
 
-            const baseProto = {
-                introduce() {
-                    return `Tôi là ${this.name}, ${this.age} tuổi`;
+            const books = [
+                { id: 201, title: "Clean Code", finePerDay: 5000 },
+                { id: 202, title: "Atomic Habits", finePerDay: 3000 },
+                { id: 203, title: "Sapiens", finePerDay: 4000 },
+                { id: 204, title: "Deep Work", finePerDay: 2000 },
+                { id: 205, title: "The Pragmatic Programmer", finePerDay: 6000 },
+            ];
+
+            const borrowRecords = [
+                {
+                    id: 3001,
+                    memberId: 1,
+                    lines: [
+                        { bookId: 201, lateDays: 2 },
+                        { bookId: 202, lateDays: 0 },
+                    ],
                 },
-            };
-
-            // ======================
-            // Yêu cầu 2
-            // ======================
-
-            const levelTwoProto = Object.create(baseProto);
-
-            levelTwoProto.getInfo = function () {
-                return `${this.name} làm ở phòng ${this.department}, lương ${this.salary}`;
-            };
-
-            // ======================
-            // Yêu cầu 3
-            // ======================
-
-            const item1 = Object.create(levelTwoProto);
-            item1.name = "Nguyễn Văn A";
-            item1.age = 28;
-            item1.department = "IT";
-            item1.salary = 15000000;
-
-            const item2 = Object.create(levelTwoProto);
-            item2.name = "Trần Thị B";
-            item2.age = 25;
-            item2.department = "HR";
-            item2.salary = 12000000;
-
-            const item3 = Object.create(levelTwoProto);
-            item3.name = "Lê Văn C";
-            item3.age = 30;
-            item3.department = "IT";
-            item3.salary = 18000000;
-
-            const item4 = Object.create(levelTwoProto);
-            item4.name = "Phạm Thị D";
-            item4.age = 27;
-            item4.department = "Marketing";
-            item4.salary = 14000000;
-
-            const item5 = Object.create(levelTwoProto);
-            item5.name = "Hoàng Văn E";
-            item5.age = 29;
-            item5.department = "HR";
-            item5.salary = 16000000;
-
-            // ======================
-            // Yêu cầu 4
-            // ======================
-
-            function checkOwnProperty(obj, property) {
-                return Object.hasOwn(obj, property);
-            }
-
-            // ======================
-            // Yêu cầu 5
-            // ======================
-
-            const newProto = {
-                getInfo() {
-                    return `${this.name} đang làm việc tại ${this.department} với mức lương ${this.salary}`;
+                {
+                    id: 3002,
+                    memberId: 2,
+                    lines: [
+                        { bookId: 202, lateDays: 1 },
+                        { bookId: 203, lateDays: 3 },
+                    ],
                 },
-            };
+                {
+                    id: 3003,
+                    memberId: 3,
+                    lines: [
+                        { bookId: 204, lateDays: 5 },
+                        { bookId: 205, lateDays: 2 },
+                    ],
+                },
+                {
+                    id: 3004,
+                    memberId: 4,
+                    lines: [
+                        { bookId: 201, lateDays: 1 },
+                        { bookId: 203, lateDays: 2 },
+                    ],
+                },
+                {
+                    id: 3005,
+                    memberId: 5,
+                    lines: [{ bookId: 205, lateDays: 10 }],
+                },
+                {
+                    id: 3006,
+                    memberId: 1,
+                    lines: [
+                        { bookId: 201, lateDays: 1 },
+                        { bookId: 205, lateDays: 3 },
+                    ],
+                },
+                {
+                    id: 3007,
+                    memberId: 2,
+                    lines: [
+                        { bookId: 204, lateDays: 2 },
+                        { bookId: 203, lateDays: 1 },
+                    ],
+                },
+                {
+                    id: 3008,
+                    memberId: 3,
+                    lines: [{ bookId: 202, lateDays: 2 }],
+                },
+                {
+                    id: 3009,
+                    memberId: 4,
+                    lines: [
+                        { bookId: 201, lateDays: 1 },
+                        { bookId: 202, lateDays: 1 },
+                    ],
+                },
+                {
+                    id: 3010,
+                    memberId: 5,
+                    lines: [
+                        { bookId: 203, lateDays: 4 },
+                        { bookId: 204, lateDays: 3 },
+                    ],
+                },
+            ];
 
-            // ======================
-            // Yêu cầu 6
-            // ======================
+            function getMemberFineStatitics(members, books, borrowRecords) {
+                const bookMap = new Map();
 
-            function getOwnProperties(obj) {
-                return Object.getOwnPropertyNames(obj);
+                for (const book of books) {
+                    bookMap.set(book.id, book);
+                }
+
+                const result = [];
+
+                for (const member of members) {
+                    const memberBooks = new Map();
+                    let totalFine = 0;
+
+                    for (const record of borrowRecords) {
+                        // bỏ qua record không có thuộc tính lines riêng
+                        if (!Object.hasOwn(record, "lines")) continue;
+
+                        if (record.memberId !== member.id) continue;
+
+                        for (const line of record.lines) {
+                            const book = bookMap.get(line.bookId);
+
+                            if (!book) continue;
+
+                            const fine = book.finePerDay * line.lateDays;
+
+                            totalFine += fine;
+
+                            if (!memberBooks.has(book.id)) {
+                                memberBooks.set(book.id, {
+                                    title: book.title,
+                                    lateDays: line.lateDays,
+                                    fine: fine,
+                                });
+                            } else {
+                                const current = memberBooks.get(book.id);
+                                current.lateDays += line.lateDays;
+                                current.fine += fine;
+                            }
+                        }
+                    }
+
+                    const booksResult = [...memberBooks.values()];
+
+                    booksResult.sort((a, b) => b.fine - a.fine);
+
+                    for (const item of booksResult) {
+                        Object.freeze(item);
+                    }
+
+                    const memberResult = {
+                        id: member.id,
+                        name: member.name,
+                        totalFine,
+                        books: Object.freeze(booksResult),
+                    };
+
+                    Object.freeze(memberResult);
+
+                    result.push(memberResult);
+                }
+
+                result.sort((a, b) => b.totalFine - a.totalFine);
+
+                return Object.freeze(result);
             }
 
-            // ======================
-            // Yêu cầu 7
-            // ======================
+            class MemberPaginator {
+                constructor(resultList, soLuongMoiTrang) {
+                    this.resultList = resultList;
+                    this.soLuongMoiTrang = soLuongMoiTrang;
+                }
 
-            function getDescriptor(obj, property) {
-                return Object.getOwnPropertyDescriptor(obj, property);
+                *[Symbol.iterator]() {
+                    for (let i = 0; i < this.resultList.length; i += this.soLuongMoiTrang) {
+                        yield this.resultList.slice(i, i + this.soLuongMoiTrang);
+                    }
+                }
             }
 
-            // ======================
-            // Yêu cầu 8
-            // ======================
+            const result = getMemberFineStatitics(members, books, borrowRecords);
 
-            Object.seal(item2);
+            console.log(result);
 
-            // ======================
-            // Yêu cầu 9
-            // ======================
+            // Test Case 1 - Member mượn nhiều lần cùng một cuốn sách
+            const result_TC1 = getMemberFineStatitics(members, books, borrowRecords);
 
-            const items = [item1, item2, item3, item4, item5];
+            console.log(result_TC1.find((member) => member.id === 1));
+            // Test Case 2 - Member không có lượt mượn
+            const members_TC2 = [{ id: 10, name: "Khanh" }];
 
-            const grouped = Object.groupBy(items, (item) => item.department);
+            const books_TC2 = [];
 
-            // ======================
-            // Yêu cầu 10
-            // ======================
+            const borrowRecords_TC2 = [];
 
-            const lookup = Object.fromEntries([
-                ["A001", "Nguyễn Văn A"],
-                ["A002", "Trần Thị B"],
-                ["A003", "Lê Văn C"],
-                ["A004", "Phạm Thị D"],
-                ["A005", "Hoàng Văn E"],
-            ]);
+            console.log(getMemberFineStatitics(members_TC2, books_TC2, borrowRecords_TC2));
+            // Test Case 3 - Một lượt mượn có nhiều sách
+            const result_TC3 = getMemberFineStatitics(members, books, borrowRecords);
 
-            // ====================================================
-            // TEST CASE
-            // ====================================================
+            console.log(`${result_TC3[0].books[1].title}: ${result_TC3[0].books[1].fine}`);
+            console.log(`${result_TC3[0].books[0].title}: ${result_TC3[0].books[0].fine}`);
+            console.log(`Member Total: ${result_TC3[0].totalFine}`);
+            // Test Case 4 - Nhiều lượt mượn cùng một cuốn sách
+            const result_TC4 = getMemberFineStatitics(members, books, borrowRecords);
 
-            console.log(item1.introduce());
-            // Tôi là Nguyễn Văn A, 28 tuổi
+            console.log(result[0].books[0]);
+            // Test Case 5 - Kiểm tra sắp xếp member
+            const result_TC5 = getMemberFineStatitics(members, books, borrowRecords);
 
-            console.log(item1.getInfo());
-            // Nguyễn Văn A làm ở phòng IT, lương 15000000
+            result_TC5.forEach((member) => {
+                console.log(`${member.name}: ${member.totalFine}`);
+            });
+            // Test Case 6 - Kiểm tra sắp xếp sách
+            const result_TC6 = getMemberFineStatitics(members, books, borrowRecords);
 
-            console.log(checkOwnProperty(item1, "name"));
-            // true
+            result_TC6[0].books.forEach((book) => {
+                console.log(`${book.title}: ${book.fine}`);
+            });
+            // Test Case 7 - Member chỉ mượn một cuốn sách
+            const result_TC7 = getMemberFineStatitics(members, books, borrowRecords);
 
-            console.log(checkOwnProperty(item1, "introduce"));
-            // false
+            console.log(result_TC7.find((member) => member.id === 5));
+            // Test Case 8 - Không có dữ liệu
+            const members_TC8 = [];
+            const books_TC8 = [];
+            const borrowRecords_TC8 = [];
 
-            console.log(Object.getPrototypeOf(item1) === levelTwoProto);
-            // true
+            console.log(getMemberFineStatitics(members_TC8, books_TC8, borrowRecords_TC8));
 
-            console.log(Object.getPrototypeOf(levelTwoProto) === baseProto);
-            // true
+            console.log(getMemberFineStatitics(members_TC8, books_TC8, borrowRecords_TC8));
+            // Test Case 9 - Kiểm tra tính bất biến của kết quả
+            const result_TC9 = getMemberFineStatitics(members, books, borrowRecords);
 
-            Object.setPrototypeOf(item4, newProto);
+            result_TC9[0].totalFine = 999999;
+            result_TC9[0].extraField = "hack";
 
-            console.log(item4.getInfo());
-            // Phạm Thị D đang làm việc tại Marketing với mức lương 14000000
+            console.log(result_TC9[0].totalFine);
+            console.log(result_TC9[0].extraField);
+            // Test Case 10 - borrowRecord thiếu thuộc tính lines riêng
+            const brokenRecord = Object.create({
+                lines: [{ bookId: 201, lateDays: 5 }],
+            });
 
-            console.log(getOwnProperties(item1));
-            // [ 'name', 'age', 'department', 'salary' ]
+            brokenRecord.id = 3099;
+            brokenRecord.memberId = 1;
 
-            console.log(getDescriptor(item1, "salary"));
-            // {
-            //   value: 15000000,
-            //   writable: true,
-            //   enumerable: true,
-            //   configurable: true
-            // }
+            const result_TC10 = getMemberFineStatitics(members, books, [...borrowRecords, brokenRecord]);
 
-            item2.bonus = 1000000;
-            console.log(item2.bonus);
-            // undefined
+            console.log(result_TC10.find((member) => member.id === 1).totalFine);
+            // Test Case 11 - Kiểm tra phân trang kết quả
+            const result_TC11 = getMemberFineStatitics(members, books, borrowRecords);
 
-            item2.salary = 20000000;
-            console.log(item2.salary);
-            // 20000000
+            let page = 1;
 
-            console.log(Object.isSealed(item2));
-            // true
-
-            console.log(grouped);
-            /*
-            {
-            IT: [item1, item3],
-            HR: [item2, item5],
-            Marketing: [item4]
+            for (const members of new MemberPaginator(result_TC11, 2)) {
+                console.log(`Trang ${page++}:`);
+                console.log(members.map((member) => member.name));
             }
-            */
-
-            console.log(lookup);
-            /*
-            {
-            A001: 'Nguyễn Văn A',
-            A002: 'Trần Thị B',
-            A003: 'Lê Văn C',
-            A004: 'Phạm Thị D',
-            A005: 'Hoàng Văn E'
-            }
-            */
-
-            console.log(lookup["A002"]);
-            // Trần Thị B
         </script>
     </body>
 </html>
