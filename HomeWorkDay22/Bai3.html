@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 3</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            function createOrderSystem() {
+                const cart = [];
+
+                return {
+                    addToCart(name, price, qty) {
+                        cart.push({
+                            name,
+                            price,
+                            qty,
+                        });
+
+                        return cart.length;
+                    },
+
+                    checkout(distance) {
+                        let subtotal = 0;
+
+                        for (const item of cart) {
+                            subtotal += item.price * item.qty;
+                        }
+
+                        let shippingFee;
+
+                        if (subtotal >= 500000) {
+                            shippingFee = 0;
+                        } else if (distance <= 5) {
+                            let fee = 15000;
+                            shippingFee = fee;
+                        } else if (distance <= 20) {
+                            let fee = 30000;
+                            shippingFee = fee;
+                        } else {
+                            let fee = 50000;
+                            shippingFee = fee;
+                        }
+
+                        const finalTotal = subtotal + shippingFee;
+
+                        cart.length = 0;
+
+                        return {
+                            subtotal,
+                            shippingFee,
+                            finalTotal,
+                        };
+                    },
+
+                    getCartSize() {
+                        return cart.length;
+                    },
+                };
+            }
+
+            const store = createOrderSystem();
+
+            store.addToCart("Mũ lưỡi trai", 120000, 1);
+            console.log(store.getCartSize());
+            // 1
+
+            console.log(store.checkout(15));
+            // { subtotal: 120000, shippingFee: 30000, finalTotal: 150000 }
+
+            console.log(store.getCartSize());
+            // 0
+
+            // --- Một hệ thống khác, hoàn toàn độc lập ---
+
+            const store2 = createOrderSystem();
+
+            store2.addToCart("Tất", 30000, 2);
+
+            console.log(store2.checkout(3));
+            // { subtotal: 60000, shippingFee: 15000, finalTotal: 75000 }
+
+            // --- Đơn hàng lớn, được miễn phí ship dù khoảng cách xa ---
+
+            const store3 = createOrderSystem();
+
+            store3.addToCart("Áo khoác", 600000, 1);
+
+            console.log(store3.checkout(30));
+            // { subtotal: 600000, shippingFee: 0, finalTotal: 600000 }
+
+            // store gốc và store2, store3 không hề ảnh hưởng lẫn nhau
+
+            console.log(store.getCartSize()); // 0
+            console.log(store2.getCartSize()); // 0
+            console.log(store3.getCartSize()); // 0
+        </script>
+    </body>
+</html>

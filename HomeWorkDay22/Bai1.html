@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 1</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 1</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            // Hàm 1
+            function formatBirthday(dateString) {
+                const date = new Date(dateString);
+
+                const day = String(date.getDate()).padStart(2, "0");
+                const month = String(date.getMonth() + 1).padStart(2, "0");
+                const year = date.getFullYear();
+
+                return `${day}/${month}/${year}`;
+            }
+
+            // Hàm 2
+            function getAge(birthDateString, currentDateString) {
+                const birth = new Date(birthDateString);
+                const current = new Date(currentDateString);
+
+                let age = current.getFullYear() - birth.getFullYear();
+
+                const monthDiff = current.getMonth() - birth.getMonth();
+                const dayDiff = current.getDate() - birth.getDate();
+
+                if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                    age--;
+                }
+
+                return age;
+            }
+
+            // Hàm 3
+            function getDayOfWeekName(dateString) {
+                const date = new Date(dateString);
+
+                const days = ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"];
+
+                return days[date.getDay()];
+            }
+
+            console.log(formatBirthday("1995-03-25"));
+            // 25/03/1995
+
+            console.log(formatBirthday("2000-12-01"));
+            // 01/12/2000
+
+            console.log(getAge("1995-03-25", "2026-07-19"));
+            // 31
+
+            console.log(getAge("2000-12-01", "2026-07-19"));
+            // 25
+
+            console.log(getAge("1995-08-01", "2026-07-19"));
+            // 30
+
+            console.log(getDayOfWeekName("2026-07-19"));
+            // Chủ nhật
+
+            console.log(getDayOfWeekName("2000-01-01"));
+            // Thứ bảy
+        </script>
+    </body>
+</html>

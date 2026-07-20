@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 2</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            // Hàm 1
+            function addDays(dateString, days) {
+                const date = new Date(dateString);
+
+                date.setDate(date.getDate() + days);
+
+                return date.toISOString().split("T")[0];
+            }
+
+            // Hàm 2
+            function getDaysBetween(date1String, date2String) {
+                const date1 = new Date(date1String);
+                const date2 = new Date(date2String);
+
+                const diff = Math.abs(date2 - date1);
+
+                return diff / (1000 * 60 * 60 * 24);
+            }
+
+            // Hàm 3
+            function isExpired(expiryDateString, currentDateString) {
+                const expiry = new Date(expiryDateString);
+                const current = new Date(currentDateString);
+
+                return current > expiry;
+            }
+
+            // Hàm 4
+            function getCountdown(targetDateString, currentDateString) {
+                const target = new Date(targetDateString);
+                const current = new Date(currentDateString);
+
+                const diff = target - current;
+
+                if (diff < 0) {
+                    return "Đã qua hạn";
+                }
+
+                const totalHours = Math.floor(diff / (1000 * 60 * 60));
+
+                const days = Math.floor(totalHours / 24);
+                const hours = totalHours % 24;
+
+                return `Còn ${days} ngày ${hours} giờ`;
+            }
+
+            console.log(addDays("2026-07-19", 10));
+            // 2026-07-29
+
+            console.log(addDays("2026-07-25", 10));
+            // 2026-08-04
+
+            console.log(addDays("2026-01-01", -5));
+            // 2025-12-27
+
+            console.log(getDaysBetween("2026-07-19", "2026-08-01"));
+            // 13
+
+            console.log(getDaysBetween("2026-01-01", "2026-12-31"));
+            // 364
+
+            console.log(isExpired("2026-07-01", "2026-07-19"));
+            // true
+
+            console.log(isExpired("2026-12-31", "2026-07-19"));
+            // false
+
+            console.log(getCountdown("2026-08-01T00:00:00", "2026-07-19T12:00:00"));
+            // Còn 12 ngày 12 giờ
+
+            console.log(getCountdown("2026-07-01T00:00:00", "2026-07-19T12:00:00"));
+            // Đã qua hạn
+        </script>
+    </body>
+</html>
