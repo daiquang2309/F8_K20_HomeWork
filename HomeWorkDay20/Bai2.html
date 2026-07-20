@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 2</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            // ==========================
+            // Yêu cầu 1
+            // ==========================
+
+            const config = {
+                mucPhuPhi: 0.1,
+                currency: "VND",
+                tax: 0.08,
+                version: 1,
+            };
+
+            Object.freeze(config);
+
+            // ==========================
+            // Yêu cầu 2
+            // ==========================
+
+            class MyClass {
+                constructor(name) {
+                    this.name = name;
+                    this.items = [];
+                    this._discountPercent = 0;
+
+                    Object.defineProperty(this, "id", {
+                        value: crypto.randomUUID(),
+                        writable: false,
+                        enumerable: false,
+                        configurable: false,
+                    });
+                }
+
+                addItem(name, price, quantity) {
+                    this.items.push({
+                        name,
+                        price,
+                        quantity,
+                    });
+                }
+
+                get total() {
+                    let sum = 0;
+
+                    for (const item of this.items) {
+                        sum += item.price * item.quantity;
+                    }
+
+                    sum += sum * config.mucPhuPhi;
+
+                    sum -= sum * (this._discountPercent / 100);
+
+                    return sum;
+                }
+
+                set discountPercent(value) {
+                    if (value < 0 || value > 100) {
+                        throw new Error("Discount phải từ 0 đến 100");
+                    }
+
+                    this._discountPercent = value;
+                }
+            }
+
+            // ==========================
+            // Yêu cầu 3
+            // ==========================
+
+            function logSummary() {
+                console.log(`${this.name}: ${this.total}`);
+            }
+
+            // ==========================
+            // Yêu cầu 5
+            // ==========================
+
+            const objA = {
+                name: "Laptop",
+                color: "Black",
+                price: 15000000,
+            };
+
+            const objB = {
+                color: "Silver",
+                price: 17000000,
+                brand: "Asus",
+            };
+
+            const merged = {
+                ...objA,
+                ...objB,
+            };
+
+            // ==========================
+            // Test Case
+            // ==========================
+
+            // Freeze
+
+            config.mucPhuPhi = 0.5;
+            console.log(config.mucPhuPhi);
+            // 0.1
+
+            console.log(Object.isFrozen(config));
+            // true
+
+            // Class
+
+            const instance = new MyClass("Danh sách của An");
+
+            instance.addItem("Bàn phím", 500000, 2);
+            instance.addItem("Chuột", 200000, 1);
+
+            console.log(instance.total);
+            // 1320000
+
+            instance.discountPercent = 10;
+
+            console.log(instance.total);
+            // 1188000
+
+            try {
+                instance.discountPercent = 150;
+            } catch (e) {
+                console.log(e.message);
+            }
+            // Discount phải từ 0 đến 100
+
+            // Bind
+
+            setTimeout(logSummary.bind(instance), 100);
+            // Danh sách của An: 1188000
+
+            // defineProperty
+
+            console.log(Object.keys(instance));
+            // Không có "id"
+
+            instance.id = "hack123";
+
+            console.log(instance.id);
+            // Vẫn là id cũ
+
+            console.log(Object.getOwnPropertyDescriptor(instance, "id"));
+            /*
+            {
+            value: "...",
+            writable: false,
+            enumerable: false,
+            configurable: false
+            }
+            */
+
+            // Merge
+
+            console.log(merged);
+            /*
+            {
+                name: 'Laptop',
+                color: 'Silver',
+                price: 17000000,
+                brand: 'Asus'
+            }
+            */
+
+            console.log(objA);
+            /*
+            {
+                name: 'Laptop',
+                color: 'Black',
+                price: 15000000
+            }
+            */
+            console.log(objB);
+            /*
+            {
+                color: 'Silver',
+                price: 17000000,
+                brand: 'Asus'
+            }
+            */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 1</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 1</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            // ======================
+            // Yêu cầu 1
+            // ======================
+
+            const baseProto = {
+                introduce() {
+                    return `Tôi là ${this.name}, ${this.age} tuổi`;
+                },
+            };
+
+            // ======================
+            // Yêu cầu 2
+            // ======================
+
+            const levelTwoProto = Object.create(baseProto);
+
+            levelTwoProto.getInfo = function () {
+                return `${this.name} làm ở phòng ${this.department}, lương ${this.salary}`;
+            };
+
+            // ======================
+            // Yêu cầu 3
+            // ======================
+
+            const item1 = Object.create(levelTwoProto);
+            item1.name = "Nguyễn Văn A";
+            item1.age = 28;
+            item1.department = "IT";
+            item1.salary = 15000000;
+
+            const item2 = Object.create(levelTwoProto);
+            item2.name = "Trần Thị B";
+            item2.age = 25;
+            item2.department = "HR";
+            item2.salary = 12000000;
+
+            const item3 = Object.create(levelTwoProto);
+            item3.name = "Lê Văn C";
+            item3.age = 30;
+            item3.department = "IT";
+            item3.salary = 18000000;
+
+            const item4 = Object.create(levelTwoProto);
+            item4.name = "Phạm Thị D";
+            item4.age = 27;
+            item4.department = "Marketing";
+            item4.salary = 14000000;
+
+            const item5 = Object.create(levelTwoProto);
+            item5.name = "Hoàng Văn E";
+            item5.age = 29;
+            item5.department = "HR";
+            item5.salary = 16000000;
+
+            // ======================
+            // Yêu cầu 4
+            // ======================
+
+            function checkOwnProperty(obj, property) {
+                return Object.hasOwn(obj, property);
+            }
+
+            // ======================
+            // Yêu cầu 5
+            // ======================
+
+            const newProto = {
+                getInfo() {
+                    return `${this.name} đang làm việc tại ${this.department} với mức lương ${this.salary}`;
+                },
+            };
+
+            // ======================
+            // Yêu cầu 6
+            // ======================
+
+            function getOwnProperties(obj) {
+                return Object.getOwnPropertyNames(obj);
+            }
+
+            // ======================
+            // Yêu cầu 7
+            // ======================
+
+            function getDescriptor(obj, property) {
+                return Object.getOwnPropertyDescriptor(obj, property);
+            }
+
+            // ======================
+            // Yêu cầu 8
+            // ======================
+
+            Object.seal(item2);
+
+            // ======================
+            // Yêu cầu 9
+            // ======================
+
+            const items = [item1, item2, item3, item4, item5];
+
+            const grouped = Object.groupBy(items, (item) => item.department);
+
+            // ======================
+            // Yêu cầu 10
+            // ======================
+
+            const lookup = Object.fromEntries([
+                ["A001", "Nguyễn Văn A"],
+                ["A002", "Trần Thị B"],
+                ["A003", "Lê Văn C"],
+                ["A004", "Phạm Thị D"],
+                ["A005", "Hoàng Văn E"],
+            ]);
+
+            // ====================================================
+            // TEST CASE
+            // ====================================================
+
+            console.log(item1.introduce());
+            // Tôi là Nguyễn Văn A, 28 tuổi
+
+            console.log(item1.getInfo());
+            // Nguyễn Văn A làm ở phòng IT, lương 15000000
+
+            console.log(checkOwnProperty(item1, "name"));
+            // true
+
+            console.log(checkOwnProperty(item1, "introduce"));
+            // false
+
+            console.log(Object.getPrototypeOf(item1) === levelTwoProto);
+            // true
+
+            console.log(Object.getPrototypeOf(levelTwoProto) === baseProto);
+            // true
+
+            Object.setPrototypeOf(item4, newProto);
+
+            console.log(item4.getInfo());
+            // Phạm Thị D đang làm việc tại Marketing với mức lương 14000000
+
+            console.log(getOwnProperties(item1));
+            // [ 'name', 'age', 'department', 'salary' ]
+
+            console.log(getDescriptor(item1, "salary"));
+            // {
+            //   value: 15000000,
+            //   writable: true,
+            //   enumerable: true,
+            //   configurable: true
+            // }
+
+            item2.bonus = 1000000;
+            console.log(item2.bonus);
+            // undefined
+
+            item2.salary = 20000000;
+            console.log(item2.salary);
+            // 20000000
+
+            console.log(Object.isSealed(item2));
+            // true
+
+            console.log(grouped);
+            /*
+            {
+            IT: [item1, item3],
+            HR: [item2, item5],
+            Marketing: [item4]
+            }
+            */
+
+            console.log(lookup);
+            /*
+            {
+            A001: 'Nguyễn Văn A',
+            A002: 'Trần Thị B',
+            A003: 'Lê Văn C',
+            A004: 'Phạm Thị D',
+            A005: 'Hoàng Văn E'
+            }
+            */
+
+            console.log(lookup["A002"]);
+            // Trần Thị B
+        </script>
+    </body>
+</html>
