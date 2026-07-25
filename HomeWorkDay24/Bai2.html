@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 2</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            class BankAccount {
+                static totalMoney = 0;
+
+                #balance;
+
+                constructor(ownerName, balance) {
+                    if (typeof balance !== "number" || balance < 0) {
+                        throw new Error("Số dư ban đầu không hợp lệ.");
+                    }
+
+                    this.ownerName = ownerName;
+                    this.#balance = balance;
+
+                    BankAccount.totalMoney += balance;
+                }
+
+                get balance() {
+                    return this.#balance;
+                }
+
+                deposit(amount) {
+                    if (typeof amount !== "number" || amount <= 0) {
+                        throw new Error("Số tiền nạp không hợp lệ.");
+                    }
+
+                    this.#balance += amount;
+                }
+
+                withdraw(amount) {
+                    if (typeof amount !== "number" || amount <= 0) {
+                        throw new Error("Số tiền rút không hợp lệ.");
+                    }
+
+                    if (amount > this.#balance) {
+                        throw new Error("Không đủ tiền.");
+                    }
+
+                    this.#balance -= amount;
+                }
+
+                toString() {
+                    return `Chủ tài khoản: ${this.ownerName}
+                    Số dư: ${this.#balance}`;
+                }
+            }
+
+            class SavingsAccount extends BankAccount {
+                constructor(ownerName, balance, interestRate) {
+                    super(ownerName, balance);
+                    this.interestRate = interestRate;
+                }
+
+                addInterest() {
+                    const interest = this.balance * this.interestRate;
+                    this.deposit(interest);
+                }
+
+                withdraw(amount) {
+                    if (amount > this.balance / 2) {
+                        throw new Error("Không được rút quá 50% số dư.");
+                    }
+
+                    super.withdraw(amount);
+                }
+            }
+
+            // =========Test Case 1=========
+            /* try {
+                const account = new BankAccount("An", -100);
+            } catch (e) {
+                console.log(e.message);
+            } */
+
+            // =========Test Case 2=========
+            /* const account = new BankAccount("An", 500000);
+
+            try {
+                account.deposit("100");
+            } catch (e) {
+                console.log(e.message);
+            }
+
+            console.log(account.balance); */
+
+            // =========Test Case 3=========
+            /* const account = new BankAccount("An", 500000);
+
+            try {
+                account.withdraw(700000);
+            } catch (e) {
+                console.log(e.message);
+            } */
+
+            // =========Test Case 4=========
+            /* const account = new SavingsAccount("Bình", 1000000, 0.05);
+
+            account.addInterest();
+
+            console.log(account.balance); */
+
+            // =========Test Case 5=========
+            /* const account = new SavingsAccount("Bình", 1000000, 0.05);
+
+            try {
+                account.withdraw(600000);
+            } catch (e) {
+                console.log(e.message);
+            } */
+
+            // =========Test Case 6=========
+            /* const account = new SavingsAccount("Bình", 1000000, 0.05);
+
+            account.withdraw(400000);
+
+            console.log(account.balance); */
+
+            // =========Test Case 7=========
+            const a = new BankAccount("An", 500000);
+            const b = new SavingsAccount("Bình", 1000000, 0.05);
+            const c = new BankAccount("Cường", 200000);
+
+            console.log(BankAccount.totalMoney);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 1</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Bài 1</h1>
+
+        <a href="index.html">Quay lại</a>
+
+        <script>
+            // ===== Custom Error =====
+            class InvalidTypeError extends Error {
+                constructor(message, field) {
+                    super(message);
+                    this.name = "InvalidTypeError";
+                    this.field = field;
+                }
+            }
+
+            class RangeValidationError extends Error {
+                constructor(message, field) {
+                    super(message);
+                    this.name = "RangeValidationError";
+                    this.field = field;
+                }
+            }
+
+            class InvalidEmailError extends Error {
+                constructor(message, field) {
+                    super(message);
+                    this.name = "InvalidEmailError";
+                    this.field = field;
+                }
+            }
+
+            class WeakPasswordError extends Error {
+                constructor(message, field) {
+                    super(message);
+                    this.name = "WeakPasswordError";
+                    this.field = field;
+                }
+            }
+
+            // ===== Hàm đăng ký =====
+            function registerUser(user) {
+                // Không truyền đối số hoặc không phải object
+                if (typeof user !== "object" || user === null) {
+                    throw new InvalidTypeError("Tham số phải là object", "user");
+                }
+
+                const { username, age, email, password } = user;
+
+                // Kiểm tra kiểu dữ liệu
+                if (typeof username !== "string") {
+                    throw new InvalidTypeError("Username phải là chuỗi", "username");
+                }
+
+                if (typeof age !== "number") {
+                    throw new InvalidTypeError("Age phải là số", "age");
+                }
+
+                // Kiểm tra phạm vi tuổi
+                if (age < 13 || age > 120) {
+                    throw new RangeValidationError("Tuổi phải nằm trong khoảng từ 13 đến 120", "age");
+                }
+
+                // Kiểm tra email
+                if (!email.includes("@")) {
+                    throw new InvalidEmailError("Email không hợp lệ", "email");
+                }
+
+                // Kiểm tra password
+                if (password.length < 8) {
+                    throw new WeakPasswordError("Mật khẩu phải có ít nhất 8 ký tự", "password");
+                }
+
+                return {
+                    success: true,
+                    message: "Đăng ký thành công",
+                };
+            }
+
+            // ================= Test =================
+            try {
+                // =========Test Case 1=========
+                /* const result = registerUser();  */
+
+                // =========Test Case 2=========
+                /* const result = registerUser({
+                    username: 123,
+                    age: 20,
+                    email: "a@b.com",
+                    password: "12345678",
+                }); */
+
+                // =========Test Case 3=========
+                /* const result = registerUser({
+                    username: "an",
+                    age: 8,
+                    email: "a@b.com",
+                    password: "12345678",
+                }); */
+
+                // =========Test Case 4=========
+                /* const result = registerUser({
+                    username: "an",
+                    age: 20,
+                    email: "abgmail.com",
+                    password: "12345678",
+                }); */
+
+                // =========Test Case 5=========
+                /* const result = registerUser({
+                    username: "an",
+                    age: 20,
+                    email: "a@b.com",
+                    password: "123",
+                }); */
+
+                // =========Test Case 6=========
+                const result = registerUser({
+                    username: "an",
+                    age: 20,
+                    email: "a@b.com",
+                    password: "12345678",
+                });
+
+                console.log(result);
+            } catch (error) {
+                if (error instanceof InvalidTypeError) {
+                    console.log("Lỗi sai kiểu dữ liệu.");
+                } else if (error instanceof RangeValidationError) {
+                    console.log("Lỗi vượt phạm vi.");
+                } else if (error instanceof InvalidEmailError) {
+                    console.log("Lỗi email không hợp lệ.");
+                } else if (error instanceof WeakPasswordError) {
+                    console.log("Lỗi mật khẩu quá ngắn.");
+                } else {
+                    console.log(error.message);
+                }
+            } finally {
+                console.log("Quá trình xử lý đăng ký đã kết thúc.");
+            }
+        </script>
+    </body>
+</html>
