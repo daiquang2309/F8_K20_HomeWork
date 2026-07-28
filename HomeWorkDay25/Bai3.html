@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>Bài 3</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <style>
+            #product-app {
+                max-width: 850px;
+                background: #1e1e1e;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .controls {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 20px;
+            }
+
+            input {
+                flex: 1;
+            }
+
+            #product-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            .card {
+                background: #2b2b2b;
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            .card h3 {
+                margin-bottom: 10px;
+            }
+
+            .card p {
+                margin: 6px 0;
+            }
+
+            .out {
+                opacity: 0.45;
+            }
+
+            .stock {
+                font-weight: bold;
+            }
+
+            .in {
+                color: #66bb6a;
+            }
+
+            .no {
+                color: #ef5350;
+            }
+
+            #result-count {
+                margin-top: 20px;
+                color: #90caf9;
+                font-weight: bold;
+            }
+
+            .empty {
+                text-align: center;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">
+            <a class="back-btn" href="index.html">Quay lại</a>
+        </div>
+        <h1>Bài 3</h1>
+
+        <div id="product-app">
+            <input type="text" id="search-box" placeholder="Tìm sản phẩm theo tên..." />
+
+            <select id="category-filter">
+                <option value="all">Tất cả danh mục</option>
+                <option value="do-dien-tu">Đồ điện tử</option>
+                <option value="quan-ao">Quần áo</option>
+                <option value="sach">Sách</option>
+            </select>
+
+            <button id="sort-price-btn">Sắp xếp theo giá</button>
+
+            <div id="product-list"></div>
+
+            <p id="result-count"></p>
+        </div>
+
+        <script>
+            const products = [
+                {
+                    id: 1,
+                    name: "Tai nghe Bluetooth",
+                    category: "do-dien-tu",
+                    price: 350000,
+                    inStock: true,
+                },
+                {
+                    id: 2,
+                    name: "Áo thun cotton",
+                    category: "quan-ao",
+                    price: 150000,
+                    inStock: true,
+                },
+                {
+                    id: 3,
+                    name: "Sách Lập trình JS căn bản",
+                    category: "sach",
+                    price: 120000,
+                    inStock: false,
+                },
+                {
+                    id: 4,
+                    name: "Bàn phím cơ",
+                    category: "do-dien-tu",
+                    price: 890000,
+                    inStock: true,
+                },
+                {
+                    id: 5,
+                    name: "Quần jean nam",
+                    category: "quan-ao",
+                    price: 420000,
+                    inStock: false,
+                },
+                {
+                    id: 6,
+                    name: "Sách Tư duy nhanh và chậm",
+                    category: "sach",
+                    price: 95000,
+                    inStock: true,
+                },
+            ];
+
+            const search = document.getElementById("search-box");
+            const category = document.getElementById("category-filter");
+            const sortBtn = document.getElementById("sort-price-btn");
+            const list = document.getElementById("product-list");
+            const count = document.getElementById("result-count");
+
+            let sortMode = null;
+
+            function formatPrice(price) {
+                return price.toLocaleString("vi-VN") + "đ";
+            }
+
+            function categoryName(c) {
+                if (c === "do-dien-tu") return "Đồ điện tử";
+                if (c === "quan-ao") return "Quần áo";
+                return "Sách";
+            }
+
+            function render() {
+                let data = [...products];
+
+                // Tìm kiếm
+                const keyword = search.value.trim().toLowerCase();
+                if (keyword) {
+                    data = data.filter((p) => p.name.toLowerCase().includes(keyword));
+                }
+
+                // Lọc danh mục
+                if (category.value !== "all") {
+                    data = data.filter((p) => p.category === category.value);
+                }
+
+                // Chỉ sắp xếp khi đã bấm nút
+                if (sortMode !== null) {
+                    data.sort((a, b) => {
+                        if (sortMode) {
+                            return a.price - b.price;
+                        }
+                        return b.price - a.price;
+                    });
+                }
+
+                list.innerHTML = "";
+
+                if (data.length === 0) {
+                    list.innerHTML = '<p class="empty">Không tìm thấy sản phẩm nào phù hợp.</p>';
+                } else {
+                    data.forEach((p) => {
+                        list.innerHTML += `
+                <div class="card ${p.inStock ? "" : "out"}">
+                    <h3>${p.name}</h3>
+
+                    <p>
+                        <b>Danh mục:</b>
+                        ${categoryName(p.category)}
+                    </p>
+
+                    <p>
+                        <b>Giá:</b>
+                        ${formatPrice(p.price)}
+                    </p>
+
+                    <p class="stock ${p.inStock ? "in" : "no"}">
+                        ${p.inStock ? "Còn hàng" : "Hết hàng"}
+                    </p>
+                </div>
+                `;
+                    });
+                }
+
+                count.textContent = `Tìm thấy ${data.length} sản phẩm`;
+
+                if (sortMode === null) {
+                    sortBtn.textContent = "Sắp xếp theo giá";
+                } else if (sortMode) {
+                    sortBtn.textContent = "Giá: Thấp → Cao";
+                } else {
+                    sortBtn.textContent = "Giá: Cao → Thấp";
+                }
+            }
+
+            // Tìm kiếm
+            search.addEventListener("input", () => {
+                sortMode = null;
+                render();
+            });
+
+            // Lọc danh mục
+            category.addEventListener("change", () => {
+                search.value = "";
+                sortMode = null;
+                render();
+            });
+
+            // Sắp xếp
+            sortBtn.addEventListener("click", () => {
+                if (sortMode === null) {
+                    sortMode = true;
+                } else {
+                    sortMode = !sortMode;
+                }
+
+                render();
+            });
+
+            // Render lần đầu
+            render();
+        </script>
+    </body>
+</html>

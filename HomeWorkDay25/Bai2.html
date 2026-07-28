@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài 2</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <style>
+            form {
+                width: 350px;
+                background: #1e1e1e;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            }
+
+            form div {
+                margin-bottom: 16px;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            .error-msg {
+                display: block;
+                color: red;
+                min-height: 18px;
+                margin-top: 4px;
+            }
+
+            button:disabled {
+                background: #555;
+                cursor: not-allowed;
+            }
+
+            #success-msg {
+                margin-top: 20px;
+                color: #66bb6a;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">
+            <a href="index.html" class="back-btn">Quay lại</a>
+        </div>
+
+        <h1>Bài 2</h1>
+
+        <form id="register-form">
+            <div>
+                <input type="text" id="username" placeholder="Tên đăng nhập" />
+                <span class="error-msg" id="username-error"></span>
+            </div>
+
+            <div>
+                <input type="email" id="email" placeholder="Email" />
+                <span class="error-msg" id="email-error"></span>
+            </div>
+
+            <div>
+                <input type="password" id="password" placeholder="Mật khẩu" />
+                <span class="error-msg" id="password-error"></span>
+            </div>
+
+            <div>
+                <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu" />
+                <span class="error-msg" id="confirm-password-error"></span>
+            </div>
+
+            <button type="submit" id="submit-btn" disabled>Đăng ký</button>
+        </form>
+
+        <script>
+            const form = document.getElementById("register-form");
+
+            const username = document.getElementById("username");
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirm-password");
+
+            const usernameError = document.getElementById("username-error");
+            const emailError = document.getElementById("email-error");
+            const passwordError = document.getElementById("password-error");
+            const confirmPasswordError = document.getElementById("confirm-password-error");
+
+            const submitBtn = document.getElementById("submit-btn");
+
+            // Đánh dấu ô nào đã được người dùng nhập
+            const touched = {
+                username: false,
+                email: false,
+                password: false,
+                confirmPassword: false,
+            };
+
+            // Username
+            function validateUsername() {
+                const value = username.value.trim();
+                const regex = /^[a-zA-Z0-9_]{4,}$/;
+
+                if (!regex.test(value)) {
+                    if (touched.username) {
+                        usernameError.textContent = "Tên đăng nhập phải từ 4 ký tự và chỉ gồm chữ, số hoặc _.";
+                    }
+                    return false;
+                }
+
+                usernameError.textContent = "";
+                return true;
+            }
+
+            // Email
+            function validateEmail() {
+                const value = email.value.trim();
+                const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!regex.test(value)) {
+                    if (touched.email) {
+                        emailError.textContent = "Email không hợp lệ.";
+                    }
+                    return false;
+                }
+
+                emailError.textContent = "";
+                return true;
+            }
+
+            // Password
+            function validatePassword() {
+                const value = password.value;
+                const regex = /^(?=.*\d).{8,}$/;
+
+                if (!regex.test(value)) {
+                    if (touched.password) {
+                        passwordError.textContent = "Mật khẩu phải từ 8 ký tự và có ít nhất 1 chữ số.";
+                    }
+                    return false;
+                }
+
+                passwordError.textContent = "";
+                return true;
+            }
+
+            // Confirm Password
+            function validateConfirmPassword() {
+                if (confirmPassword.value !== password.value || confirmPassword.value === "") {
+                    if (touched.confirmPassword) {
+                        confirmPasswordError.textContent = "Mật khẩu nhập lại không khớp.";
+                    }
+                    return false;
+                }
+
+                confirmPasswordError.textContent = "";
+                return true;
+            }
+
+            // Cập nhật nút đăng ký
+            function updateButton() {
+                submitBtn.disabled = !(
+                    validateUsername() &&
+                    validateEmail() &&
+                    validatePassword() &&
+                    validateConfirmPassword()
+                );
+            }
+
+            // Username
+            username.addEventListener("input", () => {
+                touched.username = true;
+                validateUsername();
+                updateButton();
+            });
+
+            // Email
+            email.addEventListener("input", () => {
+                touched.email = true;
+                validateEmail();
+                updateButton();
+            });
+
+            // Password
+            password.addEventListener("input", () => {
+                touched.password = true;
+                validatePassword();
+
+                // Kiểm tra lại confirm password
+                validateConfirmPassword();
+
+                updateButton();
+            });
+
+            // Confirm Password
+            confirmPassword.addEventListener("input", () => {
+                touched.confirmPassword = true;
+                validateConfirmPassword();
+                updateButton();
+            });
+
+            // Submit
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const success = document.createElement("p");
+                success.textContent = "Đăng ký thành công!";
+                success.style.color = "green";
+
+                const old = document.getElementById("success-msg");
+                if (old) old.remove();
+
+                success.id = "success-msg";
+
+                form.after(success);
+            });
+        </script>
+    </body>
+</html>
