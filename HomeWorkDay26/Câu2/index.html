@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tabs</title>
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="tabs" tabindex="0">
+            <div class="tab-header">
+                <button class="tab-btn active" data-tab="0">Mô tả</button>
+
+                <button class="tab-btn" data-tab="1">Đánh giá</button>
+
+                <button class="tab-btn" data-tab="2">Thông số</button>
+
+                <button class="tab-btn" data-tab="3">Code</button>
+            </div>
+
+            <div class="tab-content">
+                <div class="content active">
+                    <h2>Mô tả</h2>
+
+                    <p>Đây là chiếc laptop phù hợp cho học tập và lập trình.</p>
+                </div>
+
+                <div class="content">
+                    <h2>Đánh giá</h2>
+
+                    <ul>
+                        <li>Hiệu năng tốt</li>
+
+                        <li>Pin ổn</li>
+
+                        <li>Loa trung bình</li>
+                    </ul>
+                </div>
+
+                <div class="content">
+                    <h2>Thông số kỹ thuật</h2>
+
+                    <img src="https://picsum.photos/500/250" alt="Laptop" />
+                </div>
+
+                <div class="content">
+                    <h2>Code mẫu</h2>
+                    <pre>
+function hello(){
+console.log("Hello World");
+}
+</pre
+                    >
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

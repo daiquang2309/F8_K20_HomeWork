@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    padding: 40px;
+}
+
+.container {
+    width: 650px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-box {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#add-btn {
+    background: #3498db;
+    color: white;
+}
+
+.filter {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filter button {
+    background: #e0e0e0;
+}
+
+.filter button.active {
+    background: #3498db;
+    color: white;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+    min-height: 18px;
+}
+
+#todo-list {
+    list-style: none;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.todo:hover {
+    background: #f7f7f7;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.todo-text,
+.text {
+    flex: 1;
+    cursor: pointer;
+}
+
+.completed .todo-text,
+.completed .text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.edit,
+.edit-input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+}
+
+.delete,
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+#empty-message {
+    display: none;
+    text-align: center;
+    color: #666;
+    margin: 15px 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#todo-count {
+    font-weight: bold;
+    color: #333;
+}
+
+#clear-completed {
+    background: #f39c12;
+    color: white;
+    display: none;
+}
+
+.hide {
+    opacity: 0;
+    transform: translateY(-10px);
+}
