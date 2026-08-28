@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chi tiết sản phẩm</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body {
+                font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            }
+            .btn {
+                transition:
+                    background-color 0.15s ease,
+                    transform 0.15s ease;
+            }
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+            .thumb {
+                transition:
+                    border-color 0.15s ease,
+                    transform 0.15s ease;
+                cursor: pointer;
+            }
+            .thumb:hover {
+                transform: translateY(-2px);
+            }
+            .thumb.active {
+                border-color: #4f46e5;
+            }
+            .spinner {
+                border: 4px solid #e2e8f0;
+                border-top: 4px solid #4f46e5;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                animation: spin 0.8s linear infinite;
+            }
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-slate-50 min-h-screen text-slate-800">
+        <header class="bg-indigo-700 text-white shadow">
+            <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+                <h1 class="text-lg sm:text-xl font-bold">Chi tiết sản phẩm</h1>
+                <a
+                    href="index.html"
+                    class="btn bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium"
+                    >← Danh sách sản phẩm</a
+                >
+            </div>
+        </header>
+
+        <main class="max-w-5xl mx-auto px-4 py-6">
+            <div id="loadingState" class="hidden flex-col items-center justify-center py-20">
+                <div class="spinner mb-3"></div>
+                <p class="text-slate-500 text-sm">Đang tải chi tiết sản phẩm...</p>
+            </div>
+
+            <div id="errorState" class="hidden bg-red-50 border border-red-200 text-red-700 rounded-xl p-8 text-center">
+                <p class="font-semibold mb-1">Không thể hiển thị sản phẩm</p>
+                <p id="errorMessage" class="text-sm mb-4">ID sản phẩm không hợp lệ hoặc đã xảy ra lỗi.</p>
+                <a
+                    href="index.html"
+                    class="btn inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                    >Về trang danh sách</a
+                >
+            </div>
+
+            <div id="productDetail" class="hidden">
+                <!-- Ảnh + thông tin chính -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-xl shadow p-6 mb-6">
+                    <div>
+                        <img
+                            id="mainImage"
+                            src=""
+                            alt=""
+                            class="w-full h-80 object-cover rounded-lg mb-3 bg-slate-100"
+                        />
+                        <div id="thumbList" class="flex gap-2 flex-wrap"></div>
+                    </div>
+
+                    <div>
+                        <p
+                            id="detailCategory"
+                            class="text-xs uppercase tracking-wide text-indigo-500 font-semibold mb-1"
+                        ></p>
+                        <h2 id="detailTitle" class="text-2xl font-bold mb-1"></h2>
+                        <p id="detailBrand" class="text-slate-500 mb-3"></p>
+
+                        <div class="text-sm mb-3">
+                            <span id="detailStars"></span>
+                            <span id="detailRating" class="text-slate-400 ml-1"></span>
+                        </div>
+
+                        <div class="flex items-baseline gap-3 mb-3">
+                            <span id="detailSalePrice" class="text-3xl font-bold text-indigo-700"></span>
+                            <span id="detailPrice" class="text-lg text-slate-400 line-through"></span>
+                            <span
+                                id="detailDiscount"
+                                class="text-sm font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-full"
+                            ></span>
+                        </div>
+
+                        <div
+                            id="detailStock"
+                            class="inline-block text-sm font-semibold px-3 py-1 rounded-full mb-4"
+                        ></div>
+
+                        <p id="detailDescription" class="text-slate-600 mb-4"></p>
+
+                        <div class="grid grid-cols-2 gap-3 text-sm">
+                            <div>
+                                <span class="text-slate-400">SKU:</span>
+                                <span id="detailSku" class="font-medium"></span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400">Cân nặng:</span>
+                                <span id="detailWeight" class="font-medium"></span>
+                            </div>
+                            <div class="col-span-2">
+                                <span class="text-slate-400">Kích thước (RxCxS):</span>
+                                <span id="detailDimensions" class="font-medium"></span>
+                            </div>
+                            <div class="col-span-2">
+                                <span class="text-slate-400">Tags:</span>
+                                <span id="detailTags" class="font-medium"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews -->
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-lg font-bold mb-4">Đánh giá từ khách hàng</h3>
+                    <div id="reviewList" class="space-y-4"></div>
+                </div>
+            </div>
+        </main>
+
+        <script src="product.js"></script>
+    </body>
+</html>

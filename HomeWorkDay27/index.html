@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trang chủ - BOM Demo</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body {
+                font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            }
+            .card {
+                transition:
+                    transform 0.15s ease,
+                    box-shadow 0.15s ease;
+            }
+            .card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.25);
+            }
+            .nav-btn {
+                transition:
+                    background-color 0.15s ease,
+                    transform 0.15s ease;
+            }
+            .nav-btn:hover {
+                transform: translateY(-1px);
+            }
+            .banner-wrap {
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+            .banner-wrap:hover {
+                transform: scale(1.015);
+                box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.35);
+            }
+            #dot {
+                transition:
+                    background-color 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+        </style>
+    </head>
+    <body class="bg-slate-100 min-h-screen text-slate-800">
+        <!-- Thanh điều hướng -->
+        <nav class="bg-indigo-700 text-white shadow">
+            <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+                <span class="font-bold text-lg tracking-wide">BOM Demo</span>
+                <div class="space-x-2">
+                    <button
+                        id="btnHome"
+                        class="nav-btn bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium"
+                    >
+                        Trang chủ
+                    </button>
+                    <button
+                        id="btnFingerprint"
+                        class="nav-btn bg-indigo-800 hover:bg-indigo-900 px-4 py-2 rounded-lg text-sm font-medium"
+                    >
+                        Fingerprinting
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-5xl mx-auto px-4 py-8">
+            <!-- ================= TRANG CHỦ ================= -->
+            <section id="viewHome">
+                <h1 class="text-2xl font-bold mb-1">Thông tin trình duyệt (Browser Object Model)</h1>
+                <p class="text-slate-500 mb-6">
+                    Các thông tin dưới đây được đọc trực tiếp từ đối tượng
+                    <code class="bg-slate-200 px-1 rounded">window</code>,
+                    <code class="bg-slate-200 px-1 rounded">navigator</code>,
+                    <code class="bg-slate-200 px-1 rounded">screen</code>.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="card bg-white rounded-xl p-4 shadow">
+                        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Vị trí người dùng (tọa độ)</p>
+                        <p id="infoLocation" class="font-semibold">Đang lấy vị trí...</p>
+                    </div>
+
+                    <div class="card bg-white rounded-xl p-4 shadow flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Trạng thái mạng</p>
+                            <p id="infoOnline" class="font-semibold">Đang kiểm tra...</p>
+                        </div>
+                        <span id="dot" class="w-4 h-4 rounded-full bg-slate-300 inline-block"></span>
+                    </div>
+
+                    <div class="card bg-white rounded-xl p-4 shadow">
+                        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Tên trình duyệt</p>
+                        <p id="infoBrowser" class="font-semibold">-</p>
+                    </div>
+
+                    <div class="card bg-white rounded-xl p-4 shadow">
+                        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Hệ điều hành</p>
+                        <p id="infoOS" class="font-semibold">-</p>
+                    </div>
+
+                    <div class="card bg-white rounded-xl p-4 shadow">
+                        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Danh sách ngôn ngữ</p>
+                        <p id="infoLangs" class="font-semibold">-</p>
+                    </div>
+
+                    <div class="card bg-white rounded-xl p-4 shadow">
+                        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Kích thước màn hình</p>
+                        <p id="infoScreen" class="font-semibold">-</p>
+                    </div>
+
+                    <div class="card bg-white rounded-xl p-4 shadow sm:col-span-2">
+                        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Hướng màn hình</p>
+                        <p id="infoOrientation" class="font-semibold">-</p>
+                    </div>
+                </div>
+
+                <!-- Banner quảng cáo -->
+                <p class="text-sm text-slate-500 mb-2">Quảng cáo</p>
+                <a
+                    id="adBanner"
+                    href="#"
+                    class="banner-wrap block rounded-xl overflow-hidden shadow-lg border border-slate-200"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=1200&h=300&fit=crop"
+                        alt="Quảng cáo du lịch"
+                        class="w-full h-48 object-cover"
+                    />
+                    <div class="bg-white p-4 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-indigo-700">Khám phá thế giới cùng chúng tôi ✈️</p>
+                            <p class="text-sm text-slate-500">Nhấn để xem ưu đãi đặc biệt hôm nay</p>
+                        </div>
+                        <span class="text-indigo-600 font-semibold">Xem ngay →</span>
+                    </div>
+                </a>
+            </section>
+
+            <!-- ================= TRANG FINGERPRINTING (SPA) ================= -->
+            <section id="viewFingerprint" class="hidden">
+                <h1 class="text-2xl font-bold mb-1">Fingerprinting</h1>
+                <p class="text-slate-500 mb-6">
+                    Dữ liệu bên dưới được truyền từ trang chủ qua
+                    <code class="bg-slate-200 px-1 rounded">history.pushState</code> và lấy lại bằng
+                    <code class="bg-slate-200 px-1 rounded">history.state</code>.
+                </p>
+
+                <div class="bg-white rounded-xl p-5 shadow mb-6">
+                    <p class="text-xs uppercase tracking-wide text-slate-400 mb-2">
+                        Chuỗi fingerprint (nối chuỗi từ state)
+                    </p>
+                    <p id="fingerprintString" class="font-mono text-sm break-all text-indigo-700">-</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-5 shadow mb-6">
+                    <p class="text-xs uppercase tracking-wide text-slate-400 mb-2">Dữ liệu state gốc (JSON)</p>
+                    <pre id="fingerprintRaw" class="text-xs bg-slate-900 text-green-400 p-3 rounded-lg overflow-x-auto">
+-</pre
+                    >
+                </div>
+
+                <button
+                    id="btnBack"
+                    class="nav-btn bg-slate-700 hover:bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                >
+                    ← Quay về trang chủ
+                </button>
+            </section>
+        </main>
+
+        <script src="app.js"></script>
+    </body>
+</html>

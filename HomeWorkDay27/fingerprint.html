@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fingerprinting</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-slate-100 min-h-screen text-slate-800 flex items-center justify-center">
+        <div class="bg-white rounded-xl shadow p-6 max-w-md text-center">
+            <h1 class="text-xl font-bold mb-2">Fingerprinting</h1>
+            <p class="text-slate-500 mb-4">
+                URL này chỉ hiển thị đầy đủ dữ liệu khi được điều hướng bằng
+                <code class="bg-slate-200 px-1 rounded">history.pushState</code> từ Trang chủ (dữ liệu được truyền qua
+                <code class="bg-slate-200 px-1 rounded">state</code>, không lưu trên server).
+            </p>
+            <a
+                href="index.html"
+                class="inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium"
+            >
+                Về trang chủ để xem demo
+            </a>
+        </div>
+    </body>
+</html>

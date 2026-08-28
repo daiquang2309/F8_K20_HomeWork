@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trang quảng cáo</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body {
+                font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            }
+            .nav-btn {
+                transition:
+                    background-color 0.15s ease,
+                    transform 0.15s ease;
+            }
+            .nav-btn:hover {
+                transform: translateY(-1px);
+            }
+        </style>
+    </head>
+    <body class="bg-slate-100 min-h-screen text-slate-800">
+        <nav class="bg-indigo-700 text-white shadow">
+            <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+                <span class="font-bold text-lg tracking-wide">Trang quảng cáo</span>
+                <a
+                    href="index.html"
+                    class="nav-btn bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium"
+                    >← Trang chủ</a
+                >
+            </div>
+        </nav>
+
+        <main class="max-w-3xl mx-auto px-4 py-8">
+            <div id="paramBox" class="bg-white rounded-xl shadow p-5 mb-6">
+                <!-- Nội dung sẽ được JS điền vào -->
+            </div>
+
+            <div class="bg-white rounded-xl shadow overflow-hidden">
+                <img
+                    src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=400&fit=crop"
+                    alt="Nội dung quảng cáo"
+                    class="w-full h-56 object-cover"
+                />
+                <div class="p-5">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-2">Ưu đãi mùa hè - Giảm 30% tour du lịch</h2>
+                    <p class="text-slate-600">
+                        Đặt tour ngay hôm nay để nhận ưu đãi giảm giá 30% cho tất cả các chuyến du lịch trong nước. Số
+                        lượng chỗ có hạn, nhanh tay đăng ký để không bỏ lỡ cơ hội trải nghiệm những điểm đến tuyệt vời
+                        nhất!
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            const params = new URLSearchParams(location.search);
+            const box = document.getElementById("paramBox");
+
+            if ([...params].length === 0) {
+                box.innerHTML = `
+        <p class="text-slate-500 italic">Không có tham số quảng cáo</p>
+      `;
+            } else {
+                const source = params.get("utm_source") || "(không có)";
+                const campaign = params.get("utm_campaign") || "(không có)";
+                box.innerHTML = `
+        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Tên nguồn (utm_source)</p>
+        <p class="font-semibold text-lg mb-4">${source}</p>
+        <p class="text-xs uppercase tracking-wide text-slate-400 mb-1">Tên chiến dịch (utm_campaign)</p>
+        <p class="font-semibold text-lg">${campaign}</p>
+      `;
+            }
+        </script>
+    </body>
+</html>
