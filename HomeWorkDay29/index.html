@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Music App - Trang chủ</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="min-h-screen">
+        <!-- Thanh điều hướng -->
+        <header class="sticky top-0 z-10 bg-black/90 backdrop-blur border-b border-neutral-800">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold text-lg">Music App</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="nav-link text-sm font-medium" style="color: var(--text-muted)"
+                        >Trang chủ</a
+                    >
+                    <a href="profile.html" class="nav-link text-sm font-medium" style="color: var(--text-muted)"
+                        >Cá nhân</a
+                    >
+                    <button id="logoutBtn" class="btn-ghost text-sm font-medium px-4 py-1.5 rounded-full">
+                        Đăng xuất
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 py-6 space-y-10">
+            <!-- Section: Nghệ sĩ -->
+            <section>
+                <h2 class="text-xl font-bold mb-3">Nghệ sĩ nổi bật</h2>
+                <div id="artistsState"></div>
+                <div id="artistsRow" class="flex gap-4 overflow-x-auto scroll-row pb-2"></div>
+            </section>
+
+            <!-- Section: Album -->
+            <section>
+                <h2 class="text-xl font-bold mb-3">Album mới phát hành</h2>
+                <div id="albumsState"></div>
+                <div id="albumsRow" class="flex gap-4 overflow-x-auto scroll-row pb-2"></div>
+            </section>
+
+            <!-- Section: Bài hát -->
+            <section>
+                <h2 class="text-xl font-bold mb-3">Bài hát thịnh hành</h2>
+                <div id="tracksState"></div>
+                <div id="tracksRow" class="flex gap-4 overflow-x-auto scroll-row pb-2"></div>
+            </section>
+
+            <!-- Section: Playlist -->
+            <section>
+                <h2 class="text-xl font-bold mb-3">Playlist dành cho bạn</h2>
+                <div id="playlistsState"></div>
+                <div id="playlistsRow" class="flex gap-4 overflow-x-auto scroll-row pb-2"></div>
+            </section>
+        </main>
+
+        <!-- Template trạng thái loading / lỗi / rỗng, dùng chung cho mọi section -->
+        <template id="stateTemplate">
+            <div class="flex items-center gap-3 py-4" data-role="loading">
+                <div class="spinner"></div>
+                <span class="text-sm" style="color: var(--text-muted)">Đang tải dữ liệu...</span>
+            </div>
+        </template>
+
+        <script src="js/api.js"></script>
+        <script src="js/ui-helpers.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>

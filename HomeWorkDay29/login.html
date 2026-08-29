@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đăng nhập - Music App</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="min-h-screen flex items-center justify-center px-4 py-10">
+        <div class="w-full max-w-md">
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-bold mt-2">Đăng nhập</h1>
+                <p class="text-sm" style="color: var(--text-muted)">Chào mừng trở lại</p>
+            </div>
+
+            <div
+                id="noticeBanner"
+                class="hidden bg-emerald-500/10 border border-emerald-500 text-emerald-400 text-sm rounded-lg px-4 py-3 mb-4"
+            ></div>
+            <div
+                id="apiError"
+                class="hidden bg-red-500/10 border border-red-500 text-red-400 text-sm rounded-lg px-4 py-3 mb-4"
+            ></div>
+
+            <form id="loginForm" class="space-y-4" novalidate>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email</label>
+                    <input
+                        id="email"
+                        type="email"
+                        class="input-field w-full rounded-lg px-3 py-2 text-sm"
+                        placeholder="vd: ban@example.com"
+                    />
+                    <p class="field-error hidden" data-error-for="email"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Mật khẩu</label>
+                    <input
+                        id="password"
+                        type="password"
+                        class="input-field w-full rounded-lg px-3 py-2 text-sm"
+                        placeholder="Nhập mật khẩu"
+                    />
+                    <p class="field-error hidden" data-error-for="password"></p>
+                </div>
+
+                <button id="submitBtn" type="submit" class="btn-primary w-full rounded-full py-2.5 text-sm mt-2">
+                    Đăng nhập
+                </button>
+            </form>
+
+            <p class="text-center text-sm mt-6" style="color: var(--text-muted)">
+                Chưa có tài khoản? <a href="register.html" class="text-white font-semibold hover:underline">Đăng ký</a>
+            </p>
+        </div>
+
+        <script src="js/api.js"></script>
+        <script src="js/login.js"></script>
+    </body>
+</html>
